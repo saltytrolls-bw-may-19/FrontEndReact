@@ -14,7 +14,6 @@ class Authentication extends React.Component {
   handleChanges = e => {
     e.preventDefault();
     const { name, value } = e.target;
-    console.log(name, value);
     this.setState({
       [name]: value
     });

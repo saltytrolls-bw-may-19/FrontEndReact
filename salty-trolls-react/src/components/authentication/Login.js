@@ -1,20 +1,6 @@
 import React from "react";
 
 export default class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userLoginEmail: "",
-      userLoginPassword: ""
-    };
-  }
-
-  handleInputChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
-
   render() {
     return (
       <form>
@@ -23,12 +9,9 @@ export default class Login extends React.Component {
           <input
             placeholder="email"
             type="email"
-            value={this.state.userLoginEmail}
+            value={this.props.userLoginEmail}
             name="userLoginEmail"
-            onChange={event => {
-              event.preventDefault();
-              this.handleInputChange(event);
-            }}
+            onChange={e => this.props.handleChanges(e)}
           />
         </div>
 
@@ -37,12 +20,9 @@ export default class Login extends React.Component {
           <input
             placeholder="password"
             type="password"
-            value={this.state.userLoginPassword}
-            name="userLoginName"
-            onChange={event => {
-              event.preventDefault();
-              this.handleInputChange(event);
-            }}
+            value={this.props.userLoginPassword}
+            name="userLoginPassword"
+            onChange={e => this.props.handleChanges(e)}
           />
         </div>
         <input type="submit" />

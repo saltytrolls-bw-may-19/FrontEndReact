@@ -29,9 +29,6 @@ class Register extends React.Component {
       return "Passwords do not match.";
     }
   };
-  inputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
 
   render() {
     return (
@@ -42,8 +39,8 @@ class Register extends React.Component {
           name="email"
           type="text"
           placeholder="email"
-          value={this.state.userLoginEmail}
-          onChange={this.inputChange}
+          value={this.userLoginEmail}
+          onChange={e => this.props.handleChanges(e)}
         />
         Password:
         <input
@@ -51,8 +48,8 @@ class Register extends React.Component {
           name="password"
           type="password"
           placeholder="password"
-          value={this.state.userLoginPassword}
-          onChange={this.inputChange}
+          value={this.userLoginPassword}
+          onChange={e => this.props.handleChanges(e)}
         />
         Verify Password:
         <input
@@ -60,8 +57,8 @@ class Register extends React.Component {
           name="verifyPassword"
           type="password"
           placeholder="verify password"
-          value={this.state.verifyPassword}
-          onChange={this.inputChange}
+          value={this.verifyPassword}
+          onChange={e => this.props.handleChanges(e)}
         />
         <button className="ui button" onClick={this.registerNewUser}>
           Register
