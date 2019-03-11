@@ -11,6 +11,14 @@ class Register extends React.Component {
     };
   }
 
+  handleChanges = e => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
   registerNewUser = () => {
     if (this.state.userLoginPassword === this.state.verifyPassword) {
       axios
@@ -22,6 +30,7 @@ class Register extends React.Component {
           console.log(res);
           localStorage.setItem("token", res.data.token);
         })
+        .then(() => this.props.history.push("/login"))
         .catch(err => {
           console.log(err.message);
         });
@@ -40,7 +49,7 @@ class Register extends React.Component {
           type="text"
           placeholder="email"
           value={this.userLoginEmail}
-          onChange={e => this.props.handleChanges(e)}
+          onChange={e => this.handleChanges(e)}
         />
         Password:
         <input
@@ -49,7 +58,7 @@ class Register extends React.Component {
           type="password"
           placeholder="password"
           value={this.userLoginPassword}
-          onChange={e => this.props.handleChanges(e)}
+          onChange={e => this.handleChanges(e)}
         />
         Verify Password:
         <input
@@ -58,7 +67,7 @@ class Register extends React.Component {
           type="password"
           placeholder="verify password"
           value={this.verifyPassword}
-          onChange={e => this.props.handleChanges(e)}
+          onChange={e => this.handleChanges(e)}
         />
         <button className="ui button" onClick={this.registerNewUser}>
           Register
