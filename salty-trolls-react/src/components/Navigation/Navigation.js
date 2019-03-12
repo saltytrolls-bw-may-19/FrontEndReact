@@ -4,14 +4,6 @@ import './Navigation.scss';
 
 export default class Navigation extends React.Component {
   render() {
-    if (this.props.isAuthed) {
-      return (
-        <div className="navbar">
-          <Link to="/">Hacker List</Link>
-          <Link to="/logout">Logout</Link>
-        </div>
-      );
-    }
     if (!this.props.isAuthed)
       return (
         <div className="navbar">
@@ -20,5 +12,14 @@ export default class Navigation extends React.Component {
           <Link to="/logout">Logout</Link>
         </div>
       );
+
+    if (this.props.isAuthed) {
+      return (
+        <div className="navbar">
+          <Link to="/">Hacker List</Link>
+          <Link to="/logout">Logout</Link>
+        </div>
+      );
+    }
   }
 }

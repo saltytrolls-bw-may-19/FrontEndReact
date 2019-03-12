@@ -1,4 +1,5 @@
 import React from 'react';
+import './authentication.scss';
 
 export default class Logout extends React.Component {
   componentDidMount() {
@@ -14,9 +15,11 @@ export default class Logout extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div>Are you sure you want to logout</div>
+      <div className="container">
+        <h2>Are you sure you want to logout</h2>
+        <br />
         <button
+          className="main-button"
           onClick={e => {
             e.preventDefault();
             this.props.unAuthUser();

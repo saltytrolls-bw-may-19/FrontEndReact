@@ -1,9 +1,9 @@
 import React from 'react';
-// import Hacker from './Hacker/Hacker';
+import Hacker from '../Hacker/Hacker';
 import axios from 'axios';
-import Search from './Search/Search';
-import Sidebar from './Sidebar/Sidebar';
-import './Hackerlist.scss';
+import Search from '../Search/Search';
+import Sidebar from '../Sidebar/Sidebar';
+import './HackerList.scss';
 
 class HackerList extends React.Component {
   constructor() {
@@ -27,15 +27,18 @@ class HackerList extends React.Component {
   }
   render() {
     return (
-      <div className="hacker-list">
-        <Sidebar />
+      <div className="main-content">
         <h1>The Saltiest Hackers</h1>
         <Search />
-        {/* {this.props.hackerList.map(hacker => { */}
-        {/* return <Hacker hacker={hacker} />; */}
-        {/* })} */}
-        <h4>HackerName: Example Hacker</h4>
-        <h4>Sentiment: .06687</h4>
+        <div className="hacker-content">
+          <Sidebar />
+          <Hacker />
+          {/* {this.props.hackerList.map(hacker => { */}
+          {/* return <Hacker hacker={hacker} />; */}
+          {/* })} */}
+          {/* <h4>HackerName: Example Hacker</h4>
+        <h4>Sentiment: .06687</h4> */}
+        </div>
       </div>
     );
   }

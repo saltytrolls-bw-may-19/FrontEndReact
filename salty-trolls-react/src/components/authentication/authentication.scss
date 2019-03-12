@@ -1,17 +1,51 @@
 .container {
-  margin-top: 80px;
   width: 100vw;
   height: 90vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  .form {
-    width: 200px;
-    height: 300px;
+  .authentication-form {
+    width: 500px;
+    height: auto;
+    margin: 10px;
+  }
+  .main-button {
+    padding: 5px 10px;
+    background-color: orange;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+  }
 
-    .button {
-      padding: 5px, 10px;
+  input {
+    margin: 5px 10px 5px 10px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    &::placeholder {
+      font-size: 1rem;
+      color: gray;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .redirect-button {
+    padding: 10px 20px;
+    background-color: orange;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+
+    .redirect-text {
+      color: white;
+      font-size: 1rem;
+      text-decoration: none;
     }
   }
 }

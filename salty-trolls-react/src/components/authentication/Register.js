@@ -53,17 +53,25 @@ class Register extends React.Component {
 
   render() {
     return (
-      <form className="registration">
-        Email:
-        <input className="ui input" name="email" type="text" placeholder="email" value={this.userLoginEmail} onChange={e => this.handleChanges(e)} />
-        Password:
-        <input className="ui input" name="password" type="password" placeholder="password" value={this.userLoginPassword} onChange={e => this.handleChanges(e)} />
-        Verify Password:
-        <input className="ui input" name="verifyPassword" type="password" placeholder="verify password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
-        <button className="ui button" onClick={this.registerNewUser}>
-          Register
-        </button>
-      </form>
+      <div className="container">
+        <form className="authentication-form">
+          <div>
+            Email:
+            <input name="email" type="text" placeholder="email" value={this.userLoginEmail} onChange={e => this.handleChanges(e)} />
+          </div>
+          <div>
+            Password:
+            <input name="password" type="password" placeholder="password" value={this.userLoginPassword} onChange={e => this.handleChanges(e)} />
+          </div>
+          <div>
+            Verify Password:
+            <input name="verifyPassword" type="password" placeholder="verify password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
+          </div>
+          <button className="main-button" onClick={this.registerNewUser}>
+            Register
+          </button>
+        </form>
+      </div>
     );
   }
 }

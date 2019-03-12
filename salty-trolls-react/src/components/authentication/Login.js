@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import './authentication.scss';
 
 export default class Login extends React.Component {
@@ -49,7 +49,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <div className="container">
-        <form className="form">
+        <form className="authentication-form">
           <div>
             Email:
             <input className="input" placeholder="email" type="email" value={this.state.userLoginEmail} name="userLoginEmail" onChange={e => this.handleChanges(e)} />
@@ -59,11 +59,15 @@ export default class Login extends React.Component {
             Password:
             <input className="input" placeholder="password" type="password" value={this.state.userLoginPassword} name="userLoginPassword" onChange={e => this.handleChanges(e)} />
           </div>
-          <button className="submit" type="submit">
+          <button className="main-button" type="submit" onClick={() => this.props.authUser()}>
             Submit
           </button>
         </form>
-        <Link to="/register">Register</Link>
+        <button className="redirect-button">
+          <Link className="redirect-text" to="/register">
+            Register
+          </Link>
+        </button>
       </div>
     );
   }
