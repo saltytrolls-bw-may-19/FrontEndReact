@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import axios from 'axios';
 
 //components
 import Navigation from './components/Navigation/Navigation';
@@ -7,16 +8,45 @@ import HackerList from './components/HackerList/HackerList';
 import Login from './components/authentication/Login';
 import Logout from './components/authentication/Logout';
 import Register from './components/authentication/Register';
+import UserPage from './components/UserPage/UserPage';
+import HackerProfile from './components/HackerProfile/HackerProfile';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      isAuthed: false
+      isAuthed: false,
+      hackerList: [],
+      hackersDetails: []
     };
   }
 
+  //getting data from server
+  getHackers = () => {
+    axios
+      .get('https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id')
+      .then(res => {
+        console.log(res);
+        this.setState(() => ({ hackerList: res.data }));
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
+  };
+  getHackersDetails = () => {
+    axios
+      .get('https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id/details')
+      .then(res => {
+        console.log(res);
+        this.setState(() => ({ hackersDetails: res.data }));
+        console.log(this.state.hackersDetails);
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
+  };
+  //authorization
   authUser = token => {
     localStorage.setItem('token', token);
     localStorage.setItem('isAuthed', 'true');
@@ -38,9 +68,9 @@ class App extends Component {
         <Route exact path="/login" render={pr => <Login isAuthed={isAuthed} authUser={this.authUser} {...pr} />} />
         <Route exact path="/register" render={pr => <Register isAuthed={isAuthed} {...pr} />} />
         <Route exact path="/logout" render={pr => <Logout isAuthed={isAuthed} unAuthUser={this.unAuthUser} {...pr} />} />
-        <Route exact path="/" render={pr => <HackerList isAuthed={isAuthed} {...pr} />} />
-
-        {/*STRETCH: <Route exact path="/:hacker" render={pr => <Hacker {...pr} />} /> */}
+        <Route exact path="/" render={pr => <HackerList hackerList={this.state.hackerList} getHackers={this.getHackers} isAuthed={isAuthed} {...pr} />} />
+        <Route exact path="/user" render={pr => <UserPage isAuthed={isAuthed} {...pr} />} />
+        <Route exact path="/hacker/:id" render={pr => <HackerProfile hackersDetails={this.state.hackersDetails} getHackersDetails={this.getHackersDetails} isAuthed={isAuthed} {...pr} />} />
       </div>
     );
   }
