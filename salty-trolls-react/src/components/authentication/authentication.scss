@@ -1,0 +1,17 @@
+.container {
+  margin-top: 80px;
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .form {
+    width: 200px;
+    height: 300px;
+
+    .button {
+      padding: 5px, 10px;
+    }
+  }
+}

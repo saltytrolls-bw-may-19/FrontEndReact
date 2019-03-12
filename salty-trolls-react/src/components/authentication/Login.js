@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Input, Button } from 'semantic-ui-react';
+import './authentication.scss';
 
 export default class Login extends React.Component {
   constructor() {
@@ -48,19 +48,20 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <form>
+      <div className="container">
+        <form className="form">
           <div>
-            Email1:
-            <Input focus placeholder="email" type="email" value={this.state.userLoginEmail} name="userLoginEmail" onChange={e => this.handleChanges(e)} />
+            Email:
+            <input className="input" placeholder="email" type="email" value={this.state.userLoginEmail} name="userLoginEmail" onChange={e => this.handleChanges(e)} />
           </div>
 
           <div>
             Password:
-            <Input focus placeholder="password" type="password" value={this.state.userLoginPassword} name="userLoginPassword" onChange={e => this.handleChanges(e)} />
+            <input className="input" placeholder="password" type="password" value={this.state.userLoginPassword} name="userLoginPassword" onChange={e => this.handleChanges(e)} />
           </div>
-          <Button type="submit">Submit</Button>
-          <Button basic color="orange" content="Submit" />
+          <button className="submit" type="submit">
+            Submit
+          </button>
         </form>
         <Link to="/register">Register</Link>
       </div>

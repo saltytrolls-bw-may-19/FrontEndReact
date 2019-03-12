@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 //components
-import Navigation from './components/Navigation';
-import HackerList from './components/HackerList';
+import Navigation from './components/Navigation/Navigation';
+import HackerList from './components/HackerList/HackerList';
 import Login from './components/authentication/Login';
 import Logout from './components/authentication/Logout';
 import Register from './components/authentication/Register';

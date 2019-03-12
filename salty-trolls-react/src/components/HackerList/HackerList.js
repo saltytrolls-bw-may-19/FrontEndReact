@@ -1,9 +1,9 @@
 import React from 'react';
-import Hacker from './Hacker';
+import Hacker from './Hacker/Hacker';
 import axios from 'axios';
-import Search from './Search';
-import Sidebar from './Sidebar';
-
+import Search from './Search/Search';
+import Sidebar from './Sidebar/Sidebar';
+import './Hackerlist.scss';
 class HackerList extends React.Component {
   constructor() {
     super();
@@ -26,7 +26,7 @@ class HackerList extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="hacker-list">
         <Sidebar />
         <h1>The Saltiest Hackers</h1>
         <Search />
