@@ -1,6 +1,6 @@
-import React from "react";
-import Hacker from "./Hacker";
-import axios from "axios";
+import React from 'react';
+import Hacker from './Hacker';
+import axios from 'axios';
 class HackerList extends React.Component {
   constructor() {
     super();
@@ -9,11 +9,11 @@ class HackerList extends React.Component {
     };
   }
   // componentDidMount() {
-  //   this.setState({hackerList: });
+  //   this.setState({hackerList: data});
   // }
   getHackers() {
     axios
-      .get("url")
+      .get('url')
       .then(res => {
         console.log(res);
       })
@@ -29,6 +29,8 @@ class HackerList extends React.Component {
         {/* {this.props.hackerList.map(hacker => { */}
         {/* return <Hacker hacker={hacker} />; */}
         {/* })} */}
+        <h4>HackerName: Example Hacker</h4>
+        <h4>Sentiment: .06687</h4>
       </div>
     );
   }

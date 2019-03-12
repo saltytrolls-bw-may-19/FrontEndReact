@@ -1,6 +1,17 @@
-import React from "react";
+import React from 'react';
 
 export default class Logout extends React.Component {
+  componentDidMount() {
+    if (!this.props.isAuthed) {
+      this.props.history.push('/');
+    }
+  }
+
+  componentDidUpdate() {
+    if (!this.props.isAuthed) {
+      this.props.history.push('/');
+    }
+  }
   render() {
     return (
       <div>
@@ -9,8 +20,7 @@ export default class Logout extends React.Component {
           onClick={e => {
             e.preventDefault();
             this.props.unAuthUser();
-          }}
-        >
+          }}>
           YES
         </button>
       </div>
