@@ -34,7 +34,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Navigation />
+        <Navigation isAuthed={isAuthed} />
         <Route exact path="/login" render={pr => <Login isAuthed={isAuthed} authUser={this.authUser} {...pr} />} />
         <Route exact path="/register" render={pr => <Register isAuthed={isAuthed} {...pr} />} />
         <Route exact path="/logout" render={pr => <Logout isAuthed={isAuthed} unAuthUser={this.unAuthUser} {...pr} />} />

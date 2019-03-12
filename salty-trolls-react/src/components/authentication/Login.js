@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Input, Button } from 'semantic-ui-react';
 
 export default class Login extends React.Component {
   constructor() {
@@ -51,20 +52,15 @@ export default class Login extends React.Component {
         <form>
           <div>
             Email1:
-            <input placeholder="email" type="email" value={this.state.userLoginEmail} name="userLoginEmail" onChange={e => this.handleChanges(e)} />
+            <Input focus placeholder="email" type="email" value={this.state.userLoginEmail} name="userLoginEmail" onChange={e => this.handleChanges(e)} />
           </div>
 
           <div>
             Password:
-            <input placeholder="password" type="password" value={this.state.userLoginPassword} name="userLoginPassword" onChange={e => this.handleChanges(e)} />
+            <Input focus placeholder="password" type="password" value={this.state.userLoginPassword} name="userLoginPassword" onChange={e => this.handleChanges(e)} />
           </div>
-          <input
-            type="submit"
-            onClick={event => {
-              event.preventDefault();
-              this.loginUser();
-            }}
-          />
+          <Button type="submit">Submit</Button>
+          <Button basic color="orange" content="Submit" />
         </form>
         <Link to="/register">Register</Link>
       </div>
