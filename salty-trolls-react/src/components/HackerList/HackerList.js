@@ -1,9 +1,10 @@
 import React from 'react';
-import Hacker from './Hacker/Hacker';
+// import Hacker from './Hacker/Hacker';
 import axios from 'axios';
 import Search from './Search/Search';
 import Sidebar from './Sidebar/Sidebar';
 import './Hackerlist.scss';
+
 class HackerList extends React.Component {
   constructor() {
     super();
