@@ -3,26 +3,29 @@ import Hacker from "../Hacker/Hacker";
 import Search from "../Search/Search";
 import Sidebar from "../Sidebar/Sidebar";
 import "./HackerList.scss";
-
+import list from "../../DataCollection/Users";
 class HackerList extends React.Component {
   componentDidMount() {
     this.props.getHackers();
   }
 
   render() {
-    console.log(this.props.hackerList);
+    console.log(list[0]);
+    // console.log(this.props.hackerList);
     return (
       <div className="hacker-content">
         <Sidebar />
         <div className="right-column">
           <h1>The Saltiest Hackers</h1>
-          <Search />
+          <Search
+            searchedHacker={this.props.searchedHacker}
+            searchedHackerComments={this.props.searchedHackerComments}
+          />
           <Hacker hacker={this.props.hackerList} />
-          {/* {this.state.hackerList.map(hacker => {
-            return <Hacker hacker={hacker} />;
+
+          {/* {list.map(item => {
+            return <Hacker hacker={item} />;
           })} */}
-          {/* <h4>HackerName: Example Hacker</h4>
-          <h4>Sentiment: .06687</h4> */}
         </div>
       </div>
     );

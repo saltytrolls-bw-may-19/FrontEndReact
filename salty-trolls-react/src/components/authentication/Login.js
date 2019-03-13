@@ -1,11 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import './authentication.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import "./authentication.scss";
 
-
-
-const url = 'https://buildweek-saltytrolls.herokuapp.com';
+const url = "https://buildweek-saltytrolls.herokuapp.com";
 export default class Login extends React.Component {
   constructor() {
     super();
@@ -35,7 +33,6 @@ export default class Login extends React.Component {
       })
 
       .catch(err => console.log(err.msg));
-
   };
 
   componentDidMount() {
@@ -79,13 +76,11 @@ export default class Login extends React.Component {
           </div>
           <button
             className="main-button"
-
             onClick={e => {
               e.preventDefault();
               this.loginUser();
-            }}>
-
-  
+            }}
+          >
             Submit
           </button>
         </form>
