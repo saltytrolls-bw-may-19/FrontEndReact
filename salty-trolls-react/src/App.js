@@ -17,6 +17,7 @@ class App extends Component {
     super();
     this.state = {
       isAuthed: false,
+      loading: false,
       hackerList: [],
       hackersDetails: [],
       currentAuthor: ''
@@ -25,6 +26,7 @@ class App extends Component {
 
   //getting data from server
   getHackers = () => {
+    this.setState({ loading: true });
     axios
       .get('https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id')
       .then(res => {
@@ -33,7 +35,8 @@ class App extends Component {
       })
       .catch(err => {
         console.log(err.message);
-      });
+      })
+      .finally(this.setState({ loading: false }));
   };
   getHackersDetails = () => {
     axios

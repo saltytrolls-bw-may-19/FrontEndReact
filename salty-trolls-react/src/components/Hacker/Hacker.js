@@ -7,7 +7,7 @@ const Hacker = props => {
   const sentimentNumber = Number(props.hacker.HackerSentiment);
   const sentimentPercentage = Math.round(Math.abs(sentimentNumber * 100));
   const sentimentColor = sentimentNumber < 0 ? 'red' : 'green';
-  const sentimentEmoji = sentimentNumber < 0.7 ? '❤️' : sentimentNumber < 0.25 ? '👍' : sentimentNumber < 0;
+  const sentimentEmoji = sentimentNumber < 0 ? '👍' : '👎';
   return (
     <div>
       <div className="hacker">
