@@ -4,9 +4,10 @@ import './Hacker.scss';
 import { Progress } from 'semantic-ui-react';
 
 const Hacker = props => {
-  const sentimentPercentage = Math.round(Math.abs(props.hacker.HackerSentiment * 100));
-  const sentimentColor = Number(props.hacker.HackerSentiment) < 0 ? 'red' : 'green';
-  const sentimentEmoji = Number(props.hacker.HackerSentiment) < 0 ? '👎' : '👍';
+  const sentimentNumber = Number(props.hacker.HackerSentiment);
+  const sentimentPercentage = Math.round(Math.abs(sentimentNumber * 100));
+  const sentimentColor = sentimentNumber < 0 ? 'red' : 'green';
+  const sentimentEmoji = sentimentNumber < 0.7 ? '❤️' : sentimentNumber < 0.25 ? '👍' : sentimentNumber < 0;
   return (
     <div>
       <div className="hacker">

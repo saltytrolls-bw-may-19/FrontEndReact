@@ -31,7 +31,7 @@ export default class Login extends React.Component {
       })
       .catch(err => console.log(err.message));*/
 
-    this.props.authUser('123 test token');
+    this.props.authUser('testtoken');
   };
 
   componentDidMount() {
@@ -59,7 +59,7 @@ export default class Login extends React.Component {
             Password:
             <input className="input" placeholder="password" type="password" value={this.state.userLoginPassword} name="userLoginPassword" onChange={e => this.handleChanges(e)} />
           </div>
-          <button className="main-button" type="submit" onClick={() => this.props.authUser()}>
+          <button className="main-button" type="submit" onClick={() => this.loginUser()}>
             Submit
           </button>
         </form>

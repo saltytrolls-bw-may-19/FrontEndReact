@@ -7,6 +7,9 @@ export default class Navigation extends React.Component {
     if (!this.props.isAuthed)
       return (
         <div className="navbar">
+          <a className="logo" href="https://buildweek-saltytrolls.herokuapp.com/">
+            Saltiest HackerNews Trolls
+          </a>
           <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
         </div>
@@ -15,14 +18,12 @@ export default class Navigation extends React.Component {
     if (this.props.isAuthed) {
       return (
         <div className="navbar">
+          <a className="logo" href="https://buildweek-saltytrolls.herokuapp.com/">
+            Saltiest HackerNews Trolls
+          </a>
           <Link to="/">Hacker List</Link>
           <Link to="/logout">Logout</Link>
-          <Link to="/user">
-            Me{' '}
-            <span role="img" aria-label="computer emoji">
-              💻
-            </span>
-          </Link>
+          <Link to="/user">My Profile</Link>
         </div>
       );
     }

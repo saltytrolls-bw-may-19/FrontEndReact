@@ -41,8 +41,6 @@ class App extends Component {
       .then(res => {
         console.log(res);
         this.setState(() => ({ hackersDetails: res.data, currentAuthor: res.data[0].author }));
-        console.log(this.state.hackersDetails);
-        console.log(this.state.currentAuthor);
       })
       .catch(err => {
         console.log(err.message);
