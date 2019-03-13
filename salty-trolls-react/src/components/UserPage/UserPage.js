@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './UserPage.scss';
 
+const url = 'https://buildweek-saltytrolls.herokuapp.com';
 export default class UserPage extends React.Component {
   constructor(props) {
     super(props);
@@ -13,15 +14,23 @@ export default class UserPage extends React.Component {
     };
   }
 
+  getAuthToken = () => ({
+    headers: { Authorization: localStorage.getItem('token') }
+  });
+
   updateEmail = () => {
     if (this.state.userLoginPassword === this.state.verifyPassword) {
       axios
-        .put('url', {
-          password: this.state.userLoginPassword
-        })
+        .patch(
+          `${url}/api/users/${this.props.currentUserId}/password`,
+          {
+            UserPassword: this.state.userLoginPassword
+          },
+          this.getAuthToken()
+        )
         .then(() => this.props.history.push('/login'))
         .catch(err => {
-          console.log(err.message);
+          console.log(err.msg);
         });
     } else {
       return 'Passwords do not match.';
@@ -30,7 +39,10 @@ export default class UserPage extends React.Component {
 
   deleteAccount = () => {
     axios
-      .delete('url', {})
+      .delete(`${url}/api/users/${this.props.currentUserId}`, this.getAuthToken())
+      .then(() => {
+        this.props.unAuthUser();
+      })
       .then(() => this.props.history.push('/register'))
       .catch(err => {
         console.log(err.message);
@@ -87,12 +99,17 @@ export default class UserPage extends React.Component {
         {this.state.showChangePassword && (
           <form>
             <div>
-              New password: <input name="password" type="password" placeholder="password" value={this.userLoginPassword} onChange={e => this.handleChanges(e)} />
+              New password: <input name="userLoginPassword" type="password" placeholder="password" value={this.userLoginPassword} onChange={e => this.handleChanges(e)} />
             </div>
             <div>
               Confirm new password: <input name="verifyPassword" type="password" placeholder="verify password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
             </div>
-            <button className="main-button" onClick={this.updateEmail}>
+            <button
+              className="main-button"
+              onClick={e => {
+                e.preventDefault();
+                this.updateEmail();
+              }}>
               Submit
             </button>
           </form>
@@ -101,7 +118,12 @@ export default class UserPage extends React.Component {
         {this.state.showDeleteAccount && (
           <form>
             <h2>Are you sure?</h2>
-            <button className="main-button" onClick={this.deleteAccount}>
+            <button
+              className="main-button"
+              onClick={e => {
+                e.preventDefault();
+                this.deleteAccount();
+              }}>
               Delete
             </button>
           </form>

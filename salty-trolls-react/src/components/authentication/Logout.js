@@ -3,15 +3,15 @@ import './authentication.scss';
 
 export default class Logout extends React.Component {
   componentDidMount() {
-    if (!this.props.isAuthed) {
-      this.props.history.push('/');
-    }
+    // if (!this.props.isAuthed) {
+    //   this.props.history.push('/');
+    // }
   }
 
   componentDidUpdate() {
-    if (!this.props.isAuthed) {
-      this.props.history.push('/');
-    }
+    // if (!this.props.isAuthed) {
+    //   this.props.history.push('/');
+    // }
   }
   render() {
     return (
