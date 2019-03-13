@@ -8,6 +8,7 @@ const Hacker = props => {
   const sentimentPercentage = Math.round(Math.abs(sentimentNumber * 100));
   const sentimentColor = sentimentNumber < 0 ? 'red' : 'green';
   const sentimentEmoji = sentimentNumber < 0 ? '👎' : '👍';
+
   return (
     <div>
       <div className="hacker">
@@ -16,7 +17,9 @@ const Hacker = props => {
           <h4>Average Sentiment: {props.hacker.HackerSentiment}</h4>
           <p>Number of comments: {props.hacker.HackerCommentCount}</p>
           <div className="sentiment-graph">
+
             <Progress className="progress-bar" percent={sentimentPercentage} color={sentimentColor} progress />
+
             {/* <BarChart
               width={600}
               height={300}
@@ -40,13 +43,3 @@ const Hacker = props => {
   );
 };
 export default Hacker;
-// const {
-//   BarChart,
-//   Bar,
-//   ReferenceLine,
-//   XAxis,
-//   YAxis,
-//   CartesianGrid,
-//   Tooltip,
-//   Legend
-// } = Recharts;

@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './authentication.scss';
 
+
+
 const url = 'https://buildweek-saltytrolls.herokuapp.com';
 export default class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      userLoginEmail: '',
-      userLoginPassword: ''
+      userLoginEmail: "",
+      userLoginPassword: ""
     };
   }
 
@@ -31,18 +33,20 @@ export default class Login extends React.Component {
         this.props.authUser(res.data.token, res.data.UserID);
         console.log(res);
       })
+
       .catch(err => console.log(err.msg));
+
   };
 
   componentDidMount() {
     if (this.props.isAuthed) {
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
   }
 
   componentDidUpdate() {
     if (this.props.isAuthed) {
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
   }
 
@@ -52,19 +56,36 @@ export default class Login extends React.Component {
         <form className="authentication-form">
           <div>
             Email:
-            <input className="input" placeholder="email" type="email" value={this.state.userLoginEmail} name="userLoginEmail" onChange={e => this.handleChanges(e)} />
+            <input
+              className="input"
+              placeholder="email"
+              type="email"
+              value={this.state.userLoginEmail}
+              name="userLoginEmail"
+              onChange={e => this.handleChanges(e)}
+            />
           </div>
 
           <div>
             Password:
-            <input className="input" placeholder="password" type="password" value={this.state.userLoginPassword} name="userLoginPassword" onChange={e => this.handleChanges(e)} />
+            <input
+              className="input"
+              placeholder="password"
+              type="password"
+              value={this.state.userLoginPassword}
+              name="userLoginPassword"
+              onChange={e => this.handleChanges(e)}
+            />
           </div>
           <button
             className="main-button"
+
             onClick={e => {
               e.preventDefault();
               this.loginUser();
             }}>
+
+  
             Submit
           </button>
         </form>

@@ -60,6 +60,9 @@ class App extends Component {
   unAuthUser = () => {
     this.setState({ isAuthed: false, currentUserId: '' });
     localStorage.clear();
+
+    localStorage.setItem('isAuthed', '');
+
   };
 
   render() {

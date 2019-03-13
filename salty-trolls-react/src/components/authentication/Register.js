@@ -1,14 +1,17 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
+
 
 const url = 'https://buildweek-saltytrolls.herokuapp.com';
+
+
 class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userLoginEmail: '',
-      userLoginPassword: '',
-      verifyPassword: ''
+      userLoginEmail: "",
+      userLoginPassword: "",
+      verifyPassword: ""
     };
   }
 
@@ -28,24 +31,25 @@ class Register extends React.Component {
           UserPassword: this.state.userLoginPassword
         })
         .then(res => console.log(res))
+
         .then(() => this.props.history.push('/login'))
         .catch(err => {
           console.log(err.msg);
         });
     } else {
-      return 'Passwords do not match.';
+      return "Passwords do not match.";
     }
   };
 
   componentDidMount() {
     if (this.props.isAuthed) {
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
   }
 
   componentDidUpdate() {
     if (this.props.isAuthed) {
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
   }
 
@@ -55,6 +59,7 @@ class Register extends React.Component {
         <form className="authentication-form">
           <div>
             Email:
+
             <input name="userLoginEmail" type="email" placeholder="email" value={this.userLoginEmail} onChange={e => this.handleChanges(e)} />
           </div>
           <div>
@@ -63,14 +68,22 @@ class Register extends React.Component {
           </div>
           <div>
             Verify Password:
-            <input name="verifyPassword" type="password" placeholder="verify password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
+            <input
+              name="verifyPassword"
+              type="password"
+              placeholder="verify password"
+              value={this.verifyPassword}
+              onChange={e => this.handleChanges(e)}
+            />
           </div>
           <button
             className="main-button"
             onClick={event => {
               event.preventDefault();
               this.registerNewUser();
+
             }}>
+
             Register
           </button>
         </form>
