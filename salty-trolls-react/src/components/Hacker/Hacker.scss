@@ -7,13 +7,18 @@
 .hacker a {
   margin: 10px;
   width: 100%;
-  background-color: grey;
-  color: white;
+  background-color: #eaeaea;
+  color: black;
   padding: 10px;
 }
-.progressbar {
-  width: 600px;
+.progress-bar {
+  width: 80%;
 }
+
 .sentiment-graph {
-  border: 1px solid red;
+  display: flex;
+  justify-content: space-evenly;
+}
+.emoji {
+  font-size: 1.8rem;
 }

@@ -1,10 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Hacker.scss";
-import { Progress } from "semantic-ui-react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Hacker.scss';
+import { Progress } from 'semantic-ui-react';
 
 const Hacker = props => {
-  console.log(props);
+  const sentimentNumber = Number(props.hacker.HackerSentiment);
+  const sentimentPercentage = Math.round(Math.abs(sentimentNumber * 100));
+  const sentimentColor = sentimentNumber < 0 ? 'red' : 'green';
+  const sentimentEmoji = sentimentNumber < 0 ? '👍' : '👎';
   return (
     <div>
       <div className="hacker">
@@ -13,12 +16,8 @@ const Hacker = props => {
           <h4>Average Sentiment: {props.hacker.HackerSentiment}</h4>
           <p>Number of comments: {props.hacker.HackerCommentCount}</p>
           <div className="sentiment-graph">
-            <Progress
-              className="progressbar"
-              percent={65}
-              progress
-              color="green"
-            />
+            <Progress className="progress-bar" percent={sentimentPercentage} color={sentimentColor} progress />
+            <div className="emoji">{sentimentEmoji}</div>
           </div>
         </Link>
       </div>
