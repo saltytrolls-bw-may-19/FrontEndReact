@@ -1,13 +1,14 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 
+const url = "https://buildweek-saltytrolls.herokuapp.com";
 class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userLoginEmail: '',
-      userLoginPassword: '',
-      verifyPassword: ''
+      userLoginEmail: "",
+      userLoginPassword: "",
+      verifyPassword: ""
     };
   }
 
@@ -22,32 +23,29 @@ class Register extends React.Component {
   registerNewUser = () => {
     if (this.state.userLoginPassword === this.state.verifyPassword) {
       axios
-        .post('url', {
-          email: this.state.userLoginEmail,
-          password: this.state.userLoginPassword
+        .post(`${url}/api/users/register`, {
+          UserEmail: this.state.userLoginEmail,
+          UserPassword: this.state.userLoginPassword
         })
-        .then(res => {
-          console.log(res);
-          localStorage.setItem('token', res.data.token);
-        })
-        .then(() => this.props.history.push('/login'))
+        .then(res => console.log(res))
+        .then(() => this.props.history.push("/login"))
         .catch(err => {
           console.log(err.message);
         });
     } else {
-      return 'Passwords do not match.';
+      return "Passwords do not match.";
     }
   };
 
   componentDidMount() {
     if (this.props.isAuthed) {
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
   }
 
   componentDidUpdate() {
     if (this.props.isAuthed) {
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
   }
 
@@ -57,17 +55,41 @@ class Register extends React.Component {
         <form className="authentication-form">
           <div>
             Email:
-            <input name="email" type="text" placeholder="email" value={this.userLoginEmail} onChange={e => this.handleChanges(e)} />
+            <input
+              name="email"
+              type="text"
+              placeholder="email"
+              value={this.userLoginEmail}
+              onChange={e => this.handleChanges(e)}
+            />
           </div>
           <div>
             Password:
-            <input name="password" type="password" placeholder="password" value={this.userLoginPassword} onChange={e => this.handleChanges(e)} />
+            <input
+              name="password"
+              type="password"
+              placeholder="password"
+              value={this.userLoginPassword}
+              onChange={e => this.handleChanges(e)}
+            />
           </div>
           <div>
             Verify Password:
-            <input name="verifyPassword" type="password" placeholder="verify password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
+            <input
+              name="verifyPassword"
+              type="password"
+              placeholder="verify password"
+              value={this.verifyPassword}
+              onChange={e => this.handleChanges(e)}
+            />
           </div>
-          <button className="main-button" onClick={this.registerNewUser}>
+          <button
+            className="main-button"
+            onClick={event => {
+              event.preventDefault();
+              this.registerNewUser();
+            }}
+          >
             Register
           </button>
         </form>
