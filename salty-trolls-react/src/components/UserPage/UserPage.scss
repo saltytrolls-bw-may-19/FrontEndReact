@@ -1,0 +1,27 @@
+.main-button {
+  padding: 5px 10px;
+  margin: 1rem;
+  background-color: orange;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}
+
+input {
+  margin: 5px 10px 5px 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  &::placeholder {
+    font-size: 1rem;
+    color: gray;
+  }
+  &:focus {
+    outline: none;
+  }
+}

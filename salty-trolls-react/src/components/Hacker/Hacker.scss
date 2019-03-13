@@ -1,0 +1,24 @@
+.hacker {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.hacker a {
+  margin: 10px;
+  width: 100%;
+  background-color: #eaeaea;
+  color: black;
+  padding: 10px;
+}
+.progress-bar {
+  width: 80%;
+}
+
+.sentiment-graph {
+  display: flex;
+  justify-content: space-evenly;
+}
+.emoji {
+  font-size: 1.8rem;
+}
