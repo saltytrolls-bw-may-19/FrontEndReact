@@ -1,15 +1,19 @@
-.hacker-dummy {
+.hacker {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  // justify-content: center;
+  justify-content: center;
 }
-.hacker {
+.hacker a {
   margin: 10px;
-  width: 46%;
+  width: 100%;
   background-color: grey;
   color: white;
+  padding: 10px;
+}
+.progressbar {
+  width: 600px;
 }
 .sentiment-graph {
-  width: 80%;
+  border: 1px solid red;
 }

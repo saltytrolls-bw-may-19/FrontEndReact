@@ -1,26 +1,36 @@
-import React from 'react';
-import './HackerProfile.scss';
+import React from "react";
+import "./HackerProfile.scss";
+import Sidebar from "../Sidebar/Sidebar";
+import CommentBreakdown from "./CommentBreakdown";
 
 class HackerProfile extends React.Component {
+  constructor() {
+    super();
+    this.setState = {
+      details: []
+    };
+  }
   componentDidMount() {
     this.props.getHackersDetails();
   }
   render() {
-    console.log(this.props);
+    // console.log(this.props.hackersDetails[1]);
+
     return (
       //We need to map trough the arrays and list each comment and it's sentiment analysis.
       //I think it is okay to display user's name just once :)
 
-      <div>It works!</div>
-      // <div className="hacker-profile">
-      //   <h2>Hacker Profile</h2>
-      //   {/* <h2>Hacker Name: {this.hacker.name}</h2>
-      //   <h2>Average Comment Sentiment: {this.hacker.sentiment}</h2>
-      //   <h2>Total Comments: {this.hacker.comments}</h2> */}
-      //   <h2>Hacker Name: {this.hacker.HackerUsername}</h2>
-      //   <h2>Average Comment Sentiment: {this.hacker.HackerSentiment}</h2>
-      //   <h2>Total Comments: {this.hacker.HackerCommentCount}</h2>
-      // </div>
+      <div className="hacker-profile">
+        <Sidebar />
+        <div className="right-column">
+          <h2>Hacker Profile</h2>
+          {/* {this.hackersDetails} */}
+          {/* {this.props.hackersDetails.author} */}
+          {this.props.hackersDetails.map(details => {
+            return <CommentBreakdown details={details} />;
+          })}
+        </div>
+      </div>
     );
   }
 }
