@@ -1,8 +1,8 @@
-import React from 'react';
-import Hacker from '../Hacker/Hacker';
-import Search from '../Search/Search';
-import Sidebar from '../Sidebar/Sidebar';
-import './HackerList.scss';
+import React from "react";
+import Hacker from "../Hacker/Hacker";
+import Search from "../Search/Search";
+import Sidebar from "../Sidebar/Sidebar";
+import "./HackerList.scss";
 
 class HackerList extends React.Component {
   componentDidMount() {

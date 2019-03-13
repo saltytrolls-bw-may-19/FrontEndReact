@@ -1,0 +1,29 @@
+.hacker-profile {
+  display: flex;
+}
+.right-column {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.left-column {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.details {
+  margin: 20px 10px;
+  display: flex;
+  height: 175px;
+  background: orange;
+  color: white;
+  align-items: center;
+  justify-content: space-around;
+}
+.text {
+  width: 50%;
+}
+.icon {
+  width: 50%;
+  font-size: 30px;
+}
