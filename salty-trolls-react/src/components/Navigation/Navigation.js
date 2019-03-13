@@ -12,6 +12,7 @@ export default class Navigation extends React.Component {
           </a>
           <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
+          <Link to="/logout">Logout</Link>
         </div>
       );
 

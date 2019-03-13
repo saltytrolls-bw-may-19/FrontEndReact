@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 import './authentication.scss';
 
+const url = 'https://buildweek-saltytrolls.herokuapp.com';
 export default class Login extends React.Component {
   constructor() {
     super();
@@ -21,17 +22,16 @@ export default class Login extends React.Component {
   };
 
   loginUser = () => {
-    /* axios
-      .post("url", {
-        email: this.state.userLoginEmail,
-        password: this.state.userLoginPassword
+    axios
+      .post(`${url}/api/users/login`, {
+        UserEmail: this.state.userLoginEmail,
+        UserPassword: this.state.userLoginPassword
       })
       .then(res => {
-        this.props.authUser(res.data.token);
+        this.props.authUser(res.data.token, res.data.UserID);
+        console.log(res);
       })
-      .catch(err => console.log(err.message));*/
-
-    this.props.authUser('testtoken');
+      .catch(err => console.log(err.msg));
   };
 
   componentDidMount() {
@@ -59,7 +59,12 @@ export default class Login extends React.Component {
             Password:
             <input className="input" placeholder="password" type="password" value={this.state.userLoginPassword} name="userLoginPassword" onChange={e => this.handleChanges(e)} />
           </div>
-          <button className="main-button" type="submit" onClick={() => this.loginUser()}>
+          <button
+            className="main-button"
+            onClick={e => {
+              e.preventDefault();
+              this.loginUser();
+            }}>
             Submit
           </button>
         </form>

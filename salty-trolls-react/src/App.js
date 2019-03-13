@@ -17,6 +17,7 @@ class App extends Component {
     super();
     this.state = {
       isAuthed: false,
+      currentUserId: '',
       loading: false,
       hackerList: [],
       hackersDetails: [],
@@ -50,16 +51,15 @@ class App extends Component {
       });
   };
   //authorization
-  authUser = token => {
+  authUser = (token, id) => {
     localStorage.setItem('token', token);
-    localStorage.setItem('isAuthed', 'true');
     this.setState({ isAuthed: true });
+    this.setState({ currentUserId: id });
   };
 
   unAuthUser = () => {
-    this.setState({ isAuthed: false });
+    this.setState({ isAuthed: false, currentUserId: '' });
     localStorage.clear();
-    localStorage.setItem('isAuthed', 'false');
   };
 
   render() {
@@ -73,7 +73,7 @@ class App extends Component {
         <Route exact path="/logout" render={pr => <Logout isAuthed={isAuthed} unAuthUser={this.unAuthUser} {...pr} />} />
         <div className="app-wrapper">
           <Route exact path="/" render={pr => <HackerList hackerList={this.state.hackerList} getHackers={this.getHackers} isAuthed={isAuthed} {...pr} />} />
-          <Route exact path="/user" render={pr => <UserPage isAuthed={isAuthed} {...pr} />} />
+          <Route exact path="/user" render={pr => <UserPage isAuthed={isAuthed} unAuthUser={this.unAuthUser} currentUserId={this.state.currentUserId} {...pr} />} />
           <Route
             exact
             path="/hacker/:id"

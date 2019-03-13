@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Hacker.scss';
 import { Progress } from 'semantic-ui-react';
-
+import Recharts from 'recharts';
 const Hacker = props => {
   const sentimentNumber = Number(props.hacker.HackerSentiment);
   const sentimentPercentage = Math.round(Math.abs(sentimentNumber * 100));
@@ -17,6 +17,21 @@ const Hacker = props => {
           <p>Number of comments: {props.hacker.HackerCommentCount}</p>
           <div className="sentiment-graph">
             <Progress className="progress-bar" percent={sentimentPercentage} color={sentimentColor} progress />
+            {/* <BarChart
+              width={600}
+              height={300}
+              data={props.hacker.HackerSentiment}
+              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <ReferenceLine y={0} stroke="#000" />
+              <Bar dataKey="pv" fill="#8884d8" />
+              <Bar dataKey="uv" fill="#82ca9d" />
+            </BarChart> */}
             <div className="emoji">{sentimentEmoji}</div>
           </div>
         </Link>
@@ -25,3 +40,13 @@ const Hacker = props => {
   );
 };
 export default Hacker;
+// const {
+//   BarChart,
+//   Bar,
+//   ReferenceLine,
+//   XAxis,
+//   YAxis,
+//   CartesianGrid,
+//   Tooltip,
+//   Legend
+// } = Recharts;
