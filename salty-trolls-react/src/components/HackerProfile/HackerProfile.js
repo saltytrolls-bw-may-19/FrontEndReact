@@ -1,7 +1,7 @@
-import React from "react";
-import "./HackerProfile.scss";
-import Sidebar from "../Sidebar/Sidebar";
-import CommentBreakdown from "./CommentBreakdown";
+import React from 'react';
+import './HackerProfile.scss';
+import Sidebar from '../Sidebar/Sidebar';
+import CommentBreakdown from './CommentBreakdown';
 
 class HackerProfile extends React.Component {
   constructor() {
@@ -13,21 +13,17 @@ class HackerProfile extends React.Component {
   componentDidMount() {
     this.props.getHackersDetails();
   }
+
   render() {
-    // console.log(this.props.hackersDetails[1]);
-
     return (
-      //We need to map trough the arrays and list each comment and it's sentiment analysis.
-      //I think it is okay to display user's name just once :)
-
       <div className="hacker-profile">
         <Sidebar />
         <div className="right-column">
-          <h2>Hacker Profile</h2>
+          <h2>{`${this.props.currentAuthor}'s`} Profile</h2>
           {/* {this.hackersDetails} */}
           {/* {this.props.hackersDetails.author} */}
           {this.props.hackersDetails.map(details => {
-            return <CommentBreakdown details={details} />;
+            return <CommentBreakdown key={details.time} details={details} />;
           })}
         </div>
       </div>

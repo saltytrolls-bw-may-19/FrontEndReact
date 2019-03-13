@@ -4,7 +4,8 @@ import './Hacker.scss';
 import { Progress } from 'semantic-ui-react';
 
 const Hacker = props => {
-  console.log(props);
+  const sentimentPercentage = Math.round(Math.abs(props.hacker.HackerSentiment * 100));
+  const sentimentColor = Number(props.hacker.HackerSentiment) < 0 ? 'red' : 'green';
   return (
     <div>
       <div className="hacker">
@@ -13,7 +14,7 @@ const Hacker = props => {
           <h4>Average Sentiment: {props.hacker.HackerSentiment}</h4>
           <p>Number of comments: {props.hacker.HackerCommentCount}</p>
           <div className="sentiment-graph">
-            <Progress className="progress-bar" percent={65} progress color="green" />
+            <Progress className="progress-bar" percent={sentimentPercentage} progress color={sentimentColor} />
           </div>
         </Link>
       </div>
