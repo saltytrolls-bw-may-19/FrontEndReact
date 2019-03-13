@@ -10,14 +10,13 @@ import Logout from "./components/authentication/Logout";
 import Register from "./components/authentication/Register";
 import UserPage from "./components/UserPage/UserPage";
 import HackerProfile from "./components/HackerProfile/HackerProfile";
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      isAuthed: false,
-      currentUserId: "",
       loading: false,
       hackerList: [],
       hackersDetails: [],
@@ -33,7 +32,6 @@ class App extends Component {
     axios
       .get("https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id")
       .then(res => {
-        console.log(res);
         this.setState(() => ({ hackerList: res.data }));
       })
       .catch(err => {
@@ -60,41 +58,27 @@ class App extends Component {
   //authorization
   authUser = (token, id) => {
     localStorage.setItem("token", token);
-    this.setState({ isAuthed: true });
-    this.setState({ currentUserId: id });
+    localStorage.setItem("currentUserId", id);
   };
 
   unAuthUser = () => {
-    this.setState({ isAuthed: false, currentUserId: "" });
     localStorage.clear();
-
-    localStorage.setItem("isAuthed", "");
   };
 
   render() {
-    const { isAuthed } = this.state;
-
     return (
       <div className="App">
-        <Navigation isAuthed={isAuthed} />
+        <Navigation />
         <Route
           exact
           path="/login"
-          render={pr => (
-            <Login isAuthed={isAuthed} authUser={this.authUser} {...pr} />
-          )}
+          render={pr => <Login authUser={this.authUser} {...pr} />}
         />
-        <Route
-          exact
-          path="/register"
-          render={pr => <Register isAuthed={isAuthed} {...pr} />}
-        />
+        <Route exact path="/register" render={pr => <Register {...pr} />} />
         <Route
           exact
           path="/logout"
-          render={pr => (
-            <Logout isAuthed={isAuthed} unAuthUser={this.unAuthUser} {...pr} />
-          )}
+          render={pr => <Logout unAuthUser={this.unAuthUser} {...pr} />}
         />
         <div className="app-wrapper">
           <Route
@@ -106,7 +90,6 @@ class App extends Component {
                 searchedHacker={this.state.searchedHacker}
                 searchedHackerComments={this.state.searchedHackerComments}
                 getHackers={this.getHackers}
-                isAuthed={isAuthed}
                 {...pr}
               />
             )}
@@ -116,7 +99,6 @@ class App extends Component {
             path="/user"
             render={pr => (
               <UserPage
-                isAuthed={isAuthed}
                 unAuthUser={this.unAuthUser}
                 currentUserId={this.state.currentUserId}
                 {...pr}
@@ -131,12 +113,12 @@ class App extends Component {
                 hackersDetails={this.state.hackersDetails}
                 currentAuthor={this.state.currentAuthor}
                 getHackersDetails={this.getHackersDetails}
-                isAuthed={isAuthed}
                 {...pr}
               />
             )}
           />
         </div>
+        <Footer />
       </div>
     );
   }

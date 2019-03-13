@@ -29,20 +29,19 @@ export default class Login extends React.Component {
       })
       .then(res => {
         this.props.authUser(res.data.token, res.data.UserID);
-        console.log(res);
+        this.props.history.push("/");
       })
-
       .catch(err => console.log(err.msg));
   };
 
   componentDidMount() {
-    if (this.props.isAuthed) {
+    if (localStorage.getItem("token")) {
       this.props.history.push("/");
     }
   }
 
   componentDidUpdate() {
-    if (this.props.isAuthed) {
+    if (localStorage.getItem("token")) {
       this.props.history.push("/");
     }
   }

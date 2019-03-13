@@ -1,9 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-
-const url = 'https://buildweek-saltytrolls.herokuapp.com';
-
+const url = "https://buildweek-saltytrolls.herokuapp.com";
 
 class Register extends React.Component {
   constructor(props) {
@@ -32,7 +30,7 @@ class Register extends React.Component {
         })
         .then(res => console.log(res))
 
-        .then(() => this.props.history.push('/login'))
+        .then(() => this.props.history.push("/login"))
         .catch(err => {
           console.log(err.msg);
         });
@@ -42,13 +40,13 @@ class Register extends React.Component {
   };
 
   componentDidMount() {
-    if (this.props.isAuthed) {
+    if (!localStorage.getItem("token")) {
       this.props.history.push("/");
     }
   }
 
   componentDidUpdate() {
-    if (this.props.isAuthed) {
+    if (!localStorage.getItem("token")) {
       this.props.history.push("/");
     }
   }
@@ -59,12 +57,23 @@ class Register extends React.Component {
         <form className="authentication-form">
           <div>
             Email:
-
-            <input name="userLoginEmail" type="email" placeholder="email" value={this.userLoginEmail} onChange={e => this.handleChanges(e)} />
+            <input
+              name="userLoginEmail"
+              type="email"
+              placeholder="email"
+              value={this.userLoginEmail}
+              onChange={e => this.handleChanges(e)}
+            />
           </div>
           <div>
             Password:
-            <input name="userLoginPassword" type="password" placeholder="password" value={this.userLoginPassword} onChange={e => this.handleChanges(e)} />
+            <input
+              name="userLoginPassword"
+              type="password"
+              placeholder="password"
+              value={this.userLoginPassword}
+              onChange={e => this.handleChanges(e)}
+            />
           </div>
           <div>
             Verify Password:
@@ -81,9 +90,8 @@ class Register extends React.Component {
             onClick={event => {
               event.preventDefault();
               this.registerNewUser();
-
-            }}>
-
+            }}
+          >
             Register
           </button>
         </form>

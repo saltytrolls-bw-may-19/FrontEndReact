@@ -1,17 +1,17 @@
-import React from 'react';
-import './authentication.scss';
+import React from "react";
+import "./authentication.scss";
 
 export default class Logout extends React.Component {
   componentDidMount() {
-    // if (!this.props.isAuthed) {
-    //   this.props.history.push('/');
-    // }
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+    }
   }
 
   componentDidUpdate() {
-    // if (!this.props.isAuthed) {
-    //   this.props.history.push('/');
-    // }
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+    }
   }
   render() {
     return (
@@ -23,7 +23,9 @@ export default class Logout extends React.Component {
           onClick={e => {
             e.preventDefault();
             this.props.unAuthUser();
-          }}>
+            this.props.history.push("/login");
+          }}
+        >
           YES
         </button>
       </div>

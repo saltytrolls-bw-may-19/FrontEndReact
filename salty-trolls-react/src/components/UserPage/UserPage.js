@@ -14,6 +14,18 @@ export default class UserPage extends React.Component {
     };
   }
 
+  componentDidMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+    }
+  }
+
+  componentDidUpdate() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+    }
+  }
+
   getAuthToken = () => ({
     headers: { Authorization: localStorage.getItem("token") }
   });
@@ -22,7 +34,7 @@ export default class UserPage extends React.Component {
     if (this.state.userLoginPassword === this.state.verifyPassword) {
       axios
         .patch(
-          `${url}/api/users/${this.props.currentUserId}/password`,
+          `${url}/api/users/${localStorage.getItem("currentUserId")}/password`,
           {
             UserPassword: this.state.userLoginPassword
           },
@@ -41,7 +53,7 @@ export default class UserPage extends React.Component {
   deleteAccount = () => {
     axios
       .delete(
-        `${url}/api/users/${this.props.currentUserId}`,
+        `${url}/api/users/${localStorage.getItem("currentUserId")}`,
         this.getAuthToken()
       )
       .then(() => {
@@ -71,17 +83,6 @@ export default class UserPage extends React.Component {
     });
   };
 
-  componentDidMount() {
-    if (!this.props.isAuthed) {
-      this.props.history.push("/");
-    }
-  }
-
-  componentDidUpdate() {
-    if (!this.props.isAuthed) {
-      this.props.history.push("/");
-    }
-  }
   render() {
     return (
       <div>

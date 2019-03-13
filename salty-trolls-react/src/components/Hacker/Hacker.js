@@ -8,14 +8,11 @@ const Hacker = props => {
     <div>
       <div className="hacker">
         <Link to="/hacker/:id">
-          <h4>Username: {props.hacker.HackerUsername}</h4>
-          <h4>Average Sentiment: {props.hacker.HackerSentiment}</h4>
-          <p>Number of comments: {props.hacker.HackerCommentCount}</p>
+          <h4>Username: {props.hacker.author}</h4>
+          <h4>Average Sentiment: {props.hacker.sentiment}</h4>
+          <p>Number of comments: {props.hacker.num_comments}</p>
           <div className="sentiment-graph">
-            <Chart
-              dataKey={props.hacker.HackerUsername}
-              sentiment={props.hacker.HackerSentiment}
-            />
+            <Chart dataKey="value" sentiment={props.hacker.sentiment} />
           </div>
         </Link>
       </div>

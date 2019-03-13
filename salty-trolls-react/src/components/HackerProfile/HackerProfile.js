@@ -1,7 +1,7 @@
-import React from 'react';
-import './HackerProfile.scss';
-import Sidebar from '../Sidebar/Sidebar';
-import CommentBreakdown from './CommentBreakdown';
+import React from "react";
+import "./HackerProfile.scss";
+import Sidebar from "../Sidebar/Sidebar";
+import CommentBreakdown from "./CommentBreakdown";
 
 class HackerProfile extends React.Component {
   constructor() {
@@ -10,8 +10,18 @@ class HackerProfile extends React.Component {
       details: []
     };
   }
+
   componentDidMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+    }
     this.props.getHackersDetails();
+  }
+
+  componentDidUpdate() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+    }
   }
 
   render() {
@@ -19,7 +29,11 @@ class HackerProfile extends React.Component {
       <div className="hacker-profile">
         <Sidebar />
         <div className="right-column">
-          {this.props.currentAuthor ? <h2>{`${this.props.currentAuthor}'s`} Profile</h2> : <h2>Hacker Profile</h2>}
+          {this.props.currentAuthor ? (
+            <h2>{`${this.props.currentAuthor}'s`} Profile</h2>
+          ) : (
+            <h2>Hacker Profile</h2>
+          )}
           {/* {this.hackersDetails} */}
           {/* {this.props.hackersDetails.author} */}
           {this.props.hackersDetails.map(details => {
