@@ -6,6 +6,7 @@ import { Progress } from 'semantic-ui-react';
 const Hacker = props => {
   const sentimentPercentage = Math.round(Math.abs(props.hacker.HackerSentiment * 100));
   const sentimentColor = Number(props.hacker.HackerSentiment) < 0 ? 'red' : 'green';
+  const sentimentEmoji = Number(props.hacker.HackerSentiment) < 0 ? '👎' : '👍';
   return (
     <div>
       <div className="hacker">
@@ -14,7 +15,8 @@ const Hacker = props => {
           <h4>Average Sentiment: {props.hacker.HackerSentiment}</h4>
           <p>Number of comments: {props.hacker.HackerCommentCount}</p>
           <div className="sentiment-graph">
-            <Progress className="progress-bar" percent={sentimentPercentage} progress color={sentimentColor} />
+            <Progress className="progress-bar" percent={sentimentPercentage} color={sentimentColor} progress />
+            <div className="emoji">{sentimentEmoji}</div>
           </div>
         </Link>
       </div>
