@@ -1,4 +1,5 @@
 import React from "react";
+import { Dimmer, Loader, Image, Segment } from "semantic-ui-react";
 
 //Import components
 import Hacker from "../Hacker/Hacker";
@@ -18,7 +19,6 @@ class HackerList extends React.Component {
     if (!localStorage.getItem("token")) {
       this.props.history.push("/login");
     }
-    this.props.getHackers();
   }
 
   componentDidUpdate() {
@@ -27,25 +27,30 @@ class HackerList extends React.Component {
     }
   }
 
+  // searchedHacker
+
   //Rendering
   render() {
-    return (
-      <div className="hacker-list">
-        <div className="hacker-content">
-          <Sidebar />
-          <div className="right-column">
-            <h1>The Saltiest Hackers</h1>
-            <Search searchedHacker={this.props.searchedHacker} searchedHackerComments={this.props.searchedHackerComments} />
-            {/* <Hacker hacker={this.props.hackerList} /> */}
-
-            {listUsers.map((item, index) => {
-              return <Hacker key={index} hacker={item} />;
-            })}
+    if (this.props.loaded === true) {
+      console.log(this.props.searchedHacker);
+      return (
+        <div className="hacker-list">
+          <div className="hacker-content">
+            <Sidebar />
+            <div className="hacker-container">
+              <h1>The Saltiest Hackers</h1>
+              <Search searchHacker={this.props.searchHacker} searchedHacker={this.props.searchedHacker} searchedHackerComments={this.props.searchedHackerComments} />
+              {!this.props.searchedHacker &&
+                listUsers.map((item, index) => {
+                  return <Hacker key={index} hacker={item} />;
+                })}
+              {this.props.searchedHacker && <Hacker key={this.props.searchedHacker.author} hacker={this.props.searchedHacker} />}
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />;
   }
 }
-
 export default HackerList;

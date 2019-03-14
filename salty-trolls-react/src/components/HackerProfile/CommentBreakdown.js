@@ -26,7 +26,7 @@ class CommentBreakdown extends React.Component {
     return (
       <div className="details">
         <div className="details-left-box">
-          <p>{this.props.details.text}</p>
+          <p>{this.props.details.comment}</p>
           <p>
             Sentiment: <span className="bold">{this.props.details.sentiment.toFixed(3)}</span>
           </p>

@@ -18,28 +18,50 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      loading: false,
-      hackerList: [],
+      loaded: true,
+      hackerList: null,
       hackersDetails: [],
-      currentAuthor: "",
+      // currentAuthor: "",
       searchedHacker: null,
-      searchedHackerComments: null
+      searchedHackerComments: null,
+      errorMessage: null
     };
   }
-
-  //Getting general data from server
-  getHackers = () => {
-    this.setState({ loading: true });
+  startLoader = () => {
+    this.setState({ loaded: false });
+  };
+  stopLoader = () => {
+    this.setState({ loaded: true });
+  };
+  //Search Hacker
+  searchHacker = name => {
+    this.startLoader();
     axios
-      .get("https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id")
+      .get(`http://kevinbrack.com:1337/user/${name}`)
       .then(res => {
-        this.setState(() => ({ hackerList: res.data }));
+        this.setState(() => ({ searchedHacker: res.data.user, searchedHackerComments: res.data.comments }));
+        console.log(res.data);
+        this.stopLoader();
       })
       .catch(err => {
         console.log(err.message);
-      })
-      .finally(this.setState({ loading: false }));
+        this.stopLoader();
+      });
   };
+
+  // //Getting general data from server
+  // getHackers = () => {
+  //   this.setState({ loading: true });
+  //   axios
+  //     .get("https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id")
+  //     .then(res => {
+  //       this.setState(() => ({ hackerList: res.data }));
+  //     })
+  //     .catch(err => {
+  //       console.log(err.message);
+  //     })
+  //     .finally(this.setState({ loading: false }));
+  // };
 
   //Getting Hacker specific data from the server
   getHackersDetails = () => {
@@ -84,18 +106,28 @@ class App extends Component {
             path="/"
             render={pr => (
               <HackerList
-                hackerList={this.state.hackerList}
+                searchHacker={this.searchHacker}
                 searchedHacker={this.state.searchedHacker}
-                searchedHackerComments={this.state.searchedHackerComments}
+                hackerList={this.state.hackerList}
                 getHackers={this.getHackers}
+                loaded={this.state.loaded}
                 {...pr}
               />
             )}
           />
           <Route
             exact
-            path="/hacker/:id"
-            render={pr => <HackerProfile hackersDetails={this.state.hackersDetails} currentAuthor={this.state.currentAuthor} getHackersDetails={this.getHackersDetails} {...pr} />}
+            path="/hacker"
+            render={pr => (
+              <HackerProfile
+                searchedHacker={this.state.searchedHacker}
+                searchedHackerComments={this.state.searchedHackerComments}
+                hackersDetails={this.state.hackersDetails}
+                currentAuthor={this.state.currentAuthor}
+                getHackersDetails={this.getHackersDetails}
+                {...pr}
+              />
+            )}
           />
         </div>
         <Footer />
