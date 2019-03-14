@@ -2,10 +2,18 @@
   // width: 70%;
   input {
     padding: 15px 5px;
+    border-radius: 5px;
+    border-color: rgb(50, 50, 50);
   }
 }
 
 .search-input {
   width: 90%;
   height: 25px;
+}
+
+#main-button {
+  color: white;
+  background-color: #e1887b;
+  margin: 10px 0;
 }

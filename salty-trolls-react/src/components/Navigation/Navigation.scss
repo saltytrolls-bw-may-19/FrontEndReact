@@ -1,6 +1,7 @@
 .navbar {
   top: 0;
   left: 0;
+  position: fixed;
   width: 100vw;
   height: 50px;
   background-color: rgb(50, 50, 50);
@@ -14,6 +15,7 @@
     margin: 0 20px;
     color: white;
   }
+  z-index: 1;
 }
 
 .not-authed {
