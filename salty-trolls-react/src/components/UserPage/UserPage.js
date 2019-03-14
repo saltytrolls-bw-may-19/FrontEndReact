@@ -85,7 +85,7 @@ export default class UserPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="user-page">
         <h1>User Page</h1>
         <button
           className="main-button"

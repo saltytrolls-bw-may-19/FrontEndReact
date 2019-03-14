@@ -1,8 +1,6 @@
 .hacker {
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
-  justify-content: center;
 }
 .hacker a {
   margin: 10px;
@@ -10,17 +8,16 @@
   background-color: white;
   color: black;
   padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  // align-items: baseline;
 }
-.progress-bar {
-  width: 80%;
+.hacker-text {
+  padding-top: 20px;
 }
-
 .sentiment-graph {
   display: flex;
   justify-content: space-evenly;
   margin: 0;
   padding: 0;
-}
-.emoji {
-  font-size: 1.8rem;
 }
