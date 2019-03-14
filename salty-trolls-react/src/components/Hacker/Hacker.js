@@ -27,6 +27,7 @@ class Hacker extends React.Component {
 
   //Rendering
   render() {
+    console.log(this.props.hacker.sentiment);
     return (
       <div>
         <div className="hacker">

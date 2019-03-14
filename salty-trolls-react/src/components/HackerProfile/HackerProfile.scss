@@ -11,16 +11,18 @@
   margin: 0 auto;
 }
 .details {
-  margin: 20px 10px;
+  margin: 20px;
+  padding: 30px 0 0 70px;
   display: flex;
-  height: 175px;
+  height: 230px;
   background: #ffff;
   color: black;
   align-items: center;
   justify-content: space-around;
 }
-.text {
-  width: 50%;
+
+.details-left-box {
+  text-align: center;
 }
 .icon {
   width: 22%;
@@ -28,10 +30,29 @@
   border-radius: 28px;
 }
 
-.red {
-  color: red;
+.relative-position {
+  position: relative;
+  cursor: pointer;
+}
+.index-card {
+  position: absolute;
+  width: 150px;
+  height: auto;
+  padding: 10px 5px 10px 10px;
+  border-radius: 5px;
+  top: 0px;
+  right: -60px;
+  color: rgb(50, 50, 50);
+  background-color: #ef8376;
+  font-size: 0.7rem;
+  text-align: start;
+  font-style: italic;
+  .emphasis {
+    font-weight: 600;
+    color: white;
+  }
 }
 
-.green {
-  color: green;
+.bold {
+  font-weight: bold;
 }

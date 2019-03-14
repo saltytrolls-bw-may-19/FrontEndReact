@@ -7,17 +7,19 @@ import { Button } from "semantic-ui-react";
 //Seeding Data
 import randomCommentArr from "../../DataCollection/randomComment";
 
+//Comonent
 export default class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      randomComment:
-        "So the fact that the source isnt there is proof that copyright prevented it I may have a tiger repellent rock to sell youpYou need to provide evidence that the source of the Mac OS Oracle or DB2 would be there if copyright didnt exist"
+      randomComment: "Stop filling up the comment threads with this crap"
     };
   }
+
   randomizeComment = () => {
     this.setState({ randomComment: randomCommentArr[Math.floor(Math.random() * randomCommentArr.length)] });
   };
+  //Rendering
   render() {
     return (
       <div className="sidebar">
