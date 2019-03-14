@@ -14,7 +14,12 @@
   bottom: 70px;
   overflow-x: hidden;
   padding-top: 20px;
-  @media only screen and (max-width: 1000px) {
+
+  @media (max-width: 1200px) {
+    width: 25%;
+  }
+
+  @media (max-width: 1000px) {
     display: none;
   }
   .data-key {
@@ -42,5 +47,6 @@
   .random-comment {
     margin-top: 30px;
     font-style: italic;
+    font-size: 1.1rem;
   }
 }

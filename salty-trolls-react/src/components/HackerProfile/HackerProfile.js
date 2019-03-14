@@ -37,7 +37,7 @@ class HackerProfile extends React.Component {
     return (
       <div className="hacker-profile">
         <Sidebar />
-        <div className="right-column">
+        <div className="hacker-column">
           {this.props.searchedHacker.author ? <h2>{`${this.props.searchedHacker.author}'s`} profile</h2> : <h2>Hacker's Profile</h2>}
           <h3>Saltiest Comments List</h3>
           {this.props.searchedHackerComments.map(details => {

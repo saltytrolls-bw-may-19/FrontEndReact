@@ -21,10 +21,10 @@ class App extends Component {
       loaded: true,
       hackerList: null,
       hackersDetails: [],
-      // currentAuthor: "",
       searchedHacker: null,
       searchedHackerComments: null,
-      errorMessage: null
+      errorMessage: null,
+      commenterNotFound: false
     };
   }
   startLoader = () => {
@@ -39,8 +39,12 @@ class App extends Component {
     axios
       .get(`http://kevinbrack.com:1337/user/${name}`)
       .then(res => {
-        this.setState(() => ({ searchedHacker: res.data.user, searchedHackerComments: res.data.comments }));
-        console.log(res.data);
+        if (res.data[0] === "C") {
+          this.setState(() => ({ commenterNotFound: true }));
+        } else {
+          this.setState(() => ({ searchedHacker: res.data.user, searchedHackerComments: res.data.comments, commenterNotFound: false }));
+          console.log(res.data);
+        }
         this.stopLoader();
       })
       .catch(err => {
@@ -106,6 +110,7 @@ class App extends Component {
             path="/"
             render={pr => (
               <HackerList
+                commenterNotFound={this.state.commenterNotFound}
                 searchHacker={this.searchHacker}
                 searchedHacker={this.state.searchedHacker}
                 hackerList={this.state.hackerList}

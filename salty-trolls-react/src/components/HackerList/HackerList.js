@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimmer, Loader, Image, Segment } from "semantic-ui-react";
+import { Loader, Dimmer, Image, Segment } from "semantic-ui-react";
 
 //Import components
 import Hacker from "../Hacker/Hacker";
@@ -40,17 +40,28 @@ class HackerList extends React.Component {
             <div className="hacker-container">
               <h1>The Saltiest Hackers</h1>
               <Search searchHacker={this.props.searchHacker} searchedHacker={this.props.searchedHacker} searchedHackerComments={this.props.searchedHackerComments} />
+              {this.props.commenterNotFound && <div className="not-found">Commenter not found</div>}
               {!this.props.searchedHacker &&
                 listUsers.map((item, index) => {
                   return <Hacker key={index} hacker={item} />;
                 })}
+
               {this.props.searchedHacker && <Hacker key={this.props.searchedHacker.author} hacker={this.props.searchedHacker} />}
             </div>
           </div>
         </div>
       );
     }
-    return <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />;
+    return (
+      <div className="load-screen">
+        {/* <Sidebar /> */}
+        <Dimmer active>
+          <Loader className="loader" size="massive">
+            Please be paitent while we sort through all this salt.
+          </Loader>
+        </Dimmer>
+      </div>
+    );
   }
 }
 export default HackerList;

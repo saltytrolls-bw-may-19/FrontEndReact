@@ -5,7 +5,7 @@ import { PieChart, Pie, Cell } from "recharts";
 import "./Chart.scss";
 
 //Component
-class Chart extends React.Component {
+class AverageChart extends React.Component {
   render() {
     //If positive sentiment (>0), create positive sentiment graph with green color
     if (this.props.sentiment >= 0) {
@@ -31,9 +31,10 @@ class Chart extends React.Component {
         </PieChart>
       );
     }
+    let offset = 20;
     //If negative sentiment (<0), create negative sentiment graph with red color
     if (this.props.sentiment < 0) {
-      const data = [{ name: "Gray", value: Math.abs((this.props.sentiment + 1) / 2) }, { name: "Sentiment", value: Math.abs(this.props.sentiment / 2) }, { name: "Gray", value: 0.5 }];
+      const data = [{ name: "Gray", value: 0.5 }, { name: "Sentiment", value: (this.props.sentiment * offset) / 2 }, { name: "Gray", value: (1 - this.props.sentiment * offset) / 2 }];
       const COLORS = ["#EAEAEA", "#FB3640", "#EAEAEA"];
 
       return (
@@ -59,4 +60,4 @@ class Chart extends React.Component {
     return <div />;
   }
 }
-export default Chart;
+export default AverageChart;

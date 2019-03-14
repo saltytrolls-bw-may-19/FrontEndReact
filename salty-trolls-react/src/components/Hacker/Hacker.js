@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Chart from "../Chart/Chart";
+import AverageChart from "../Chart/AverageChart";
 
 //Styling
 import "./Hacker.scss";
@@ -30,7 +30,7 @@ class Hacker extends React.Component {
     return (
       <div>
         <div className="hacker">
-          <Link to="/hacker/:id">
+          <Link to="/hacker">
             <div className="hacker-text">
               <h4>Username: {this.props.hacker.author}</h4>
               <p className="bold">Average Sentiment: {this.props.hacker.sentiment.toFixed(3)}</p>
@@ -38,7 +38,7 @@ class Hacker extends React.Component {
             </div>
 
             <div className="relative-position" onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover}>
-              <Chart dataKey="value" sentiment={this.props.hacker.sentiment} />
+              <AverageChart dataKey="value" sentiment={this.props.hacker.sentiment} />
 
               {this.state.isHovering && (
                 <div className="index-card">
