@@ -1,5 +1,5 @@
-import React from 'react';
-import './HackerProfile.scss';
+import React from "react";
+import "./HackerProfile.scss";
 const CommentBreakdown = props => {
   const sentimentEmoji = e => {
     if (props.details.sentiment < 0) {
@@ -10,10 +10,11 @@ const CommentBreakdown = props => {
   };
   return (
     <div className="details">
-      <p className={'text'}>{props.details.text}</p>
+      <p className={"text"}>{props.details.text}</p>
       <p className="icon">
         {`${Math.round(props.details.sentiment * 100)}%`}
         {sentimentEmoji()}
+        <h3>Sentimet Score</h3>
       </p>
     </div>
   );

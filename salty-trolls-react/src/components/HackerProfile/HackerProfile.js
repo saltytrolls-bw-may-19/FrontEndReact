@@ -36,6 +36,7 @@ class HackerProfile extends React.Component {
           ) : (
             <h2>Hacker Profile</h2>
           )}
+          <h3>Comment List</h3>
 
           {this.props.hackersDetails.map(details => {
             return <CommentBreakdown key={details.time} details={details} />;
