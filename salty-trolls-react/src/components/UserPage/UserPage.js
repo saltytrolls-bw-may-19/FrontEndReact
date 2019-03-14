@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-//Stylign
+//Styling
 import "./UserPage.scss";
 import { Button } from "semantic-ui-react";
 

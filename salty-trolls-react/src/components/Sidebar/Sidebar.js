@@ -1,19 +1,35 @@
-import React, { Component } from 'react';
-import randomCommentArr from '../../DataCollection/randomComment';
-import './Sidebar.scss';
+import React, { Component } from "react";
+
+//Styling
+import "./Sidebar.scss";
+import { Button } from "semantic-ui-react";
+
+//Seeding Data
+import randomCommentArr from "../../DataCollection/randomComment";
+
 export default class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      randomComment:
+        "So the fact that the source isnt there is proof that copyright prevented it I may have a tiger repellent rock to sell youpYou need to provide evidence that the source of the Mac OS Oracle or DB2 would be there if copyright didnt exist"
+    };
+  }
+  randomizeComment = () => {
+    this.setState({ randomComment: randomCommentArr[Math.floor(Math.random() * randomCommentArr.length)] });
+  };
   render() {
-    var randomComment = randomCommentArr[Math.floor(Math.random() * randomCommentArr.length)];
     return (
       <div className="sidebar">
-        <h3 className="data-key">Sentiment Scores range from -1 to 1, -1 representing a very salty troll, and 1 representing an exemplary model of comment etiquette. </h3>
-        <h3>Random Salt</h3>
-        <h3>{randomComment}</h3>
-
-        {/* <h2>AI powered sentiment analysis of HackerNews users</h2>
-        <h3>500,000 commments</h3>
-        <h3>20,000 users</h3>
-        <h3>Average saltiness 10</h3> */}
+        <Button
+          id="main-button"
+          onClick={e => {
+            e.preventDefault();
+            this.randomizeComment();
+          }}>
+          Show me some random salt!
+        </Button>
+        <div className="random-comment">"{this.state.randomComment}"</div>
       </div>
     );
   }

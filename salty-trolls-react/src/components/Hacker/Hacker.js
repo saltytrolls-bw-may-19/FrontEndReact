@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Chart from './Chart';
+import React from "react";
+import { Link } from "react-router-dom";
+import Chart from "./Chart";
 
 //Styling
-import './Hacker.scss';
+import "./Hacker.scss";
 
 //Component
 class Hacker extends React.Component {
@@ -42,7 +42,7 @@ class Hacker extends React.Component {
 
               {this.state.isHovering && (
                 <div className="index-card">
-                  <span className="emphasis">Sentiment Scores range from -1 to 1, </span>
+                  <span className="emphasis">Sentiment Scores range from -1 to 1. </span>
                   <br /> -1 represents a very salty troll, and 1 representing an exemplary model of comment etiquette.
                 </div>
               )}
