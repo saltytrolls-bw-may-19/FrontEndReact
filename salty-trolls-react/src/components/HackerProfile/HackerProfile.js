@@ -27,15 +27,16 @@ class HackerProfile extends React.Component {
   render() {
     return (
       <div className="hacker-profile">
-        <Sidebar />
+        <div className="left-column">
+          <Sidebar />
+        </div>
         <div className="right-column">
           {this.props.currentAuthor ? (
             <h2>{`${this.props.currentAuthor}'s`} Profile</h2>
           ) : (
             <h2>Hacker Profile</h2>
           )}
-          {/* {this.hackersDetails} */}
-          {/* {this.props.hackersDetails.author} */}
+
           {this.props.hackersDetails.map(details => {
             return <CommentBreakdown key={details.time} details={details} />;
           })}

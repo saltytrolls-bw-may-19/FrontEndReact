@@ -1,4 +1,20 @@
 .footer {
   border-top: 1px solid black;
   width: 100%;
+  background-color: #3d424c;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+    li {
+      padding: 2%;
+      color: white;
+      list-style-type: none;
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  }
 }

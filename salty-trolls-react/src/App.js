@@ -11,7 +11,7 @@ import Register from "./components/authentication/Register";
 import UserPage from "./components/UserPage/UserPage";
 import HackerProfile from "./components/HackerProfile/HackerProfile";
 import Footer from "./components/Footer/Footer";
-import "./App.css";
+import "./App.scss";
 
 class App extends Component {
   constructor() {

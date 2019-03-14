@@ -1,6 +1,5 @@
 .sidebar {
-  width: 30%;
-  margin: 2rem;
+  width: 20%;
   background-color: #3d424c;
   color: white;
   display: flex;
@@ -8,4 +7,14 @@
   justify-content: space-evenly;
   align-items: center;
   padding: 2rem;
+  margin-top: 10%;
+  position: fixed;
+  // z-index: -1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
 }
