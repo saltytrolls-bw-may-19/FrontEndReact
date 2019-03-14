@@ -52,9 +52,9 @@ export default class Login extends React.Component {
       <div className="container">
         <form className="authentication-form">
           <h2>Login</h2>
-          <input className="input" placeholder="email address" type="email" value={this.state.userLoginEmail} name="userLoginEmail" onChange={e => this.handleChanges(e)} />
+          <input className="input" placeholder="Email" type="email" value={this.state.userLoginEmail} name="userLoginEmail" onChange={e => this.handleChanges(e)} />
 
-          <input className="input" placeholder="password" type="password" value={this.state.userLoginPassword} name="userLoginPassword" onChange={e => this.handleChanges(e)} />
+          <input className="input" placeholder="Password" type="password" value={this.state.userLoginPassword} name="userLoginPassword" onChange={e => this.handleChanges(e)} />
 
           <Button
             id="main-button"
