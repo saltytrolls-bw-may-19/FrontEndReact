@@ -1,27 +1,56 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Hacker.scss';
-import { Progress } from 'semantic-ui-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import Chart from "../Chart/Chart";
 
-const Hacker = props => {
-  const sentimentNumber = Number(props.hacker.HackerSentiment);
-  const sentimentPercentage = Math.round(Math.abs(sentimentNumber * 100));
-  const sentimentColor = sentimentNumber < 0 ? 'red' : 'green';
-  const sentimentEmoji = sentimentNumber < 0 ? '👍' : '👎';
-  return (
-    <div>
-      <div className="hacker">
-        <Link to="/hacker/:id">
-          <h4>Username: {props.hacker.HackerUsername}</h4>
-          <h4>Average Sentiment: {props.hacker.HackerSentiment}</h4>
-          <p>Number of comments: {props.hacker.HackerCommentCount}</p>
-          <div className="sentiment-graph">
-            <Progress className="progress-bar" percent={sentimentPercentage} color={sentimentColor} progress />
-            <div className="emoji">{sentimentEmoji}</div>
-          </div>
-        </Link>
+//Styling
+import "./Hacker.scss";
+
+//Component
+class Hacker extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isHovering: false
+    };
+  }
+
+  //Mouseover graph shows the explanatin of sentiment
+  handleMouseHover = () => {
+    this.setState(this.toggleHoverState);
+  };
+
+  toggleHoverState(state) {
+    return {
+      isHovering: !state.isHovering
+    };
+  }
+
+  //Rendering
+  render() {
+    return (
+      <div>
+        <div className="hacker">
+          <Link to="/hacker/:id">
+            <div className="hacker-text">
+              <h4>Username: {this.props.hacker.author}</h4>
+              <p className="bold">Average Sentiment: {this.props.hacker.sentiment.toFixed(3)}</p>
+              <p>Number of comments: {this.props.hacker.num_comments}</p>
+            </div>
+
+            <div className="relative-position" onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover}>
+              <Chart dataKey="value" sentiment={this.props.hacker.sentiment} />
+
+              {this.state.isHovering && (
+                <div className="index-card">
+                  <span className="emphasis">Sentiment Scores range from -1 to 1. </span>
+                  <br /> -1 represents a very salty troll, and 1 representing an exemplary model of comment etiquette.
+                </div>
+              )}
+            </div>
+          </Link>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 export default Hacker;

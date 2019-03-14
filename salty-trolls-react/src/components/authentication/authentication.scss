@@ -7,55 +7,65 @@
   align-items: center;
 
   .authentication-form {
-    // width: 500px;
-    // height: auto;
-    // margin: 10px;
+    width: 350px;
+    height: 400px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
   }
-  .main-button {
-    padding: 5px 10px;
-    background-color: orange;
-    color: white;
-    border-radius: 10px;
-    border: none;
-    font-size: 1rem;
-    &:focus {
-      outline: none;
-    }
+
+  h2 {
+    align-self: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
   }
 
   input {
-    margin: 5px 10px 5px 10px;
     padding: 5px 10px;
-    border-radius: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
     border: 1px solid black;
+    line-height: 1.5;
+    width: 100%;
     &::placeholder {
       font-size: 1rem;
       color: gray;
+      text-align: center;
     }
     &:focus {
       outline: none;
     }
   }
 
-  .redirect-button {
-    padding: 10px 20px;
-    background-color: orange;
+  #main-button {
     color: white;
-    border-radius: 10px;
-    border: none;
+    background-color: #e1887b;
+    margin: 10px 0;
+    width: 100%;
     font-size: 1rem;
-
-    .redirect-text {
-      color: white;
-      font-size: 1rem;
-      text-decoration: none;
+    &:focus {
+      outline: none;
     }
   }
-}
 
-.progressbar {
-  width: 15%;
+  #logout-button {
+    color: white;
+    background-color: #e1887b;
+    margin: 10px 0;
+    font-size: 1rem;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .redirect-text {
+    color: #ef8376;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-right: 10px;
+  }
 }

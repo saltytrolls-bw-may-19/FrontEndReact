@@ -1,13 +1,37 @@
-import React, { Component } from 'react';
-import './Sidebar.scss';
+import React, { Component } from "react";
+
+//Styling
+import "./Sidebar.scss";
+import { Button } from "semantic-ui-react";
+
+//Seeding Data
+import randomCommentArr from "../../DataCollection/randomComment";
+
+//Comonent
 export default class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      randomComment: "Stop filling up the comment threads with this crap"
+    };
+  }
+
+  randomizeComment = () => {
+    this.setState({ randomComment: randomCommentArr[Math.floor(Math.random() * randomCommentArr.length)] });
+  };
+  //Rendering
   render() {
     return (
       <div className="sidebar">
-        <h2>AI powered sentiment analysis of HackerNews users</h2>
-        <h3>500,000 commments</h3>
-        <h3>20,000 users</h3>
-        <h3>Average saltiness 10</h3>
+        <Button
+          id="main-button"
+          onClick={e => {
+            e.preventDefault();
+            this.randomizeComment();
+          }}>
+          Show me some random salt!
+        </Button>
+        <div className="random-comment">"{this.state.randomComment}"</div>
       </div>
     );
   }

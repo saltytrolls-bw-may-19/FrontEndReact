@@ -1,36 +1,38 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import axios from "axios";
 
-//components
-import Navigation from './components/Navigation/Navigation';
-import HackerList from './components/HackerList/HackerList';
-import Login from './components/authentication/Login';
-import Logout from './components/authentication/Logout';
-import Register from './components/authentication/Register';
-import UserPage from './components/UserPage/UserPage';
-import HackerProfile from './components/HackerProfile/HackerProfile';
-import './App.css';
+//Import components
+import Navigation from "./components/Navigation/Navigation";
+import HackerList from "./components/HackerList/HackerList";
+import Login from "./components/authentication/Login";
+import Logout from "./components/authentication/Logout";
+import Register from "./components/authentication/Register";
+import UserPage from "./components/UserPage/UserPage";
+import HackerProfile from "./components/HackerProfile/HackerProfile";
+import Footer from "./components/Footer/Footer";
+import "./App.scss";
 
+//Component
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      isAuthed: false,
       loading: false,
       hackerList: [],
       hackersDetails: [],
-      currentAuthor: ''
+      currentAuthor: "",
+      searchedHacker: null,
+      searchedHackerComments: null
     };
   }
 
-  //getting data from server
+  //Getting general data from server
   getHackers = () => {
     this.setState({ loading: true });
     axios
-      .get('https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id')
+      .get("https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id")
       .then(res => {
-        console.log(res);
         this.setState(() => ({ hackerList: res.data }));
       })
       .catch(err => {
@@ -38,48 +40,65 @@ class App extends Component {
       })
       .finally(this.setState({ loading: false }));
   };
+
+  //Getting Hacker specific data from the server
   getHackersDetails = () => {
     axios
-      .get('https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id/details')
+      .get("https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id/details")
       .then(res => {
         console.log(res);
-        this.setState(() => ({ hackersDetails: res.data, currentAuthor: res.data[0].author }));
+        this.setState(() => ({
+          hackersDetails: res.data,
+          currentAuthor: res.data[0].author
+        }));
       })
       .catch(err => {
         console.log(err.message);
       });
   };
-  //authorization
-  authUser = token => {
-    localStorage.setItem('token', token);
-    localStorage.setItem('isAuthed', 'true');
-    this.setState({ isAuthed: true });
+
+  //Authorization
+  authUser = (token, id, email) => {
+    localStorage.setItem("token", token);
+    localStorage.setItem("currentUserId", id);
+    localStorage.setItem("UserEmail", email);
   };
 
   unAuthUser = () => {
-    this.setState({ isAuthed: false });
     localStorage.clear();
-    localStorage.setItem('isAuthed', 'false');
   };
 
+  //Render + Routes
   render() {
-    const { isAuthed } = this.state;
-
     return (
       <div className="App">
-        <Navigation isAuthed={isAuthed} />
-        <Route exact path="/login" render={pr => <Login isAuthed={isAuthed} authUser={this.authUser} {...pr} />} />
-        <Route exact path="/register" render={pr => <Register isAuthed={isAuthed} {...pr} />} />
-        <Route exact path="/logout" render={pr => <Logout isAuthed={isAuthed} unAuthUser={this.unAuthUser} {...pr} />} />
+        <Navigation />
+        {/* <Sidebar /> */}
+        <Route exact path="/login" render={pr => <Login authUser={this.authUser} {...pr} />} />
+        <Route exact path="/register" render={pr => <Register {...pr} />} />
+        <Route exact path="/logout" render={pr => <Logout unAuthUser={this.unAuthUser} {...pr} />} />
+        <Route exact path="/user" render={pr => <UserPage unAuthUser={this.unAuthUser} currentUserId={this.state.currentUserId} {...pr} />} />
         <div className="app-wrapper">
-          <Route exact path="/" render={pr => <HackerList hackerList={this.state.hackerList} getHackers={this.getHackers} isAuthed={isAuthed} {...pr} />} />
-          <Route exact path="/user" render={pr => <UserPage isAuthed={isAuthed} {...pr} />} />
+          <Route
+            exact
+            path="/"
+            render={pr => (
+              <HackerList
+                hackerList={this.state.hackerList}
+                searchedHacker={this.state.searchedHacker}
+                searchedHackerComments={this.state.searchedHackerComments}
+                getHackers={this.getHackers}
+                {...pr}
+              />
+            )}
+          />
           <Route
             exact
             path="/hacker/:id"
-            render={pr => <HackerProfile hackersDetails={this.state.hackersDetails} currentAuthor={this.state.currentAuthor} getHackersDetails={this.getHackersDetails} isAuthed={isAuthed} {...pr} />}
+            render={pr => <HackerProfile hackersDetails={this.state.hackersDetails} currentAuthor={this.state.currentAuthor} getHackersDetails={this.getHackersDetails} {...pr} />}
           />
         </div>
+        <Footer />
       </div>
     );
   }

@@ -1,11 +1,46 @@
 .sidebar {
-  width: 30%;
-  margin: 2rem;
-  background-color: #393e41;
+  width: 20%;
+  background-color: rgb(50, 50, 50);
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   padding: 2rem;
+  // margin-top: 10%;
+  position: fixed;
+  top: 110px;
+  left: 0;
+  bottom: 70px;
+  overflow-x: hidden;
+  padding-top: 20px;
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
+  .data-key {
+    border-bottom: solid white 1px;
+    padding: 0px 10px 20px 10px;
+    line-height: 1.2;
+    font-weight: 300;
+  }
+
+  h3 {
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  #main-button {
+    color: white;
+    background-color: #e1887b;
+    margin: 10px 0;
+    font-size: 1rem;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .random-comment {
+    margin-top: 30px;
+    font-style: italic;
+  }
 }

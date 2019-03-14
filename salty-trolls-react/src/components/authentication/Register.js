@@ -1,13 +1,21 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 
+//Styling
+import "./authentication.scss";
+import { Button } from "semantic-ui-react";
+
+//URL
+const url = "https://buildweek-saltytrolls.herokuapp.com";
+
+//Compnent
 class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userLoginEmail: '',
-      userLoginPassword: '',
-      verifyPassword: ''
+      userLoginEmail: "",
+      userLoginPassword: "",
+      verifyPassword: ""
     };
   }
 
@@ -19,57 +27,58 @@ class Register extends React.Component {
     });
   };
 
+  //Register functionality
   registerNewUser = () => {
     if (this.state.userLoginPassword === this.state.verifyPassword) {
       axios
-        .post('url', {
-          email: this.state.userLoginEmail,
-          password: this.state.userLoginPassword
+        .post(`${url}/api/users/register`, {
+          UserEmail: this.state.userLoginEmail,
+          UserPassword: this.state.userLoginPassword
         })
-        .then(res => {
-          console.log(res);
-          localStorage.setItem('token', res.data.token);
-        })
-        .then(() => this.props.history.push('/login'))
+        .then(res => console.log(res))
+
+        .then(() => this.props.history.push("/login"))
         .catch(err => {
-          console.log(err.message);
+          console.log(err.msg);
         });
     } else {
-      return 'Passwords do not match.';
+      return "Passwords do not match.";
     }
   };
 
+  //Protecting Routes - if logged in, redirect to main page
   componentDidMount() {
-    if (this.props.isAuthed) {
-      this.props.history.push('/');
+    if (localStorage.getItem("token")) {
+      this.props.history.push("/");
     }
   }
 
   componentDidUpdate() {
-    if (this.props.isAuthed) {
-      this.props.history.push('/');
+    if (localStorage.getItem("token")) {
+      this.props.history.push("/");
     }
   }
 
+  //Rendering
   render() {
     return (
       <div className="container">
         <form className="authentication-form">
-          <div>
-            Email:
-            <input name="email" type="text" placeholder="email" value={this.userLoginEmail} onChange={e => this.handleChanges(e)} />
-          </div>
-          <div>
-            Password:
-            <input name="password" type="password" placeholder="password" value={this.userLoginPassword} onChange={e => this.handleChanges(e)} />
-          </div>
-          <div>
-            Verify Password:
-            <input name="verifyPassword" type="password" placeholder="verify password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
-          </div>
-          <button className="main-button" onClick={this.registerNewUser}>
+          <h2>Register</h2>
+          <input name="userLoginEmail" type="email" placeholder="Email" value={this.userLoginEmail} onChange={e => this.handleChanges(e)} />
+
+          <input name="userLoginPassword" type="password" placeholder="Password" value={this.userLoginPassword} onChange={e => this.handleChanges(e)} />
+
+          <input name="verifyPassword" type="password" placeholder="Verify password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
+
+          <Button
+            id="main-button"
+            onClick={event => {
+              event.preventDefault();
+              this.registerNewUser();
+            }}>
             Register
-          </button>
+          </Button>
         </form>
       </div>
     );

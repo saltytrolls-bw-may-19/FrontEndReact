@@ -1,42 +1,72 @@
-import React from 'react';
-import axios from 'axios';
-import './UserPage.scss';
+import React from "react";
+import axios from "axios";
 
+//Styling
+import "./UserPage.scss";
+import { Button } from "semantic-ui-react";
+
+const url = "https://buildweek-saltytrolls.herokuapp.com";
 export default class UserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showChangePassword: false,
       showDeleteAccount: false,
-      userLoginPassword: '',
-      verifyPassword: ''
+      userLoginPassword: "",
+      verifyPassword: ""
     };
   }
+  // Protecting Routes - if not logged in, redirect to login page
+  componentDidMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+    }
+  }
 
-  updateEmail = () => {
+  componentDidUpdate() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+    }
+  }
+
+  getAuthToken = () => ({
+    headers: { Authorization: localStorage.getItem("token") }
+  });
+
+  //Update Password functionality
+  updatePassword = () => {
     if (this.state.userLoginPassword === this.state.verifyPassword) {
       axios
-        .put('url', {
-          password: this.state.userLoginPassword
-        })
-        .then(() => this.props.history.push('/login'))
+        .patch(
+          `${url}/api/users/${localStorage.getItem("currentUserId")}/password`,
+          {
+            UserPassword: this.state.userLoginPassword
+          },
+          this.getAuthToken()
+        )
+        .then(res => console.log(res))
+        .then(() => this.props.history.push("/login"))
         .catch(err => {
-          console.log(err.message);
+          console.log(err.msg);
         });
     } else {
-      return 'Passwords do not match.';
+      return "Passwords do not match.";
     }
   };
-
+  //Delete Account functionality
   deleteAccount = () => {
     axios
-      .delete('url', {})
-      .then(() => this.props.history.push('/register'))
+      .delete(`${url}/api/users/${localStorage.getItem("currentUserId")}`, this.getAuthToken())
+      .then(() => {
+        this.props.unAuthUser();
+      })
+      .then(() => this.props.history.push("/register"))
       .catch(err => {
         console.log(err.message);
       });
   };
 
+  //Logic behind showing specific form for each action - Delete & Update Password
   showPasswordForm = e => {
     e.preventDefault();
     this.setState({ showChangePassword: true, showDeleteAccount: false });
@@ -55,55 +85,59 @@ export default class UserPage extends React.Component {
     });
   };
 
-  componentDidMount() {
-    if (!this.props.isAuthed) {
-      this.props.history.push('/');
-    }
-  }
-
-  componentDidUpdate() {
-    if (!this.props.isAuthed) {
-      this.props.history.push('/');
-    }
-  }
+  //Rendering
   render() {
     return (
-      <div>
-        <h1>User Page</h1>
-        <button
-          className="main-button"
-          onClick={e => {
-            this.showPasswordForm(e);
-          }}>
-          Change Password
-        </button>
-        <button
-          className="main-button"
-          onClick={e => {
-            this.showDeleteAccountForm(e);
-          }}>
-          Delete Account
-        </button>
+      <div className="user-page">
+        <h1>
+          Hello <span className="emphasize">{localStorage.getItem("UserEmail")}</span>!
+        </h1>
+        <div>
+          <Button
+            id="main-button"
+            onClick={e => {
+              this.showPasswordForm(e);
+            }}>
+            Change Password
+          </Button>
+
+          <Button
+            id="main-button"
+            onClick={e => {
+              this.showDeleteAccountForm(e);
+            }}>
+            Delete Account
+          </Button>
+        </div>
+
+        {/*Change Password Form */}
         {this.state.showChangePassword && (
-          <form>
-            <div>
-              New password: <input name="password" type="password" placeholder="password" value={this.userLoginPassword} onChange={e => this.handleChanges(e)} />
-            </div>
-            <div>
-              Confirm new password: <input name="verifyPassword" type="password" placeholder="verify password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
-            </div>
-            <button className="main-button" onClick={this.updateEmail}>
+          <form className="user-form">
+            <input name="userLoginPassword" type="password" placeholder="New password" value={this.userLoginPassword} onChange={e => this.handleChanges(e)} />
+            <input name="verifyPassword" type="password" placeholder="Confirm new password password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
+            <Button
+              id="main-button"
+              onClick={e => {
+                e.preventDefault();
+                this.updatePassword();
+              }}>
               Submit
-            </button>
+            </Button>
           </form>
         )}
 
+        {/*Delete Account Form */}
         {this.state.showDeleteAccount && (
-          <form>
+          <form className="user-form">
             <h2>Are you sure?</h2>
-            <button className="main-button" onClick={this.deleteAccount}>
+            <Button
+              id="main-button"
+              onClick={e => {
+                e.preventDefault();
+                this.deleteAccount();
+              }}>
               Delete
-            </button>
+            </Button>
           </form>
         )}
       </div>

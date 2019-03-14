@@ -1,28 +1,47 @@
 import React from "react";
+
+//Import components
 import Hacker from "../Hacker/Hacker";
 import Search from "../Search/Search";
 import Sidebar from "../Sidebar/Sidebar";
+
+//Styling
 import "./HackerList.scss";
 
+//Starting data
+import listUsers from "../../DataCollection/HackerListUsers";
+
+//Component
 class HackerList extends React.Component {
+  //Protecting Routes - if not logged in, redirect to login
   componentDidMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+    }
     this.props.getHackers();
   }
 
+  componentDidUpdate() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+    }
+  }
+
+  //Rendering
   render() {
-    console.log(this.props.hackerList);
     return (
-      <div className="hacker-content">
-        <Sidebar />
-        <div className="right-column">
-          <h1>The Saltiest Hackers</h1>
-          <Search />
-          <Hacker hacker={this.props.hackerList} />
-          {/* {this.state.hackerList.map(hacker => {
-            return <Hacker hacker={hacker} />;
-          })} */}
-          {/* <h4>HackerName: Example Hacker</h4>
-          <h4>Sentiment: .06687</h4> */}
+      <div className="hacker-list">
+        <div className="hacker-content">
+          <Sidebar />
+          <div className="right-column">
+            <h1>The Saltiest Hackers</h1>
+            <Search searchedHacker={this.props.searchedHacker} searchedHackerComments={this.props.searchedHackerComments} />
+            {/* <Hacker hacker={this.props.hackerList} /> */}
+
+            {listUsers.map((item, index) => {
+              return <Hacker key={index} hacker={item} />;
+            })}
+          </div>
         </div>
       </div>
     );
