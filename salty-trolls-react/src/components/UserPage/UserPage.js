@@ -45,7 +45,8 @@ export default class UserPage extends React.Component {
           this.getAuthToken()
         )
         .then(res => console.log(res))
-        .then(() => this.props.history.push("/login"))
+        .then(alert("Password updated"))
+        .then(() => this.props.history.push("/"))
         .catch(err => {
           console.log(err.msg);
         });
@@ -60,6 +61,7 @@ export default class UserPage extends React.Component {
       .then(() => {
         this.props.unAuthUser();
       })
+      .then(alert("Account deleted"))
       .then(() => this.props.history.push("/register"))
       .catch(err => {
         console.log(err.message);

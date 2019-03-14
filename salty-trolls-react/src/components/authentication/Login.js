@@ -15,7 +15,8 @@ export default class Login extends React.Component {
     super();
     this.state = {
       userLoginEmail: "",
-      userLoginPassword: ""
+      userLoginPassword: "",
+      invalidCredentials: false
     };
   }
 
@@ -29,6 +30,7 @@ export default class Login extends React.Component {
 
   //Login functionality
   loginUser = () => {
+    this.setState({ invalidCredentials: false });
     axios
       .post(`${url}/api/users/login`, {
         UserEmail: this.state.userLoginEmail,
@@ -38,7 +40,12 @@ export default class Login extends React.Component {
         this.props.authUser(res.data.token, res.data.UserID, res.data.UserEmail);
         this.props.history.push("/");
       })
-      .catch(err => console.log(err.msg));
+      .catch(err => {
+        console.log(err.response.status);
+        if (err.response.status === 401) {
+          this.setState({ invalidCredentials: true });
+        }
+      });
   };
 
   //Protecting Routes - if logged in, redirect to main page
@@ -60,6 +67,7 @@ export default class Login extends React.Component {
       <div className="container">
         <form className="authentication-form">
           <h2>Login</h2>
+          {this.state.invalidCredentials && <div className="error">Invalid credentials</div>}
           <input className="input" placeholder="Email" type="email" value={this.state.userLoginEmail} name="userLoginEmail" onChange={e => this.handleChanges(e)} />
 
           <input className="input" placeholder="Password" type="password" value={this.state.userLoginPassword} name="userLoginPassword" onChange={e => this.handleChanges(e)} />

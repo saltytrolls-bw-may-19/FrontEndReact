@@ -1,6 +1,5 @@
 import React from "react";
 import Chart from "../Chart/Chart";
-import AverageChart from "../Chart/AverageChart";
 //Styling
 import "./HackerProfile.scss";
 
@@ -34,7 +33,7 @@ class CommentBreakdown extends React.Component {
         </div>
 
         <div className="relative-position" onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover}>
-          <AverageChart dataKey="value" sentiment={this.props.details.sentiment} />
+          <Chart dataKey="value" sentiment={this.props.details.sentiment} />
           {this.state.isHovering && (
             <div className="index-card">
               <span className="emphasis">Sentiment Scores range from -1 to 1. </span>

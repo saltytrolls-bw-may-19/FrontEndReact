@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AverageChart from "../Chart/AverageChart";
+import Chart from "../Chart/Chart";
 
 //Styling
 import "./Hacker.scss";
@@ -38,7 +38,7 @@ class Hacker extends React.Component {
             </div>
 
             <div className="relative-position" onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover}>
-              <AverageChart dataKey="value" sentiment={this.props.hacker.sentiment} />
+              <Chart dataKey="value" sentiment={this.props.hacker.sentiment} />
 
               {this.state.isHovering && (
                 <div className="index-card">

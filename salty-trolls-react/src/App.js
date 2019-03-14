@@ -24,6 +24,7 @@ class App extends Component {
       searchedHacker: null,
       searchedHackerComments: null,
       errorMessage: null,
+      networkError: null,
       commenterNotFound: false
     };
   }
@@ -36,50 +37,22 @@ class App extends Component {
   //Search Hacker
   searchHacker = name => {
     this.startLoader();
+    this.setState({ commenterNotFound: false, networkError: false });
     axios
       .get(`http://kevinbrack.com:1337/user/${name}`)
       .then(res => {
         if (res.data[0] === "C") {
           this.setState(() => ({ commenterNotFound: true }));
         } else {
-          this.setState(() => ({ searchedHacker: res.data.user, searchedHackerComments: res.data.comments, commenterNotFound: false }));
-          console.log(res.data);
+          this.setState(() => ({ searchedHacker: res.data.user, searchedHackerComments: res.data.comments }));
+          console.log(res);
         }
         this.stopLoader();
       })
       .catch(err => {
+        this.setState(() => ({ networkError: true }));
         console.log(err.message);
         this.stopLoader();
-      });
-  };
-
-  // //Getting general data from server
-  // getHackers = () => {
-  //   this.setState({ loading: true });
-  //   axios
-  //     .get("https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id")
-  //     .then(res => {
-  //       this.setState(() => ({ hackerList: res.data }));
-  //     })
-  //     .catch(err => {
-  //       console.log(err.message);
-  //     })
-  //     .finally(this.setState({ loading: false }));
-  // };
-
-  //Getting Hacker specific data from the server
-  getHackersDetails = () => {
-    axios
-      .get("https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id/details")
-      .then(res => {
-        console.log(res);
-        this.setState(() => ({
-          hackersDetails: res.data,
-          currentAuthor: res.data[0].author
-        }));
-      })
-      .catch(err => {
-        console.log(err.message);
       });
   };
 
@@ -111,6 +84,7 @@ class App extends Component {
             render={pr => (
               <HackerList
                 commenterNotFound={this.state.commenterNotFound}
+                networkError={this.state.networkError}
                 searchHacker={this.searchHacker}
                 searchedHacker={this.state.searchedHacker}
                 hackerList={this.state.hackerList}

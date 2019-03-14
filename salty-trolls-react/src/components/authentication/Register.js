@@ -15,7 +15,9 @@ class Register extends React.Component {
     this.state = {
       userLoginEmail: "",
       userLoginPassword: "",
-      verifyPassword: ""
+      verifyPassword: "",
+      passwordsDontMatch: false,
+      emailIsAlreadyRegistered: false
     };
   }
 
@@ -30,6 +32,8 @@ class Register extends React.Component {
   //Register functionality
   registerNewUser = () => {
     if (this.state.userLoginPassword === this.state.verifyPassword) {
+      this.setState({ emailIsAlreadyRegistered: false });
+      this.setState({ passwordsDontMatch: false });
       axios
         .post(`${url}/api/users/register`, {
           UserEmail: this.state.userLoginEmail,
@@ -38,11 +42,15 @@ class Register extends React.Component {
         .then(res => console.log(res))
 
         .then(() => this.props.history.push("/login"))
+
         .catch(err => {
-          console.log(err.msg);
+          console.log(err.response.status);
+          if (err.response.status === 422) {
+            this.setState({ emailIsAlreadyRegistered: true });
+          }
         });
     } else {
-      return "Passwords do not match.";
+      this.setState({ passwordsDontMatch: true });
     }
   };
 
@@ -79,6 +87,8 @@ class Register extends React.Component {
             }}>
             Register
           </Button>
+          {this.state.passwordsDontMatch && <div className="error">Passwords don't match</div>}
+          {this.state.emailIsAlreadyRegistered && <div className="error">Email is already registered</div>}
         </form>
       </div>
     );

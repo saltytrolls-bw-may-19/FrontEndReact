@@ -1,5 +1,5 @@
 import React from "react";
-import { Loader, Dimmer, Image, Segment } from "semantic-ui-react";
+import { Loader, Dimmer } from "semantic-ui-react";
 
 //Import components
 import Hacker from "../Hacker/Hacker";
@@ -41,11 +41,11 @@ class HackerList extends React.Component {
               <h1>The Saltiest Hackers</h1>
               <Search searchHacker={this.props.searchHacker} searchedHacker={this.props.searchedHacker} searchedHackerComments={this.props.searchedHackerComments} />
               {this.props.commenterNotFound && <div className="not-found">Commenter not found</div>}
+              {this.props.networkError && <div className="not-found">Network Error. Try again.</div>}
               {!this.props.searchedHacker &&
                 listUsers.map((item, index) => {
                   return <Hacker key={index} hacker={item} />;
                 })}
-
               {this.props.searchedHacker && <Hacker key={this.props.searchedHacker.author} hacker={this.props.searchedHacker} />}
             </div>
           </div>
@@ -54,7 +54,6 @@ class HackerList extends React.Component {
     }
     return (
       <div className="load-screen">
-        {/* <Sidebar /> */}
         <Dimmer active>
           <Loader className="loader" size="massive">
             Please be paitent while we sort through all this salt.
