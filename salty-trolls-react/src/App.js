@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
 
-//components
+//Import components
 import Navigation from './components/Navigation/Navigation';
-import Sidebar from './components/Sidebar/Sidebar';
 import HackerList from './components/HackerList/HackerList';
 import Login from './components/authentication/Login';
 import Logout from './components/authentication/Logout';
@@ -14,6 +13,7 @@ import HackerProfile from './components/HackerProfile/HackerProfile';
 import Footer from './components/Footer/Footer';
 import './App.scss';
 
+//Component
 class App extends Component {
   constructor() {
     super();
@@ -27,7 +27,7 @@ class App extends Component {
     };
   }
 
-  //getting data from server
+  //Getting general data from server
   getHackers = () => {
     this.setState({ loading: true });
     axios
@@ -40,6 +40,8 @@ class App extends Component {
       })
       .finally(this.setState({ loading: false }));
   };
+
+  //Getting Hacker specific data from the server
   getHackersDetails = () => {
     axios
       .get('https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id/details')
@@ -54,7 +56,8 @@ class App extends Component {
         console.log(err.message);
       });
   };
-  //authorization
+
+  //Authorization
   authUser = (token, id) => {
     localStorage.setItem('token', token);
     localStorage.setItem('currentUserId', id);
@@ -64,6 +67,7 @@ class App extends Component {
     localStorage.clear();
   };
 
+  //Render + Routes
   render() {
     return (
       <div className="App">

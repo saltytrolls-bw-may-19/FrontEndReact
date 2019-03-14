@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
+//Styling
 import './authentication.scss';
 import { Button } from 'semantic-ui-react';
 
+//URL
 const url = 'https://buildweek-saltytrolls.herokuapp.com';
+
+//Component
 export default class Login extends React.Component {
   constructor() {
     super();
@@ -22,6 +27,7 @@ export default class Login extends React.Component {
     });
   };
 
+  //Login functionality
   loginUser = () => {
     axios
       .post(`${url}/api/users/login`, {
@@ -35,6 +41,7 @@ export default class Login extends React.Component {
       .catch(err => console.log(err.msg));
   };
 
+  //Protecting Routes - if logged in, redirect to main page
   componentDidMount() {
     if (localStorage.getItem('token')) {
       this.props.history.push('/');
@@ -47,6 +54,7 @@ export default class Login extends React.Component {
     }
   }
 
+  //Rendering
   render() {
     return (
       <div className="container">

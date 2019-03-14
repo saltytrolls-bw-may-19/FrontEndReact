@@ -1,5 +1,9 @@
-import React from "react";
-import "./Footer.scss";
+import React from 'react';
+
+//Styling
+import './Footer.scss';
+
+//Component
 const Footer = () => {
   return (
     <div className="footer">
@@ -27,5 +31,3 @@ const Footer = () => {
   );
 };
 export default Footer;
-{
-}

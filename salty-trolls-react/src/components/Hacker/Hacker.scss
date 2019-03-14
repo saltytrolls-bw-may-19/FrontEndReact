@@ -7,17 +7,39 @@
   width: 100%;
   background-color: white;
   color: black;
-  padding: 10px;
+  padding: 30px;
   display: flex;
   justify-content: space-around;
   // align-items: baseline;
 }
 .hacker-text {
-  padding-top: 20px;
+  padding-top: 15px;
+  h4 {
+    font-size: 1.4rem;
+    padding: 5px 0;
+    color: #ef8376;
+  }
+  .bold {
+    font-weight: bold;
+  }
 }
-.sentiment-graph {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 0;
-  padding: 0;
+
+.relative-position {
+  position: relative;
+  cursor: pointer;
+}
+.index-card {
+  position: absolute;
+  width: 130px;
+  height: 70px;
+  top: 0px;
+  right: -40px;
+  color: rgb(50, 50, 50);
+  font-size: 0.7rem;
+  text-align: start;
+  font-style: italic;
+  .emphasis {
+    font-weight: 600;
+    color: #ef8376;
+  }
 }

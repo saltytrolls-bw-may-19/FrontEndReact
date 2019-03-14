@@ -1,9 +1,14 @@
 import React from 'react';
 import axios from 'axios';
+
+//Styling
+import './authentication.scss';
 import { Button } from 'semantic-ui-react';
 
+//URL
 const url = 'https://buildweek-saltytrolls.herokuapp.com';
 
+//Compnent
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +27,7 @@ class Register extends React.Component {
     });
   };
 
+  //Register functionality
   registerNewUser = () => {
     if (this.state.userLoginPassword === this.state.verifyPassword) {
       axios
@@ -40,6 +46,7 @@ class Register extends React.Component {
     }
   };
 
+  //Protecting Routes - if logged in, redirect to main page
   componentDidMount() {
     if (localStorage.getItem('token')) {
       this.props.history.push('/');
@@ -52,6 +59,7 @@ class Register extends React.Component {
     }
   }
 
+  //Rendering
   render() {
     return (
       <div className="container">
