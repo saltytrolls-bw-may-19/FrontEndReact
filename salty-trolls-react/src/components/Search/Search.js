@@ -1,17 +1,19 @@
-import React from 'react';
-import './Search.scss';
-import axios from 'axios';
-import { Button } from 'semantic-ui-react';
+import React from "react";
+import axios from "axios";
 
-// searchedHacker
-// searchedHackerComments
+//Styling
+import "./Search.scss";
+import { Button } from "semantic-ui-react";
+
+//Component
 class Search extends React.Component {
   constructor() {
     super();
     this.state = {
-      search: ''
+      search: ""
     };
   }
+
   handleChanges = e => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -20,6 +22,7 @@ class Search extends React.Component {
     });
   };
 
+  //Searching functionality
   searchHacker = () => {
     axios
       .get(`http://kevinbrack.com:1337/user/${this.state.search}`)
@@ -31,6 +34,7 @@ class Search extends React.Component {
       });
   };
 
+  //Rendering
   render() {
     return (
       <div className="search">

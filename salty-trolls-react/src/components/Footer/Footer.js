@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
 //Styling
-import './Footer.scss';
+import "./Footer.scss";
 
 //Component
 const Footer = () => {
   return (
     <div className="footer">
-      <ul class="icons">
+      <ul className="icons">
         <li>
           <a href="/">Twitter</a>
         </li>

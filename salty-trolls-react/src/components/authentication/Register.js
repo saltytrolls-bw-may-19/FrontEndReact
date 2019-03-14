@@ -1,21 +1,21 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 
 //Styling
-import './authentication.scss';
-import { Button } from 'semantic-ui-react';
+import "./authentication.scss";
+import { Button } from "semantic-ui-react";
 
 //URL
-const url = 'https://buildweek-saltytrolls.herokuapp.com';
+const url = "https://buildweek-saltytrolls.herokuapp.com";
 
 //Compnent
 class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userLoginEmail: '',
-      userLoginPassword: '',
-      verifyPassword: ''
+      userLoginEmail: "",
+      userLoginPassword: "",
+      verifyPassword: ""
     };
   }
 
@@ -37,25 +37,25 @@ class Register extends React.Component {
         })
         .then(res => console.log(res))
 
-        .then(() => this.props.history.push('/login'))
+        .then(() => this.props.history.push("/login"))
         .catch(err => {
           console.log(err.msg);
         });
     } else {
-      return 'Passwords do not match.';
+      return "Passwords do not match.";
     }
   };
 
   //Protecting Routes - if logged in, redirect to main page
   componentDidMount() {
-    if (localStorage.getItem('token')) {
-      this.props.history.push('/');
+    if (localStorage.getItem("token")) {
+      this.props.history.push("/");
     }
   }
 
   componentDidUpdate() {
-    if (localStorage.getItem('token')) {
-      this.props.history.push('/');
+    if (localStorage.getItem("token")) {
+      this.props.history.push("/");
     }
   }
 

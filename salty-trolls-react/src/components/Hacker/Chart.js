@@ -1,16 +1,16 @@
-import React from 'react';
-import { PieChart, Pie, Cell } from 'recharts';
+import React from "react";
+import { PieChart, Pie, Cell } from "recharts";
 
 //Styling
-import './Hacker.scss';
+import "./Hacker.scss";
 
 //Component
 class Chart extends React.Component {
   render() {
     //If positive sentiment (>0), create positive sentiment graph with green color
     if (this.props.sentiment >= 0) {
-      const data = [{ name: 'Gray', value: 0.5 }, { name: 'Sentiment', value: this.props.sentiment / 2 }, { name: 'Gray', value: (1 - this.props.sentiment) / 2 }];
-      const COLORS = ['#EAEAEA', '#259C32', '#EAEAEA'];
+      const data = [{ name: "Gray", value: 0.5 }, { name: "Sentiment", value: this.props.sentiment / 2 }, { name: "Gray", value: (1 - this.props.sentiment) / 2 }];
+      const COLORS = ["#EAEAEA", "#259C32", "#EAEAEA"];
 
       return (
         <PieChart width={400} height={200}>
@@ -33,8 +33,8 @@ class Chart extends React.Component {
     }
     //If negative sentiment (<0), create negative sentiment graph with red color
     if (this.props.sentiment < 0) {
-      const data = [{ name: 'Gray', value: (1 - this.props.sentiment) / 2 }, { name: 'Sentiment', value: this.props.sentiment / 2 }, { name: 'Gray', value: 0.5 }];
-      const COLORS = ['#EAEAEA', '#FB3640', '#EAEAEA'];
+      const data = [{ name: "Gray", value: (1 - this.props.sentiment) / 2 }, { name: "Sentiment", value: this.props.sentiment / 2 }, { name: "Gray", value: 0.5 }];
+      const COLORS = ["#EAEAEA", "#FB3640", "#EAEAEA"];
 
       return (
         <PieChart width={800} height={400}>

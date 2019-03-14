@@ -51,6 +51,16 @@
     }
   }
 
+  #logout-button {
+    color: white;
+    background-color: #e1887b;
+    margin: 10px 0;
+    font-size: 1rem;
+    &:focus {
+      outline: none;
+    }
+  }
+
   .redirect-text {
     color: #ef8376;
     font-size: 1rem;
