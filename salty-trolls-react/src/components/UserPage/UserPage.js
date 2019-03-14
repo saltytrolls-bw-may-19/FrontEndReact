@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
+
+//Styling
 import "./UserPage.scss";
+import { Button } from "semantic-ui-react";
 
 const url = "https://buildweek-saltytrolls.herokuapp.com";
 export default class UserPage extends React.Component {
@@ -13,7 +16,7 @@ export default class UserPage extends React.Component {
       verifyPassword: ""
     };
   }
-
+  // Protecting Routes - if not logged in, redirect to login page
   componentDidMount() {
     if (!localStorage.getItem("token")) {
       this.props.history.push("/login");
@@ -30,7 +33,8 @@ export default class UserPage extends React.Component {
     headers: { Authorization: localStorage.getItem("token") }
   });
 
-  updateEmail = () => {
+  //Update Password functionality
+  updatePassword = () => {
     if (this.state.userLoginPassword === this.state.verifyPassword) {
       axios
         .patch(
@@ -49,13 +53,10 @@ export default class UserPage extends React.Component {
       return "Passwords do not match.";
     }
   };
-
+  //Delete Account functionality
   deleteAccount = () => {
     axios
-      .delete(
-        `${url}/api/users/${localStorage.getItem("currentUserId")}`,
-        this.getAuthToken()
-      )
+      .delete(`${url}/api/users/${localStorage.getItem("currentUserId")}`, this.getAuthToken())
       .then(() => {
         this.props.unAuthUser();
       })
@@ -65,6 +66,7 @@ export default class UserPage extends React.Component {
       });
   };
 
+  //Logic behind showing specific form for each action - Delete & Update Password
   showPasswordForm = e => {
     e.preventDefault();
     this.setState({ showChangePassword: true, showDeleteAccount: false });
@@ -83,72 +85,59 @@ export default class UserPage extends React.Component {
     });
   };
 
+  //Rendering
   render() {
     return (
       <div className="user-page">
-        <h1>User Page</h1>
-        <button
-          className="main-button"
-          onClick={e => {
-            this.showPasswordForm(e);
-          }}
-        >
-          Change Password
-        </button>
-        <button
-          className="main-button"
-          onClick={e => {
-            this.showDeleteAccountForm(e);
-          }}
-        >
-          Delete Account
-        </button>
+        <h1>
+          Hello <span className="emphasize">{localStorage.getItem("UserEmail")}</span>!
+        </h1>
+        <div>
+          <Button
+            id="main-button"
+            onClick={e => {
+              this.showPasswordForm(e);
+            }}>
+            Change Password
+          </Button>
+
+          <Button
+            id="main-button"
+            onClick={e => {
+              this.showDeleteAccountForm(e);
+            }}>
+            Delete Account
+          </Button>
+        </div>
+
+        {/*Change Password Form */}
         {this.state.showChangePassword && (
-          <form>
-            <div>
-              New password:{" "}
-              <input
-                name="userLoginPassword"
-                type="password"
-                placeholder="password"
-                value={this.userLoginPassword}
-                onChange={e => this.handleChanges(e)}
-              />
-            </div>
-            <div>
-              Confirm new password:{" "}
-              <input
-                name="verifyPassword"
-                type="password"
-                placeholder="verify password"
-                value={this.verifyPassword}
-                onChange={e => this.handleChanges(e)}
-              />
-            </div>
-            <button
-              className="main-button"
+          <form className="user-form">
+            <input name="userLoginPassword" type="password" placeholder="New password" value={this.userLoginPassword} onChange={e => this.handleChanges(e)} />
+            <input name="verifyPassword" type="password" placeholder="Confirm new password password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
+            <Button
+              id="main-button"
               onClick={e => {
                 e.preventDefault();
-                this.updateEmail();
-              }}
-            >
+                this.updatePassword();
+              }}>
               Submit
-            </button>
+            </Button>
           </form>
         )}
 
+        {/*Delete Account Form */}
         {this.state.showDeleteAccount && (
-          <form>
+          <form className="user-form">
             <h2>Are you sure?</h2>
-            <button
-              className="main-button"
+            <Button
+              id="main-button"
               onClick={e => {
                 e.preventDefault();
                 this.deleteAccount();
-              }}
-            >
+              }}>
               Delete
-            </button>
+            </Button>
           </form>
         )}
       </div>

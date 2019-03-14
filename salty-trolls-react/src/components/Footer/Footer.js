@@ -1,9 +1,13 @@
 import React from "react";
+
+//Styling
 import "./Footer.scss";
+
+//Component
 const Footer = () => {
   return (
     <div className="footer">
-      <ul class="icons">
+      <ul className="icons">
         <li>
           <a href="/">Twitter</a>
         </li>
@@ -27,5 +31,3 @@ const Footer = () => {
   );
 };
 export default Footer;
-{
-}

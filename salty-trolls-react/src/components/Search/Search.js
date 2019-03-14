@@ -1,9 +1,11 @@
 import React from "react";
-import "./Search.scss";
 import axios from "axios";
 
-// searchedHacker
-// searchedHackerComments
+//Styling
+import "./Search.scss";
+import { Button } from "semantic-ui-react";
+
+//Component
 class Search extends React.Component {
   constructor() {
     super();
@@ -11,6 +13,7 @@ class Search extends React.Component {
       search: ""
     };
   }
+
   handleChanges = e => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -19,6 +22,7 @@ class Search extends React.Component {
     });
   };
 
+  //Searching functionality
   searchHacker = () => {
     axios
       .get(`http://kevinbrack.com:1337/user/${this.state.search}`)
@@ -30,6 +34,7 @@ class Search extends React.Component {
       });
   };
 
+  //Rendering
   render() {
     return (
       <div className="search">
@@ -37,17 +42,9 @@ class Search extends React.Component {
           onSubmit={e => {
             e.preventDefault();
             this.searchHacker();
-          }}
-        >
-          <input
-            className="search-input"
-            type="text"
-            placeholder="&#128270;Search Salty Hackers"
-            name="search"
-            value={this.hacker}
-            onChange={e => this.handleChanges(e)}
-          />
-          <button>Submit</button>
+          }}>
+          <input className="search-input" type="text" placeholder="&#128270;Search Salty Hackers" name="search" value={this.hacker} onChange={e => this.handleChanges(e)} />
+          <Button id="main-button">Submit</Button>
         </form>
       </div>
     );

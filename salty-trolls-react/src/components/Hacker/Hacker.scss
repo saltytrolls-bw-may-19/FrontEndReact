@@ -3,21 +3,47 @@
   width: 100%;
 }
 .hacker a {
-  margin: 10px;
+  margin: 20px 0;
   width: 100%;
   background-color: white;
   color: black;
-  padding: 10px;
+  padding-top: 40px;
   display: flex;
   justify-content: space-around;
   // align-items: baseline;
 }
 .hacker-text {
-  padding-top: 20px;
+  padding-top: 15px;
+  padding-left: 80px;
+  h4 {
+    font-size: 1.4rem;
+    padding: 5px 0;
+    color: rgb(50, 50, 50);
+  }
+  .bold {
+    font-weight: bold;
+  }
 }
-.sentiment-graph {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 0;
-  padding: 0;
+
+.relative-position {
+  position: relative;
+  cursor: pointer;
+}
+.index-card {
+  position: absolute;
+  width: 150px;
+  height: auto;
+  padding: 10px 5px 10px 10px;
+  border-radius: 5px;
+  top: 0px;
+  right: -60px;
+  color: rgb(50, 50, 50);
+  background-color: #ef8376;
+  font-size: 0.7rem;
+  text-align: start;
+  font-style: italic;
+  .emphasis {
+    font-weight: 600;
+    color: white;
+  }
 }

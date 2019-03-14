@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
 
-//components
+//Import components
 import Navigation from "./components/Navigation/Navigation";
 import HackerList from "./components/HackerList/HackerList";
 import Login from "./components/authentication/Login";
@@ -13,6 +13,7 @@ import HackerProfile from "./components/HackerProfile/HackerProfile";
 import Footer from "./components/Footer/Footer";
 import "./App.scss";
 
+//Component
 class App extends Component {
   constructor() {
     super();
@@ -26,7 +27,7 @@ class App extends Component {
     };
   }
 
-  //getting data from server
+  //Getting general data from server
   getHackers = () => {
     this.setState({ loading: true });
     axios
@@ -39,11 +40,11 @@ class App extends Component {
       })
       .finally(this.setState({ loading: false }));
   };
+
+  //Getting Hacker specific data from the server
   getHackersDetails = () => {
     axios
-      .get(
-        "https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id/details"
-      )
+      .get("https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id/details")
       .then(res => {
         console.log(res);
         this.setState(() => ({
@@ -55,31 +56,28 @@ class App extends Component {
         console.log(err.message);
       });
   };
-  //authorization
-  authUser = (token, id) => {
+
+  //Authorization
+  authUser = (token, id, email) => {
     localStorage.setItem("token", token);
     localStorage.setItem("currentUserId", id);
+    localStorage.setItem("UserEmail", email);
   };
 
   unAuthUser = () => {
     localStorage.clear();
   };
 
+  //Render + Routes
   render() {
     return (
       <div className="App">
         <Navigation />
-        <Route
-          exact
-          path="/login"
-          render={pr => <Login authUser={this.authUser} {...pr} />}
-        />
+        {/* <Sidebar /> */}
+        <Route exact path="/login" render={pr => <Login authUser={this.authUser} {...pr} />} />
         <Route exact path="/register" render={pr => <Register {...pr} />} />
-        <Route
-          exact
-          path="/logout"
-          render={pr => <Logout unAuthUser={this.unAuthUser} {...pr} />}
-        />
+        <Route exact path="/logout" render={pr => <Logout unAuthUser={this.unAuthUser} {...pr} />} />
+        <Route exact path="/user" render={pr => <UserPage unAuthUser={this.unAuthUser} currentUserId={this.state.currentUserId} {...pr} />} />
         <div className="app-wrapper">
           <Route
             exact
@@ -96,26 +94,8 @@ class App extends Component {
           />
           <Route
             exact
-            path="/user"
-            render={pr => (
-              <UserPage
-                unAuthUser={this.unAuthUser}
-                currentUserId={this.state.currentUserId}
-                {...pr}
-              />
-            )}
-          />
-          <Route
-            exact
             path="/hacker/:id"
-            render={pr => (
-              <HackerProfile
-                hackersDetails={this.state.hackersDetails}
-                currentAuthor={this.state.currentAuthor}
-                getHackersDetails={this.getHackersDetails}
-                {...pr}
-              />
-            )}
+            render={pr => <HackerProfile hackersDetails={this.state.hackersDetails} currentAuthor={this.state.currentAuthor} getHackersDetails={this.getHackersDetails} {...pr} />}
           />
         </div>
         <Footer />
