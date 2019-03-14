@@ -1,6 +1,5 @@
 import React from "react";
-import Chart from "./Chart";
-
+import Chart from "../Chart/Chart";
 //Styling
 import "./HackerProfile.scss";
 

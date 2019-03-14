@@ -1,13 +1,10 @@
 import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
-//Styling
-
 //Component
 class Chart extends React.Component {
   render() {
     //If positive sentiment (>0), create positive sentiment graph with green color
-    console.log(typeof this.props.sentiment);
     if (this.props.sentiment >= 0) {
       const data = [{ name: "Gray", value: 0.5 }, { name: "Sentiment", value: this.props.sentiment / 2 }, { name: "Gray", value: (1 - this.props.sentiment) / 2 }];
       const COLORS = ["#EAEAEA", "#259C32", "#EAEAEA"];

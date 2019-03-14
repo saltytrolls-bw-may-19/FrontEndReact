@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Chart from "./Chart";
+import Chart from "../Chart/Chart";
 
 //Styling
 import "./Hacker.scss";
@@ -27,7 +27,6 @@ class Hacker extends React.Component {
 
   //Rendering
   render() {
-    console.log(this.props.hacker.sentiment);
     return (
       <div>
         <div className="hacker">
