@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 
 //Styling
 import "./Search.scss";
@@ -22,18 +21,6 @@ class Search extends React.Component {
     });
   };
 
-  //Searching functionality
-  searchHacker = () => {
-    axios
-      .get(`http://kevinbrack.com:1337/user/${this.state.search}`)
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err.message);
-      });
-  };
-
   //Rendering
   render() {
     return (
@@ -44,7 +31,14 @@ class Search extends React.Component {
             this.searchHacker();
           }}>
           <input className="search-input" type="text" placeholder="&#128270;Search Salty Hackers" name="search" value={this.hacker} onChange={e => this.handleChanges(e)} />
-          <Button id="main-button">Submit</Button>
+          <Button
+            id="main-button"
+            onClick={e => {
+              e.preventDefault();
+              this.props.searchHacker(this.state.search);
+            }}>
+            Submit
+          </Button>
         </form>
       </div>
     );

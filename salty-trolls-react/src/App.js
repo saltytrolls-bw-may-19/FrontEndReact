@@ -18,42 +18,41 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      loading: false,
-      hackerList: [],
+      loaded: true,
+      hackerList: null,
       hackersDetails: [],
-      currentAuthor: "",
       searchedHacker: null,
-      searchedHackerComments: null
+      searchedHackerComments: null,
+      errorMessage: null,
+      networkError: null,
+      commenterNotFound: false
     };
   }
-
-  //Getting general data from server
-  getHackers = () => {
-    this.setState({ loading: true });
-    axios
-      .get("https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id")
-      .then(res => {
-        this.setState(() => ({ hackerList: res.data }));
-      })
-      .catch(err => {
-        console.log(err.message);
-      })
-      .finally(this.setState({ loading: false }));
+  startLoader = () => {
+    this.setState({ loaded: false });
   };
-
-  //Getting Hacker specific data from the server
-  getHackersDetails = () => {
+  stopLoader = () => {
+    this.setState({ loaded: true });
+  };
+  //Search Hacker
+  searchHacker = name => {
+    this.startLoader();
+    this.setState({ commenterNotFound: false, networkError: false });
     axios
-      .get("https://buildweek-saltytrolls.herokuapp.com/api/hackers/:id/details")
+      .get(`http://kevinbrack.com:1337/user/${name}`)
       .then(res => {
-        console.log(res);
-        this.setState(() => ({
-          hackersDetails: res.data,
-          currentAuthor: res.data[0].author
-        }));
+        if (res.data[0] === "C") {
+          this.setState(() => ({ commenterNotFound: true }));
+        } else {
+          this.setState(() => ({ searchedHacker: res.data.user, searchedHackerComments: res.data.comments }));
+          console.log(res);
+        }
+        this.stopLoader();
       })
       .catch(err => {
+        this.setState(() => ({ networkError: true }));
         console.log(err.message);
+        this.stopLoader();
       });
   };
 
@@ -84,18 +83,30 @@ class App extends Component {
             path="/"
             render={pr => (
               <HackerList
-                hackerList={this.state.hackerList}
+                commenterNotFound={this.state.commenterNotFound}
+                networkError={this.state.networkError}
+                searchHacker={this.searchHacker}
                 searchedHacker={this.state.searchedHacker}
-                searchedHackerComments={this.state.searchedHackerComments}
+                hackerList={this.state.hackerList}
                 getHackers={this.getHackers}
+                loaded={this.state.loaded}
                 {...pr}
               />
             )}
           />
           <Route
             exact
-            path="/hacker/:id"
-            render={pr => <HackerProfile hackersDetails={this.state.hackersDetails} currentAuthor={this.state.currentAuthor} getHackersDetails={this.getHackersDetails} {...pr} />}
+            path="/hacker"
+            render={pr => (
+              <HackerProfile
+                searchedHacker={this.state.searchedHacker}
+                searchedHackerComments={this.state.searchedHackerComments}
+                hackersDetails={this.state.hackersDetails}
+                currentAuthor={this.state.currentAuthor}
+                getHackersDetails={this.getHackersDetails}
+                {...pr}
+              />
+            )}
           />
         </div>
         <Footer />

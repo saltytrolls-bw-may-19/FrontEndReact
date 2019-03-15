@@ -10,11 +10,28 @@
   padding-top: 40px;
   display: flex;
   justify-content: space-around;
-  // align-items: baseline;
+  @media (max-width: 850px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .hacker-text {
   padding-top: 15px;
   padding-left: 80px;
+  @media (max-width: 1200px) {
+    padding-left: 80px;
+  }
+
+  @media (max-width: 1000px) {
+    padding-left: 80px;
+  }
+
+  @media (max-width: 850px) {
+    padding-left: 0px;
+    margin-bottom: 15px;
+  }
+
   h4 {
     font-size: 1.4rem;
     padding: 5px 0;
@@ -42,6 +59,24 @@
   font-size: 0.7rem;
   text-align: start;
   font-style: italic;
+
+  @media (max-width: 1000px) {
+    width: 90px;
+    top: 0px;
+    right: 0px;
+  }
+
+  @media (max-width: 800px) {
+    width: 90px;
+    top: 0px;
+    left: -50px;
+  }
+
+  @media (max-width: 550px) {
+    width: 90px;
+    top: 0px;
+    left: 20px;
+  }
   .emphasis {
     font-weight: 600;
     color: white;

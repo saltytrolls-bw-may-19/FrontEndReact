@@ -30,7 +30,7 @@ class Hacker extends React.Component {
     return (
       <div>
         <div className="hacker">
-          <Link to="/hacker/:id">
+          <Link to="/hacker">
             <div className="hacker-text">
               <h4>Username: {this.props.hacker.author}</h4>
               <p className="bold">Average Sentiment: {this.props.hacker.sentiment.toFixed(3)}</p>

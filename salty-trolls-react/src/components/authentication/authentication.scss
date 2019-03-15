@@ -5,6 +5,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media only screen and (max-width: 800px) {
+    text-align: center;
+    padding: 0 20px;
+  }
 
   .authentication-form {
     width: 350px;
@@ -68,4 +72,8 @@
     text-decoration: none;
     margin-right: 10px;
   }
+}
+
+.error {
+  color: #e1887b;
 }
