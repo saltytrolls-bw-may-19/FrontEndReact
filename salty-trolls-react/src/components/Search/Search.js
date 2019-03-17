@@ -35,7 +35,7 @@ class Search extends React.Component {
 
           {/*Searchbar => on submit call searchHacker function and add the search res to state in App.js*/}
           <Button
-            id="main-button"
+            id="main-button-search"
             onClick={e => {
               e.preventDefault();
               this.props.searchHacker(this.state.search);
