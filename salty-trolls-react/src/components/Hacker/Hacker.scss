@@ -46,6 +46,12 @@
   position: relative;
   cursor: pointer;
 }
+
+.info {
+  top: 40px;
+  left: 25px;
+  position: absolute;
+}
 .index-card {
   position: absolute;
   width: 150px;
@@ -53,7 +59,7 @@
   padding: 10px 5px 10px 10px;
   border-radius: 5px;
   top: 0px;
-  right: -60px;
+  left: 50px;
   color: rgb(50, 50, 50);
   background-color: #ef8376;
   font-size: 0.7rem;

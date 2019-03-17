@@ -29,15 +29,18 @@ class Hacker extends React.Component {
   render() {
     return (
       <div>
-        <div className="hacker">
+        <div className="hacker relative-position">
           <Link to="/hacker">
             <div className="hacker-text">
               <h4>Username: {this.props.hacker.author}</h4>
               <p className="bold">Average Sentiment: {this.props.hacker.sentiment.toFixed(3)}</p>
               <p>Number of comments: {this.props.hacker.num_comments}</p>
+              <div className="info" onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover}>
+                ⓘ
+              </div>
             </div>
 
-            <div className="relative-position" onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover}>
+            <div>
               <Chart dataKey="value" sentiment={this.props.hacker.sentiment} />
 
               {this.state.isHovering && (
