@@ -51,7 +51,7 @@ class Chart extends React.Component {
             Sweet
           </text>
           {/*Half Pie Chart*/}
-          <Pie data={data} startAngle={180} endAngle={0} innerRadius={60} outerRadius={80} fill="#8884d8" paddingAngle={1}>
+          <Pie dataKey="value" data={data} startAngle={180} endAngle={0} innerRadius={60} outerRadius={80} fill="#8884d8" paddingAngle={1}>
             {data.map((entry, index) => (
               <Cell key={index} fill={COLORS[index % COLORS.length]} />
             ))}

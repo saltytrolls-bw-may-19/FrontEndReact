@@ -6,6 +6,8 @@ import "./UserPage.scss";
 import { Button } from "semantic-ui-react";
 
 const url = "https://buildweek-saltytrolls.herokuapp.com";
+
+//UserPage Component
 export default class UserPage extends React.Component {
   constructor(props) {
     super(props);
@@ -22,18 +24,18 @@ export default class UserPage extends React.Component {
       this.props.history.push("/login");
     }
   }
-
   componentDidUpdate() {
     if (!localStorage.getItem("token")) {
       this.props.history.push("/login");
     }
   }
 
+  //Authorisation token for search
   getAuthToken = () => ({
     headers: { Authorization: localStorage.getItem("token") }
   });
 
-  //Update Password functionality
+  //AXIOS => Update Password functionality
   updatePassword = () => {
     if (this.state.userLoginPassword === this.state.verifyPassword) {
       axios
@@ -54,7 +56,7 @@ export default class UserPage extends React.Component {
       return "Passwords do not match.";
     }
   };
-  //Delete Account functionality
+  //AXIOS => Delete Account functionality
   deleteAccount = () => {
     axios
       .delete(`${url}/api/users/${localStorage.getItem("currentUserId")}`, this.getAuthToken())
@@ -95,6 +97,7 @@ export default class UserPage extends React.Component {
           Hello <span className="emphasize">{localStorage.getItem("UserEmail")}</span>!
         </h1>
         <div>
+          {/* Button => when clicked, show update password form  */}
           <Button
             id="main-button"
             onClick={e => {
@@ -103,6 +106,7 @@ export default class UserPage extends React.Component {
             Change Password
           </Button>
 
+          {/* Button => when clicked, show delete account  */}
           <Button
             id="main-button"
             onClick={e => {

@@ -36,7 +36,7 @@ class Hacker extends React.Component {
             {/* Left/Top part of the card => users info */}
             <div className="hacker-text">
               <h4>Username: {this.props.hacker.author}</h4>
-              <p className="bold">Average Sentiment: {this.props.hacker.sentiment}</p>
+              <p className="bold">Average Sentiment: {this.props.hacker.sentiment.toFixed(3)}</p>
               <p>Number of comments: {this.props.hacker.num_comments}</p>
               <Button>See 10 saltiest comments</Button>
 

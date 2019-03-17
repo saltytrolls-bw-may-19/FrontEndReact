@@ -7,7 +7,7 @@ import { Button } from "semantic-ui-react";
 //Seeding Data
 import randomCommentArr from "../../DataCollection/randomComment";
 
-//Comonent
+//Sidebar Component
 export default class Sidebar extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +23,7 @@ export default class Sidebar extends Component {
   render() {
     return (
       <div className="sidebar">
+        {/* On click show random comment from the seeding database */}
         <Button
           id="main-button"
           onClick={e => {

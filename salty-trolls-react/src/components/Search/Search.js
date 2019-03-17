@@ -4,7 +4,7 @@ import React from "react";
 import "./Search.scss";
 import { Button } from "semantic-ui-react";
 
-//Component
+//Search Component
 class Search extends React.Component {
   constructor() {
     super();
@@ -25,12 +25,15 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search">
+        {/*Searchbar for searching commenters*/}
         <form
           onSubmit={e => {
             e.preventDefault();
             this.searchHacker();
           }}>
           <input className="search-input" type="text" placeholder="&#128270;Search Salty Hackers" name="search" value={this.hacker} onChange={e => this.handleChanges(e)} />
+
+          {/*Searchbar => on submit call searchHacker function and add the search res to state in App.js*/}
           <Button
             id="main-button"
             onClick={e => {
