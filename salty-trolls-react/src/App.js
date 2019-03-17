@@ -33,6 +33,16 @@ class App extends Component {
     };
   }
 
+  //Authorization
+  authUser = (token, id, email) => {
+    localStorage.setItem("token", token);
+    localStorage.setItem("currentUserId", id);
+    localStorage.setItem("UserEmail", email);
+  };
+  unAuthUser = () => {
+    localStorage.clear();
+  };
+
   //Loader
   startLoader = () => {
     this.setState({ loaded: false });
@@ -41,7 +51,7 @@ class App extends Component {
     this.setState({ loaded: true });
   };
 
-  //Search Hacker - main feature
+  //AXIOS - Search Hacker - main feature
   searchHacker = name => {
     this.startLoader();
     this.setState({ commenterNotFound: false, networkError: false });
@@ -51,8 +61,9 @@ class App extends Component {
         if (res.data[0] === "C") {
           this.setState(() => ({ commenterNotFound: true }));
         } else {
+          //Add hacker to searchedHacker Array
           this.setState(pr => ({ searchedHacker: [res.data.user, ...pr.searchedHacker], searchedHackerComments: [res.data.comments, ...pr.searchedHackerComments] }));
-          //delete 10th hacker in the state => only 10 hackers on the screen
+          //Delete 10th hacker in the state => only 10 hackers on the screen
           this.state.searchedHacker.splice(10, 1);
           this.state.searchedHackerComments.splice(10, 1);
         }
@@ -65,27 +76,21 @@ class App extends Component {
       });
   };
 
-  //Authorization
-  authUser = (token, id, email) => {
-    localStorage.setItem("token", token);
-    localStorage.setItem("currentUserId", id);
-    localStorage.setItem("UserEmail", email);
-  };
-
-  unAuthUser = () => {
-    localStorage.clear();
-  };
-
   //Render + Routes
   render() {
     return (
       <div className="App">
+        {/* Navigation */}
         <Navigation />
+
+        {/* Authentication => Login/Register/Logout + UserPage to change password and/or delete account */}
         <Route exact path="/login" render={pr => <Login authUser={this.authUser} {...pr} />} />
         <Route exact path="/register" render={pr => <Register {...pr} />} />
         <Route exact path="/logout" render={pr => <Logout unAuthUser={this.unAuthUser} {...pr} />} />
         <Route exact path="/user" render={pr => <UserPage unAuthUser={this.unAuthUser} currentUserId={this.state.currentUserId} {...pr} />} />
 
+        {/* Main feature */}
+        {/* HackerList -> list of 10 hackers + Searching functionality + Sidebar*/}
         <div className="app-wrapper">
           <Route
             exact
@@ -104,6 +109,8 @@ class App extends Component {
             )}
           />
 
+          {/* Main feature */}
+          {/* HackerProfile -> individual hacker's comments */}
           <Route
             exact
             path="/hacker/:id"
@@ -120,6 +127,7 @@ class App extends Component {
           />
         </div>
 
+        {/* Footer */}
         <Footer />
       </div>
     );

@@ -3,7 +3,8 @@ import axios from "axios";
 
 //Styling
 import "./authentication.scss";
-import { Button, Loader } from "semantic-ui-react";
+import { Loader } from "semantic-ui-react";
+import Button from "../uiComponents/Button/Button";
 
 //URL
 const url = "https://buildweek-saltytrolls.herokuapp.com";
@@ -82,7 +83,6 @@ class Register extends React.Component {
           <input name="verifyPassword" type="password" placeholder="Verify password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
 
           <Button
-            id="main-button"
             onClick={event => {
               event.preventDefault();
               this.registerNewUser();

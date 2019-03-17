@@ -3,7 +3,7 @@ import React from "react";
 //Styling
 import "./Footer.scss";
 
-//Component
+//Footer Component
 const Footer = () => {
   return (
     <div className="footer">
