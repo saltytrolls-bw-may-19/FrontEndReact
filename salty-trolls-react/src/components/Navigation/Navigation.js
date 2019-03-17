@@ -33,8 +33,8 @@ export default class Navigation extends React.Component {
           </div>
           <div className="navbar-middle" />
           <div className="navbar-right">
-            <Link to="/logout">Logout</Link>
             <Link to="/user">My Profile</Link>
+            <Link to="/logout">Logout</Link>
           </div>
         </div>
       );

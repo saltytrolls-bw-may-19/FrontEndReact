@@ -38,7 +38,7 @@ class Hacker extends React.Component {
               <h4>Username: {this.props.hacker.author}</h4>
               <p className="bold">Average Sentiment: {this.props.hacker.sentiment.toFixed(3)}</p>
               <p>Number of comments: {this.props.hacker.num_comments}</p>
-              <Button>See 10 saltiest comments</Button>
+              <Button id="main-button">See 10 saltiest comments</Button>
 
               {/* ⓘ in left top corner => when hover, sentiment analysis is explained */}
               <div className="info-list" onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover}>
