@@ -4,7 +4,7 @@ import axios from "axios";
 
 //Styling
 import "./authentication.scss";
-import { Button } from "semantic-ui-react";
+import { Button, Loader } from "semantic-ui-react";
 
 //URL
 const url = "https://buildweek-saltytrolls.herokuapp.com";
@@ -16,7 +16,8 @@ export default class Login extends React.Component {
     this.state = {
       userLoginEmail: "",
       userLoginPassword: "",
-      invalidCredentials: false
+      invalidCredentials: false,
+      loadingLogin: false
     };
   }
 
@@ -30,7 +31,7 @@ export default class Login extends React.Component {
 
   //Login functionality
   loginUser = () => {
-    this.setState({ invalidCredentials: false });
+    this.setState({ invalidCredentials: false, loadingLogin: true });
     axios
       .post(`${url}/api/users/login`, {
         UserEmail: this.state.userLoginEmail,
@@ -38,12 +39,13 @@ export default class Login extends React.Component {
       })
       .then(res => {
         this.props.authUser(res.data.token, res.data.UserID, res.data.UserEmail);
+        this.setState({ loadingLogin: false });
         this.props.history.push("/");
       })
       .catch(err => {
         console.log(err.response.status);
         if (err.response.status === 401) {
-          this.setState({ invalidCredentials: true });
+          this.setState({ invalidCredentials: true, loadingLogin: false });
         }
       });
   };
@@ -83,6 +85,11 @@ export default class Login extends React.Component {
           <Link className="redirect-text" to="/register">
             Don't have accout? Register!
           </Link>
+          {this.state.loadingLogin && (
+            <div>
+              <Loader active inline />
+            </div>
+          )}
         </form>
       </div>
     );

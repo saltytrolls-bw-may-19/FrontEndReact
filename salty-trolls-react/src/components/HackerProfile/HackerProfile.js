@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 //Import componenrs
 import Sidebar from "../Sidebar/Sidebar";
 import CommentBreakdown from "./CommentBreakdown";
@@ -28,13 +27,6 @@ class HackerProfile extends React.Component {
 
   render() {
     const author = this.props.match.params.id;
-    if (!this.props.searchedHacker) {
-      return (
-        <Link to="/">
-          <div className="error-message">Click here and search for the hacker first</div>
-        </Link>
-      );
-    }
 
     return (
       <div className="hacker-profile">
@@ -43,9 +35,9 @@ class HackerProfile extends React.Component {
           {this.props.searchedHacker.author ? <h2>{`${this.props.searchedHacker.author}'s`} profile</h2> : <h2>Hacker's Profile</h2>}
           <h3>Saltiest Comments List</h3>
 
-          {this.props.searchedHackerComments.map(array => {
+          {this.props.searchedHackerComments.map((array, index) => {
             return (
-              <React.Fragment>
+              <React.Fragment key={index}>
                 {array
                   .filter(obj => obj.author === author)
                   .map(comment => (

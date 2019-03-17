@@ -106,7 +106,7 @@ class App extends Component {
 
           <Route
             exact
-            path="/:id"
+            path="/hacker/:id"
             render={pr => (
               <HackerProfile
                 searchedHacker={this.state.searchedHacker}
