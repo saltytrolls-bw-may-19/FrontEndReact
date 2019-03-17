@@ -3,8 +3,7 @@ import axios from "axios";
 
 //Styling
 import "./authentication.scss";
-import { Loader } from "semantic-ui-react";
-import Button from "../uiComponents/Button/Button";
+import { Loader, Button } from "semantic-ui-react";
 
 //URL
 const url = "https://buildweek-saltytrolls.herokuapp.com";

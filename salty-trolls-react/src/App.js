@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 
 //Import components
@@ -11,6 +11,9 @@ import Register from "./components/authentication/Register";
 import UserPage from "./components/UserPage/UserPage";
 import HackerProfile from "./components/HackerProfile/HackerProfile";
 import Footer from "./components/Footer/Footer";
+import NoMatch from "./components/NoMatch/NoMatch";
+
+//Styuling
 import "./App.scss";
 
 //Seeding data
@@ -84,49 +87,52 @@ class App extends Component {
         <Navigation />
 
         {/* Authentication => Login/Register/Logout + UserPage to change password and/or delete account */}
-        <Route exact path="/login" render={pr => <Login authUser={this.authUser} {...pr} />} />
-        <Route exact path="/register" render={pr => <Register {...pr} />} />
-        <Route exact path="/logout" render={pr => <Logout unAuthUser={this.unAuthUser} {...pr} />} />
-        <Route exact path="/user" render={pr => <UserPage unAuthUser={this.unAuthUser} currentUserId={this.state.currentUserId} {...pr} />} />
-
+        <Switch>
+          <Route exact path="/login" render={pr => <Login authUser={this.authUser} {...pr} />} />
+          <Route exact path="/register" render={pr => <Register {...pr} />} />
+          <Route exact path="/logout" render={pr => <Logout unAuthUser={this.unAuthUser} {...pr} />} />
+          <Route exact path="/user" render={pr => <UserPage unAuthUser={this.unAuthUser} currentUserId={this.state.currentUserId} {...pr} />} />
+        </Switch>
         {/* Main feature */}
         {/* HackerList -> list of 10 hackers + Searching functionality + Sidebar*/}
         <div className="app-wrapper">
-          <Route
-            exact
-            path="/"
-            render={pr => (
-              <HackerList
-                commenterNotFound={this.state.commenterNotFound}
-                networkError={this.state.networkError}
-                searchHacker={this.searchHacker}
-                searchedHacker={this.state.searchedHacker}
-                hackerList={this.state.hackerList}
-                getHackers={this.getHackers}
-                loaded={this.state.loaded}
-                {...pr}
-              />
-            )}
-          />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={pr => (
+                <HackerList
+                  commenterNotFound={this.state.commenterNotFound}
+                  networkError={this.state.networkError}
+                  searchHacker={this.searchHacker}
+                  searchedHacker={this.state.searchedHacker}
+                  hackerList={this.state.hackerList}
+                  getHackers={this.getHackers}
+                  loaded={this.state.loaded}
+                  {...pr}
+                />
+              )}
+            />
 
-          {/* Main feature */}
-          {/* HackerProfile -> individual hacker's comments */}
-          <Route
-            exact
-            path="/hacker/:id"
-            render={pr => (
-              <HackerProfile
-                searchedHacker={this.state.searchedHacker}
-                searchedHackerComments={this.state.searchedHackerComments}
-                hackersDetails={this.state.hackersDetails}
-                currentAuthor={this.state.currentAuthor}
-                getHackersDetails={this.getHackersDetails}
-                {...pr}
-              />
-            )}
-          />
+            {/* Main feature */}
+            {/* HackerProfile -> individual hacker's comments */}
+            <Route
+              exact
+              path="/hacker/:id"
+              render={pr => (
+                <HackerProfile
+                  searchedHacker={this.state.searchedHacker}
+                  searchedHackerComments={this.state.searchedHackerComments}
+                  hackersDetails={this.state.hackersDetails}
+                  currentAuthor={this.state.currentAuthor}
+                  getHackersDetails={this.getHackersDetails}
+                  {...pr}
+                />
+              )}
+            />
+            <Route component={NoMatch} />
+          </Switch>
         </div>
-
         {/* Footer */}
         <Footer />
       </div>

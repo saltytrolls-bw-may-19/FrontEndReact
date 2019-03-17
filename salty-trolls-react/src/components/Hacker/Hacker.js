@@ -32,7 +32,7 @@ class Hacker extends React.Component {
       <div>
         {/* Card with users info + graph => When clicked on card, user is redirected t specific hacker's comment sentiment analysis */}
         <div className="hacker relative-position">
-          <Link to={`/${this.props.hacker.author}`}>
+          <Link to={`/hacker/${this.props.hacker.author}`}>
             {/* Left/Top part of the card => users info */}
             <div className="hacker-text">
               <h4>Username: {this.props.hacker.author}</h4>
