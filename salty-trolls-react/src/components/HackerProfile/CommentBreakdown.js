@@ -27,6 +27,7 @@ class CommentBreakdown extends React.Component {
       <div className="details relative-position">
         <div className="details-left-box">
           <p>{this.props.details.comment}</p>
+          <p>{this.props.details.author}</p>
           <p>
             Sentiment: <span className="bold">{this.props.details.sentiment.toFixed(3)}</span>
           </p>

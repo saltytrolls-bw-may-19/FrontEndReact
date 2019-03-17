@@ -25,7 +25,9 @@ class HackerProfile extends React.Component {
   // this.props.searchedHacker
   // this.props.searchedHackerComments
   //Rendering
+
   render() {
+    const author = this.props.match.params.id;
     if (!this.props.searchedHacker) {
       return (
         <Link to="/">
@@ -40,9 +42,17 @@ class HackerProfile extends React.Component {
         <div className="hacker-column">
           {this.props.searchedHacker.author ? <h2>{`${this.props.searchedHacker.author}'s`} profile</h2> : <h2>Hacker's Profile</h2>}
           <h3>Saltiest Comments List</h3>
-          {this.props.searchedHackerComments.map(details => {
-            console.log(details);
-            return <CommentBreakdown key={details.time} details={details} />;
+
+          {this.props.searchedHackerComments.map(array => {
+            return (
+              <React.Fragment>
+                {array
+                  .filter(obj => obj.author === author)
+                  .map(comment => (
+                    <CommentBreakdown key={comment.time} details={comment} />
+                  ))}
+              </React.Fragment>
+            );
           })}
         </div>
       </div>

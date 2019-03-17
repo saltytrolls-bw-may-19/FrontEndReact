@@ -10,7 +10,6 @@ import Sidebar from "../Sidebar/Sidebar";
 import "./HackerList.scss";
 
 //Starting data
-import listUsers from "../../DataCollection/HackerListUsers";
 
 //Component
 class HackerList extends React.Component {
@@ -27,8 +26,6 @@ class HackerList extends React.Component {
     }
   }
 
-  // searchedHacker
-
   //Rendering
   render() {
     if (this.props.loaded === true) {
@@ -42,11 +39,9 @@ class HackerList extends React.Component {
               <Search searchHacker={this.props.searchHacker} searchedHacker={this.props.searchedHacker} searchedHackerComments={this.props.searchedHackerComments} />
               {this.props.commenterNotFound && <div className="not-found">Commenter not found</div>}
               {this.props.networkError && <div className="not-found">Network Error. Try again.</div>}
-              {!this.props.searchedHacker &&
-                listUsers.map((item, index) => {
-                  return <Hacker key={index} hacker={item} />;
-                })}
-              {this.props.searchedHacker && <Hacker key={this.props.searchedHacker.author} hacker={this.props.searchedHacker} />}
+              {this.props.searchedHacker.map(hacker => {
+                return <Hacker key={hacker.author} hacker={hacker} />;
+              })}
             </div>
           </div>
         </div>

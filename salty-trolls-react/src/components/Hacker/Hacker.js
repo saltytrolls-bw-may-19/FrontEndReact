@@ -30,10 +30,10 @@ class Hacker extends React.Component {
     return (
       <div>
         <div className="hacker relative-position">
-          <Link to="/hacker">
+          <Link to={`/${this.props.hacker.author}`}>
             <div className="hacker-text">
               <h4>Username: {this.props.hacker.author}</h4>
-              <p className="bold">Average Sentiment: {this.props.hacker.sentiment.toFixed(3)}</p>
+              <p className="bold">Average Sentiment: {this.props.hacker.sentiment}</p>
               <p>Number of comments: {this.props.hacker.num_comments}</p>
               <Button>See 10 saltiest comments</Button>
               <div className="info-list" onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover}>
