@@ -68,14 +68,14 @@
   position: relative;
   cursor: pointer;
 }
-.index-card {
+.index-card-comment {
   position: absolute;
   width: 150px;
   height: auto;
   padding: 10px 5px 10px 10px;
   border-radius: 5px;
   top: 0px;
-  right: -60px;
+  left: 50px;
   color: rgb(50, 50, 50);
   background-color: #ef8376;
   font-size: 0.7rem;
@@ -96,4 +96,10 @@
   color: #ef8376;
   font-weight: bold;
   margin-top: 20%;
+}
+
+.info-comment {
+  top: 20px;
+  left: 25px;
+  position: absolute;
 }

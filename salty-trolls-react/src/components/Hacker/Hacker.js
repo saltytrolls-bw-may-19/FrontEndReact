@@ -4,7 +4,7 @@ import Chart from "../Chart/Chart";
 
 //Styling
 import "./Hacker.scss";
-
+import { Button } from "semantic-ui-react";
 //Component
 class Hacker extends React.Component {
   constructor(props) {
@@ -35,7 +35,8 @@ class Hacker extends React.Component {
               <h4>Username: {this.props.hacker.author}</h4>
               <p className="bold">Average Sentiment: {this.props.hacker.sentiment.toFixed(3)}</p>
               <p>Number of comments: {this.props.hacker.num_comments}</p>
-              <div className="info" onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover}>
+              <Button>See 10 saltiest comments</Button>
+              <div className="info-list" onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover}>
                 ⓘ
               </div>
             </div>
@@ -44,7 +45,7 @@ class Hacker extends React.Component {
               <Chart dataKey="value" sentiment={this.props.hacker.sentiment} />
 
               {this.state.isHovering && (
-                <div className="index-card">
+                <div className="index-card-list">
                   <span className="emphasis">Sentiment Scores range from -1 to 1. </span>
                   <br /> -1 represents a very salty troll, and 1 representing an exemplary model of comment etiquette.
                 </div>
