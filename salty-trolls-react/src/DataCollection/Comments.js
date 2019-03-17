@@ -1,52 +1,46 @@
 const list = [
-  [{ author: "pg", sentiment: 0.090097317, num_comments: 9982 }][
-    ({
+  [
+    {
       author: "pg",
       sentiment: -1.0,
       ranking: 0,
       time: 1172085056,
-      comment:
-        "This is from that terrible book by Nesheim I wouldnt trust anything he says"
+      comment: "This is from that terrible book by Nesheim I wouldnt trust anything he says"
     },
     {
       author: "pg",
       sentiment: -1.0,
       ranking: 0,
       time: 1330377310,
-      comment:
-        "They get shared among YC alumni and acquirers know that which seems to mitigate the worst abuses"
+      comment: "They get shared among YC alumni and acquirers know that which seems to mitigate the worst abuses"
     },
     {
       author: "pg",
       sentiment: -1.0,
       ranking: 0,
       time: 1309042471,
-      comment:
-        "Do you feel its evil for a company giving away say a car as a prize to disclose the brand of the car"
+      comment: "Do you feel its evil for a company giving away say a car as a prize to disclose the brand of the car"
     },
     {
       author: "pg",
       sentiment: -1.0,
       ranking: 0,
       time: 1250537184,
-      comment:
-        "I think I did wear it when we were visiting galleries for Artix the horrible startup we tried before Viaweb because I found a couple Artix business cards in the pocket"
+      comment: "I think I did wear it when we were visiting galleries for Artix the horrible startup we tried before Viaweb because I found a couple Artix business cards in the pocket"
     },
     {
       author: "pg",
       sentiment: -1.0,
       ranking: 1,
       time: 1189118584,
-      comment:
-        "Id do it just to try flying on an EclipsepThat flash on their frontpage was shocking though Thank God for adblock"
+      comment: "Id do it just to try flying on an EclipsepThat flash on their frontpage was shocking though Thank God for adblock"
     },
     {
       author: "pg",
       sentiment: -0.875,
       ranking: 1,
       time: 1296455955,
-      comment:
-        "Brutal honesty doesnt push things forward any faster than honesty"
+      comment: "Brutal honesty doesnt push things forward any faster than honesty"
     },
     {
       author: "pg",
@@ -70,24 +64,22 @@ const list = [
       ranking: 0,
       time: 1208983982,
       comment: "Stop filling up the comment threads with this crap"
-    })
+    }
   ],
-  [{ author: "wmf", sentiment: 0.0686600718, num_comments: 8635 }][
-    ({
+  [
+    {
       author: "wmf",
       sentiment: -1.0,
       ranking: 0,
       time: 1344470293,
-      comment:
-        "If appnet turned evil people would stop paying and then appnet would go broke Thats the theory anyway"
+      comment: "If appnet turned evil people would stop paying and then appnet would go broke Thats the theory anyway"
     },
     {
       author: "wmf",
       sentiment: -1.0,
       ranking: 1,
       time: 1243832405,
-      comment:
-        "The convenient thing about being evil is that you dont have to check for things like this You just do whatever you want"
+      comment: "The convenient thing about being evil is that you dont have to check for things like this You just do whatever you want"
     },
     {
       author: "wmf",
@@ -101,66 +93,58 @@ const list = [
       sentiment: -1.0,
       ranking: 0,
       time: 1406848194,
-      comment:
-        "People who complain about premining probably also think VC is evil because their Radeon card isnx27t sufficient to participate in seed rounds"
+      comment: "People who complain about premining probably also think VC is evil because their Radeon card isnx27t sufficient to participate in seed rounds"
     },
     {
       author: "wmf",
       sentiment: -1.0,
       ranking: 0,
       time: 1383089858,
-      comment:
-        "Assuming that browsers have implemented Web Crypto how do you know youx27re using it and not an evil polyfill"
+      comment: "Assuming that browsers have implemented Web Crypto how do you know youx27re using it and not an evil polyfill"
     },
     {
       author: "wmf",
       sentiment: -1.0,
       ranking: 4,
       time: 1336665968,
-      comment:
-        "Looks like they copied the limitations of EC2 almost exactly Boring"
+      comment: "Looks like they copied the limitations of EC2 almost exactly Boring"
     },
     {
       author: "wmf",
       sentiment: -1.0,
       ranking: 0,
       time: 1290463871,
-      comment:
-        "This is based on client certificates and thus is doomed by terrible browser UIs"
+      comment: "This is based on client certificates and thus is doomed by terrible browser UIs"
     },
     {
       author: "wmf",
       sentiment: -1.0,
       ranking: 0,
       time: 1376687468,
-      comment:
-        "I would say morality but I realize thatx27s an invalid argument It seems like the government shouldnx27t be allowed to profit from issuing student loans especially bad ones"
+      comment: "I would say morality but I realize thatx27s an invalid argument It seems like the government shouldnx27t be allowed to profit from issuing student loans especially bad ones"
     },
     {
       author: "wmf",
       sentiment: -1.0,
       ranking: 3,
       time: 1384897423,
-      comment:
-        "Worst landing page ever You canx27t quothackquot conversion by refusing to tell people what theyx27re signing up for"
-    })
+      comment: "Worst landing page ever You canx27t quothackquot conversion by refusing to tell people what theyx27re signing up for"
+    }
   ],
-  [{ author: "hga", sentiment: 0.0815668877, num_comments: 7062 }][
-    ({
+  [
+    {
       author: "hga",
       sentiment: -1.0,
       ranking: 0,
       time: 1283969616,
-      comment:
-        "This is California noncompetes presumptively evil there although I had the impression his sort of job might be in the category where they are allowed"
+      comment: "This is California noncompetes presumptively evil there although I had the impression his sort of job might be in the category where they are allowed"
     },
     {
       author: "hga",
       sentiment: -1.0,
       ranking: 10,
       time: 1287406939,
-      comment:
-        "Heres one nasty detail that should be taken into account some fraction of parents will just confiscate the payments from their children"
+      comment: "Heres one nasty detail that should be taken into account some fraction of parents will just confiscate the payments from their children"
     },
     {
       author: "hga",
@@ -182,8 +166,7 @@ const list = [
       sentiment: -0.805,
       ranking: 0,
       time: 1419169049,
-      comment:
-        "A lot of that a lot of NIH and a lot of bad behavior and very bad management"
+      comment: "A lot of that a lot of NIH and a lot of bad behavior and very bad management"
     },
     {
       author: "hga",
@@ -198,28 +181,25 @@ const list = [
       sentiment: -0.8,
       ranking: 3,
       time: 1370724282,
-      comment:
-        "Doubtful these are pressurized water reactors not boiling ones an inherently safer design"
+      comment: "Doubtful these are pressurized water reactors not boiling ones an inherently safer design"
     },
     {
       author: "hga",
       sentiment: -0.7,
       ranking: 0,
       time: 1441498201,
-      comment:
-        "It would seem things are getting a bit ugly at Intuit Any educated guesses why"
+      comment: "It would seem things are getting a bit ugly at Intuit Any educated guesses why"
     },
     {
       author: "hga",
       sentiment: -0.7,
       ranking: 1,
       time: 1441331425,
-      comment:
-        "Paranoia Wouldnx27t things get rather ugly if you accidentally fed a voltage divider the 18V in that circuit"
-    })
+      comment: "Paranoia Wouldnx27t things get rather ugly if you accidentally fed a voltage divider the 18V in that circuit"
+    }
   ],
-  [{ author: "Tichy", sentiment: 0.0854002161, num_comments: 9775 }][
-    ({
+  [
+    {
       author: "Tichy",
       sentiment: -1.0,
       ranking: 2,
@@ -231,8 +211,7 @@ const list = [
       sentiment: -1.0,
       ranking: 0,
       time: 1321923865,
-      comment:
-        "Of course Motorola will build Android phones There is nothing shocking about that"
+      comment: "Of course Motorola will build Android phones There is nothing shocking about that"
     },
     {
       author: "Tichy",
@@ -246,24 +225,21 @@ const list = [
       sentiment: -1.0,
       ranking: 5,
       time: 1260050506,
-      comment:
-        "I thought the consensus was that OpenDNS is evil censorship and all"
+      comment: "I thought the consensus was that OpenDNS is evil censorship and all"
     },
     {
       author: "Tichy",
       sentiment: -1.0,
       ranking: 1,
       time: 1216509477,
-      comment:
-        "I think it is not about the design of the search engine but about judging the design of the pages that are being indexed Could kill a lot of nasty spammy pages on the spot"
+      comment: "I think it is not about the design of the search engine but about judging the design of the pages that are being indexed Could kill a lot of nasty spammy pages on the spot"
     },
     {
       author: "Tichy",
       sentiment: -1.0,
       ranking: 1,
       time: 1299669384,
-      comment:
-        "So how does the police distinguish between a harmless session cookie and an evil tracking cookie"
+      comment: "So how does the police distinguish between a harmless session cookie and an evil tracking cookie"
     },
     {
       author: "Tichy",
@@ -277,8 +253,7 @@ const list = [
       sentiment: -1.0,
       ranking: 1,
       time: 1242128908,
-      comment:
-        "I see your point but I dont think the questions were particularly insane"
+      comment: "I see your point but I dont think the questions were particularly insane"
     },
     {
       author: "Tichy",
@@ -286,10 +261,10 @@ const list = [
       ranking: 0,
       time: 1276538746,
       comment: "insulting"
-    })
+    }
   ],
-  [{ author: "mikeash", sentiment: 0.0727129687, num_comments: 9313 }][
-    ({
+  [
+    {
       author: "mikeash",
       sentiment: -1.0,
       ranking: 3,
@@ -302,8 +277,7 @@ const list = [
       sentiment: -1.0,
       ranking: 0,
       time: 1431451895,
-      comment:
-        "I learned something too I knew we werenx27t alone but I just assumed we were the worst Guess not"
+      comment: "I learned something too I knew we werenx27t alone but I just assumed we were the worst Guess not"
     },
     {
       author: "mikeash",
@@ -325,16 +299,14 @@ const list = [
       sentiment: -1.0,
       ranking: 0,
       time: 1426461650,
-      comment:
-        "I guess therex27s no point in trying to continue the discussion since Ix27m quotnormalizing state violencequot somehow and I guess that makes me evil for considering the facts"
+      comment: "I guess therex27s no point in trying to continue the discussion since Ix27m quotnormalizing state violencequot somehow and I guess that makes me evil for considering the facts"
     },
     {
       author: "mikeash",
       sentiment: -1.0,
       ranking: 1,
       time: 1406648257,
-      comment:
-        "That is simultaneously the worst and the clearest car analogy Ix27ve ever seen"
+      comment: "That is simultaneously the worst and the clearest car analogy Ix27ve ever seen"
     },
     {
       author: "mikeash",
@@ -348,20 +320,18 @@ const list = [
       sentiment: -0.8,
       ranking: 1,
       time: 1425656886,
-      comment:
-        "It could be a Bitcoin miner put in by people who donx27t understand how worthless that would be"
+      comment: "It could be a Bitcoin miner put in by people who donx27t understand how worthless that would be"
     },
     {
       author: "mikeash",
       sentiment: -0.8,
       ranking: 1,
       time: 1356038973,
-      comment:
-        "Meanwhile the rest of us have to buy spatulas from nonspecialty stores like an idiot Maybe its time for someone to bring Spatula City into the internet age"
-    })
+      comment: "Meanwhile the rest of us have to buy spatulas from nonspecialty stores like an idiot Maybe its time for someone to bring Spatula City into the internet age"
+    }
   ],
-  [{ author: "gaius", sentiment: 0.0924706808, num_comments: 8590 }][
-    ({
+  [
+    {
       author: "gaius",
       sentiment: -1.0,
       ranking: 0,
@@ -380,16 +350,14 @@ const list = [
       sentiment: -1.0,
       ranking: 17,
       time: 1390648752,
-      comment:
-        "iUpon my release from the hospital also not a function of my recovery but as a result of my expulsion from the CollegeipDamn thatx27s bleak"
+      comment: "iUpon my release from the hospital also not a function of my recovery but as a result of my expulsion from the CollegeipDamn thatx27s bleak"
     },
     {
       author: "gaius",
       sentiment: -1.0,
       ranking: 0,
       time: 1258583704,
-      comment:
-        "In the UK 3 already have a dedicated SkypeoverWifi handset I believe it wasnt terribly successfulp3 is the name of a mobile telco in the UK"
+      comment: "In the UK 3 already have a dedicated SkypeoverWifi handset I believe it wasnt terribly successfulp3 is the name of a mobile telco in the UK"
     },
     {
       author: "gaius",
@@ -404,82 +372,72 @@ const list = [
       sentiment: -0.9,
       ranking: 1,
       time: 1429350840,
-      comment:
-        "I am baffled that the FreeBSD movement would put their name on something like this Horrifying"
+      comment: "I am baffled that the FreeBSD movement would put their name on something like this Horrifying"
     },
     {
       author: "gaius",
       sentiment: -0.8,
       ranking: 0,
       time: 1331132012,
-      comment:
-        "There are two kinds of programming languages those that people hate and those that noone uses"
+      comment: "There are two kinds of programming languages those that people hate and those that noone uses"
     },
     {
       author: "gaius",
       sentiment: -0.8,
       ranking: 1,
       time: 1443732799,
-      comment:
-        "Have you considered the possibility that your coworkers hate it and by extension you"
+      comment: "Have you considered the possibility that your coworkers hate it and by extension you"
     },
     {
       author: "gaius",
       sentiment: -0.8,
       ranking: 0,
       time: 1310746539,
-      comment:
-        "There are two kinds of languages Those people hate and those noone uses"
-    })
+      comment: "There are two kinds of languages Those people hate and those noone uses"
+    }
   ],
-  [{ author: "rdl", sentiment: 0.1126716757, num_comments: 8200 }][
-    ({
+  [
+    {
       author: "rdl",
       sentiment: -1.0,
       ranking: 0,
       time: 1352448499,
-      comment:
-        "Yeah thats why I stopped using them their collection agencies were horrible"
+      comment: "Yeah thats why I stopped using them their collection agencies were horrible"
     },
     {
       author: "rdl",
       sentiment: -1.0,
       ranking: 0,
       time: 1373350928,
-      comment:
-        "I see your boring sewage vehicles and raise you an xray trucka hrefhttpwwwyoutubecomwatchv1DPd3ihR5Lo relnofollowhttpx2Fx2Fwwwyoutubecomx2Fwatchv1DPd3ihR5Loa"
+      comment: "I see your boring sewage vehicles and raise you an xray trucka hrefhttpwwwyoutubecomwatchv1DPd3ihR5Lo relnofollowhttpx2Fx2Fwwwyoutubecomx2Fwatchv1DPd3ihR5Loa"
     },
     {
       author: "rdl",
       sentiment: -1.0,
       ranking: 0,
       time: 1365119957,
-      comment:
-        "Oakland PD is also one of the worst departments in the Bay Area although BART PD and EPA PD take the cake"
+      comment: "Oakland PD is also one of the worst departments in the Bay Area although BART PD and EPA PD take the cake"
     },
     {
       author: "rdl",
       sentiment: -1.0,
       ranking: 18,
       time: 1296113592,
-      comment:
-        "Khao Lak Thailand for another 12 hours then boring Palo Alto or San Francisco "
+      comment: "Khao Lak Thailand for another 12 hours then boring Palo Alto or San Francisco "
     },
     {
       author: "rdl",
       sentiment: -1.0,
       ranking: 0,
       time: 1352322546,
-      comment:
-        "That would be horrible to try to build a business on if you werent the rightsholder though"
+      comment: "That would be horrible to try to build a business on if you werent the rightsholder though"
     },
     {
       author: "rdl",
       sentiment: -1.0,
       ranking: 0,
       time: 1368583733,
-      comment:
-        "HN hates blogspam so Id be reluctant to write a 13 para intro and then cite a post like this then submit it to HN Although I guess if it added context it wouldnt be horrible"
+      comment: "HN hates blogspam so Id be reluctant to write a 13 para intro and then cite a post like this then submit it to HN Although I guess if it added context it wouldnt be horrible"
     },
     {
       author: "rdl",
@@ -494,8 +452,7 @@ const list = [
       sentiment: -0.85,
       ranking: 2,
       time: 1378401881,
-      comment:
-        "Is Overdrive the library ebook system I see everywhere intentionally painful to use to deter users or just horribly implemented"
+      comment: "Is Overdrive the library ebook system I see everywhere intentionally painful to use to deter users or just horribly implemented"
     },
     {
       author: "rdl",
@@ -503,24 +460,22 @@ const list = [
       ranking: 5,
       time: 1307424214,
       comment: "This is one of those cases where I really hate NDAs"
-    })
+    }
   ],
-  [{ author: "icebraining", sentiment: 0.072923778, num_comments: 9629 }][
-    ({
+  [
+    {
       author: "icebraining",
       sentiment: -1.0,
       ranking: 1,
       time: 1406456876,
-      comment:
-        "That sounds terrible Whatx27s keeping builders from offering brick construction"
+      comment: "That sounds terrible Whatx27s keeping builders from offering brick construction"
     },
     {
       author: "icebraining",
       sentiment: -1.0,
       ranking: 0,
       time: 1410400723,
-      comment:
-        "Howx27s the quality of your provider Ix27ve been using MegaVOIP also fed up with Skype and itx27s getting terrible"
+      comment: "Howx27s the quality of your provider Ix27ve been using MegaVOIP also fed up with Skype and itx27s getting terrible"
     },
     {
       author: "icebraining",
@@ -550,36 +505,32 @@ const list = [
       sentiment: -0.9,
       ranking: 0,
       time: 1429758397,
-      comment:
-        "Nobody said or implied that they have any equivalence Please try to follow the logic of the arguments being made before being outraged at them"
+      comment: "Nobody said or implied that they have any equivalence Please try to follow the logic of the arguments being made before being outraged at them"
     },
     {
       author: "icebraining",
       sentiment: -0.85,
       ranking: 1,
       time: 1310690078,
-      comment:
-        "It gives me a blog post named When Startup Ideas Go From Bad to Terrible"
+      comment: "It gives me a blog post named When Startup Ideas Go From Bad to Terrible"
     },
     {
       author: "icebraining",
       sentiment: -0.8333333333,
       ranking: 10,
       time: 1309231237,
-      comment:
-        "Of course evil is subjective and therefore meaningless Whos to say the Patriot Act is evil or not"
+      comment: "Of course evil is subjective and therefore meaningless Whos to say the Patriot Act is evil or not"
     },
     {
       author: "icebraining",
       sentiment: -0.8,
       ranking: 0,
       time: 1444668504,
-      comment:
-        "The problem is not discussing the usage of shared resources itx27s advocating the outing of someone which might expose them to violent reactions"
-    })
+      comment: "The problem is not discussing the usage of shared resources itx27s advocating the outing of someone which might expose them to violent reactions"
+    }
   ],
-  [{ author: "pyre", sentiment: 0.0604344321, num_comments: 8001 }][
-    ({
+  [
+    {
       author: "pyre",
       sentiment: -1.0,
       ranking: 0,
@@ -630,25 +581,22 @@ const list = [
       sentiment: -0.8,
       ranking: 0,
       time: 1366447320,
-      comment:
-        "A lawyer sending a copyright claim over a trademark dispute for example would have to argue that they are an idiot about the law I would think"
+      comment: "A lawyer sending a copyright claim over a trademark dispute for example would have to argue that they are an idiot about the law I would think"
     },
     {
       author: "pyre",
       sentiment: -0.8,
       ranking: 0,
       time: 1253917235,
-      comment:
-        "Because the judge is an idiot and thats not what the banks lawyers requested"
+      comment: "Because the judge is an idiot and thats not what the banks lawyers requested"
     },
     {
       author: "pyre",
       sentiment: -0.8,
       ranking: 1,
       time: 1271445113,
-      comment:
-        "62 iwhere there is smoke there is fireipI will always hate that phrase because its one of the phrases my dad used to prove that Saddam had weapons of mass destruction"
-    })
+      comment: "62 iwhere there is smoke there is fireipI will always hate that phrase because its one of the phrases my dad used to prove that Saddam had weapons of mass destruction"
+    }
   ]
 ];
 
