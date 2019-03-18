@@ -17,10 +17,13 @@
   }
 }
 .hacker-text {
-  padding-top: 15px;
   padding-left: 80px;
   @media (max-width: 1200px) {
     padding-left: 80px;
+  }
+
+  @media (max-width: 1100px) {
+    padding-left: 60px;
   }
 
   @media (max-width: 1000px) {
@@ -46,39 +49,27 @@
   position: relative;
   cursor: pointer;
 }
-.index-card {
+
+.info-list {
+  top: 40px;
+  left: 25px;
+  position: absolute;
+}
+.index-card-list {
   position: absolute;
   width: 150px;
   height: auto;
   padding: 10px 5px 10px 10px;
   border-radius: 5px;
-  top: 0px;
-  right: -60px;
+  top: 20px;
+  left: 50px;
   color: rgb(50, 50, 50);
   background-color: #ef8376;
   font-size: 0.7rem;
   text-align: start;
   font-style: italic;
-
-  @media (max-width: 1000px) {
-    width: 90px;
-    top: 0px;
-    right: 0px;
-  }
-
-  @media (max-width: 800px) {
-    width: 90px;
-    top: 0px;
-    left: -50px;
-  }
-
-  @media (max-width: 550px) {
-    width: 90px;
-    top: 0px;
-    left: 20px;
-  }
-  .emphasis {
-    font-weight: 600;
-    color: white;
-  }
+}
+.emphasis {
+  color: white;
+  font-weight: bold;
 }

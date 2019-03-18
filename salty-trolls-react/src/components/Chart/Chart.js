@@ -4,7 +4,7 @@ import { PieChart, Pie, Cell } from "recharts";
 //Styling
 import "./Chart.scss";
 
-//Component
+//Chart Component
 class Chart extends React.Component {
   render() {
     //If positive sentiment (>0), create positive sentiment graph with green color
@@ -14,6 +14,7 @@ class Chart extends React.Component {
 
       return (
         <PieChart width={400} height={200}>
+          {/*Chart legend/explanation*/}
           <text x={130} y={120} textAnchor="middle" dominantBaseline="middle">
             Salty
           </text>
@@ -23,6 +24,7 @@ class Chart extends React.Component {
           <text x={270} y={120} textAnchor="middle" dominantBaseline="middle">
             Sweet
           </text>
+          {/*Half Pie Chart*/}
           <Pie dataKey="value" data={data} startAngle={180} endAngle={0} innerRadius={60} outerRadius={80} fill="#8884d8" paddingAngle={1}>
             {data.map((entry, index) => (
               <Cell key={index} fill={COLORS[index % COLORS.length]} />
@@ -38,6 +40,7 @@ class Chart extends React.Component {
 
       return (
         <PieChart width={400} height={200}>
+          {/*Chart legend/explanation*/}
           <text x={130} y={120} textAnchor="middle" dominantBaseline="middle">
             Salty
           </text>
@@ -47,7 +50,8 @@ class Chart extends React.Component {
           <text x={270} y={120} textAnchor="middle" dominantBaseline="middle">
             Sweet
           </text>
-          <Pie data={data} startAngle={180} endAngle={0} innerRadius={60} outerRadius={80} fill="#8884d8" paddingAngle={1}>
+          {/*Half Pie Chart*/}
+          <Pie dataKey="value" data={data} startAngle={180} endAngle={0} innerRadius={60} outerRadius={80} fill="#8884d8" paddingAngle={1}>
             {data.map((entry, index) => (
               <Cell key={index} fill={COLORS[index % COLORS.length]} />
             ))}

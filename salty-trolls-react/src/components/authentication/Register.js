@@ -3,7 +3,7 @@ import axios from "axios";
 
 //Styling
 import "./authentication.scss";
-import { Button } from "semantic-ui-react";
+import { Loader, Button } from "semantic-ui-react";
 
 //URL
 const url = "https://buildweek-saltytrolls.herokuapp.com";
@@ -17,7 +17,8 @@ class Register extends React.Component {
       userLoginPassword: "",
       verifyPassword: "",
       passwordsDontMatch: false,
-      emailIsAlreadyRegistered: false
+      emailIsAlreadyRegistered: false,
+      loadingRegister: false
     };
   }
 
@@ -32,25 +33,26 @@ class Register extends React.Component {
   //Register functionality
   registerNewUser = () => {
     if (this.state.userLoginPassword === this.state.verifyPassword) {
-      this.setState({ emailIsAlreadyRegistered: false });
-      this.setState({ passwordsDontMatch: false });
+      this.setState({ emailIsAlreadyRegistered: false, loadingRegister: true, passwordsDontMatch: false });
       axios
         .post(`${url}/api/users/register`, {
           UserEmail: this.state.userLoginEmail,
           UserPassword: this.state.userLoginPassword
         })
-        .then(res => console.log(res))
+        .then(res => {
+          console.log(res);
+        })
 
         .then(() => this.props.history.push("/login"))
 
         .catch(err => {
           console.log(err.response.status);
-          if (err.response.status === 422) {
-            this.setState({ emailIsAlreadyRegistered: true });
+          if (err.response.status === 500) {
+            this.setState({ emailIsAlreadyRegistered: true, loadingRegister: false });
           }
         });
     } else {
-      this.setState({ passwordsDontMatch: true });
+      this.setState({ passwordsDontMatch: true, loadingRegister: false });
     }
   };
 
@@ -80,7 +82,6 @@ class Register extends React.Component {
           <input name="verifyPassword" type="password" placeholder="Verify password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
 
           <Button
-            id="main-button"
             onClick={event => {
               event.preventDefault();
               this.registerNewUser();
@@ -89,6 +90,11 @@ class Register extends React.Component {
           </Button>
           {this.state.passwordsDontMatch && <div className="error">Passwords don't match</div>}
           {this.state.emailIsAlreadyRegistered && <div className="error">Email is already registered</div>}
+          {this.state.loadingRegister && (
+            <div>
+              <Loader active inline />
+            </div>
+          )}
         </form>
       </div>
     );

@@ -4,7 +4,7 @@ import React from "react";
 import "./authentication.scss";
 import { Button } from "semantic-ui-react";
 
-//Component
+//Logout Component
 export default class Logout extends React.Component {
   //Protecting Routes - if not logged in, redirect to login
   componentDidMount() {
@@ -12,7 +12,6 @@ export default class Logout extends React.Component {
       this.props.history.push("/login");
     }
   }
-
   componentDidUpdate() {
     if (!localStorage.getItem("token")) {
       this.props.history.push("/login");
@@ -25,6 +24,7 @@ export default class Logout extends React.Component {
       <div className="container">
         <h2>Are you sure you want to logout?</h2>
         <br />
+        {/*Logout button - handling logout */}
         <Button
           id="logout-button"
           onClick={e => {

@@ -1,17 +1,17 @@
 .sidebar {
   width: 20%;
-  background-color: rgb(50, 50, 50);
+  height: 100vh;
+  background-color: rgba(50, 50, 50, 0.8);
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  // margin-top: 10%;
   position: fixed;
-  top: 110px;
+  top: 0;
   left: 0;
-  bottom: 70px;
+
   overflow-x: hidden;
   padding-top: 20px;
 

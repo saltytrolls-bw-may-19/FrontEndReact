@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 //Import componenrs
 import Sidebar from "../Sidebar/Sidebar";
 import CommentBreakdown from "./CommentBreakdown";
@@ -7,7 +6,7 @@ import CommentBreakdown from "./CommentBreakdown";
 //Styling
 import "./HackerProfile.scss";
 
-//Component
+//HackerProfile Component
 class HackerProfile extends React.Component {
   //Protecting Routes - if not logged in, redirect to login
   componentDidMount() {
@@ -15,35 +14,44 @@ class HackerProfile extends React.Component {
       this.props.history.push("/login");
     }
   }
-
   componentDidUpdate() {
     if (!localStorage.getItem("token")) {
       this.props.history.push("/login");
     }
   }
 
-  // this.props.searchedHacker
-  // this.props.searchedHackerComments
   //Rendering
   render() {
-    if (!this.props.searchedHacker) {
+    //Created const author from this.props.match.params.id (route = /hacker/:id) => .../hacker/Zak => author=Zak
+    const author = this.props.match.params.id;
+
+    //Searching array of comments where the name of author matches the const author and map trough the array to create comments
+    const commentsArray = this.props.searchedHackerComments.map((array, index) => {
       return (
-        <Link to="/">
-          <div className="error-message">Click here and search for the hacker first</div>
-        </Link>
+        <React.Fragment key={index}>
+          {array
+            .filter(obj => obj.author === author)
+            .map(comment => (
+              <CommentBreakdown key={comment.time} details={comment} />
+            ))}
+        </React.Fragment>
       );
-    }
+    });
+    console.log(commentsArray);
 
     return (
       <div className="hacker-profile">
+        {/* Sidebar for random salt comments */}
         <Sidebar />
+
+        {/* List of saltiest comments of author */}
         <div className="hacker-column">
-          {this.props.searchedHacker.author ? <h2>{`${this.props.searchedHacker.author}'s`} profile</h2> : <h2>Hacker's Profile</h2>}
+          <h2>{`${author}'s`} profile</h2>
           <h3>Saltiest Comments List</h3>
-          {this.props.searchedHackerComments.map(details => {
-            console.log(details);
-            return <CommentBreakdown key={details.time} details={details} />;
-          })}
+          {/* React Components => Comment Breakdown */}
+          {commentsArray}
+
+          {/* If commentsArray is empty, return div that  */}
         </div>
       </div>
     );
