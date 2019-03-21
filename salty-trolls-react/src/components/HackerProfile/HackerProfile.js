@@ -49,9 +49,7 @@ class HackerProfile extends React.Component {
           )}
 
           {!this.isHackerinState && (
-            <div className="not-found-message">
-              To see some salt, you need to search trough the<Link to="/"> searchbar first</Link>
-            </div>
+            this.props.history.push('/')
           )}
           {/* React Components => Comment Breakdown */}
 
