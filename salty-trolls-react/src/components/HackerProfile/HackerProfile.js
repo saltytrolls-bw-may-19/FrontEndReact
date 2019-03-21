@@ -48,9 +48,7 @@ class HackerProfile extends React.Component {
             </div>
           )}
 
-          {!this.isHackerinState && (
-            this.props.history.push('/')
-          )}
+          {!this.isHackerinState && this.props.history.push('/')}
           {/* React Components => Comment Breakdown */}
 
           {this.isHackerinState &&
