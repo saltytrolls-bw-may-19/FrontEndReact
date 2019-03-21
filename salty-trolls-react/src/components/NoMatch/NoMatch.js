@@ -12,7 +12,7 @@ export default function NoMatch({ location }) {
     <div>
       <div className="full-screen-div">
         <div className="no-match-text">
-          No match for {location.pathname}. Return to <Link to="/">main site </Link>and use searchbar to get some salt
+          Unfortunately, there is no match for {location.pathname}. Return to <Link to="/">main site </Link>and use searchbar to find some salt.
           <br />
           <img className="img-404" src={img} alt="Page doesn't exist" />
         </div>
