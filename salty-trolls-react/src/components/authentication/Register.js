@@ -39,14 +39,9 @@ class Register extends React.Component {
           UserEmail: this.state.userLoginEmail,
           UserPassword: this.state.userLoginPassword
         })
-        .then(res => {
-          console.log(res);
-        })
-
         .then(() => this.props.history.push('/login'))
 
         .catch(err => {
-          console.log(err.response.status);
           if (err.response.status === 500) {
             this.setState({ emailIsAlreadyRegistered: true, loadingRegister: false });
           }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 //Import componenrs
 import Sidebar from '../Sidebar/Sidebar';
 import CommentBreakdown from './CommentBreakdown';
@@ -28,7 +27,6 @@ class HackerProfile extends React.Component {
 
   //Rendering
   render() {
-    console.log(this.isHackerinState);
     //Created const author from this.props.match.params.id (route = /hacker/:id) => .../hacker/Zak => author=Zak
     const author = this.props.match.params.id;
 
