@@ -11,12 +11,11 @@ export default function NoMatch({ location }) {
   return (
     <div>
       <div className="full-screen-div">
-        No match for{' '}
-        <code className="no-match-text">
-          {location.pathname}. Return to <Link to="/">main site </Link>and use searchbar to get some salt
-        </code>
-        <br />
-        <img className="img-404" src={img} alt="Page doesn't exist" />
+        <div className="no-match-text">
+          No match for {location.pathname}. Return to <Link to="/">main site </Link>and use searchbar to get some salt
+          <br />
+          <img className="img-404" src={img} alt="Page doesn't exist" />
+        </div>
       </div>
     </div>
   );
