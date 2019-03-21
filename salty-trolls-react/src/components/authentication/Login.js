@@ -1,21 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 //Styling
-import "./authentication.scss";
-import { Button, Loader } from "semantic-ui-react";
+import './authentication.scss';
+import { Button, Loader } from 'semantic-ui-react';
 
 //URL
-const url = "https://buildweek-saltytrolls.herokuapp.com";
+const url = 'https://buildweek-saltytrolls.herokuapp.com';
 
 //Login Component
 export default class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      userLoginEmail: "",
-      userLoginPassword: "",
+      userLoginEmail: '',
+      userLoginPassword: '',
       invalidCredentials: false,
       loadingLogin: false
     };
@@ -23,13 +23,13 @@ export default class Login extends React.Component {
 
   //Protecting Routes - if logged in, redirect to main page
   componentDidMount() {
-    if (localStorage.getItem("token")) {
-      this.props.history.push("/");
+    if (localStorage.getItem('token')) {
+      this.props.history.push('/');
     }
   }
   componentDidUpdate() {
-    if (localStorage.getItem("token")) {
-      this.props.history.push("/");
+    if (localStorage.getItem('token')) {
+      this.props.history.push('/');
     }
   }
 
@@ -53,7 +53,7 @@ export default class Login extends React.Component {
       .then(res => {
         this.props.authUser(res.data.token, res.data.UserID, res.data.UserEmail);
         this.setState({ loadingLogin: false });
-        this.props.history.push("/");
+        this.props.history.push('/');
       })
       .catch(err => {
         console.log(err.response.status);

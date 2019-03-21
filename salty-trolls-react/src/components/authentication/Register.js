@@ -1,21 +1,21 @@
-import React from "react";
-import axios from "axios";
+import React from 'react';
+import axios from 'axios';
 
 //Styling
-import "./authentication.scss";
-import { Loader, Button } from "semantic-ui-react";
+import './authentication.scss';
+import { Loader, Button } from 'semantic-ui-react';
 
 //URL
-const url = "https://buildweek-saltytrolls.herokuapp.com";
+const url = 'https://buildweek-saltytrolls.herokuapp.com';
 
 //Compnent
 class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userLoginEmail: "",
-      userLoginPassword: "",
-      verifyPassword: "",
+      userLoginEmail: '',
+      userLoginPassword: '',
+      verifyPassword: '',
       passwordsDontMatch: false,
       emailIsAlreadyRegistered: false,
       loadingRegister: false
@@ -43,7 +43,7 @@ class Register extends React.Component {
           console.log(res);
         })
 
-        .then(() => this.props.history.push("/login"))
+        .then(() => this.props.history.push('/login'))
 
         .catch(err => {
           console.log(err.response.status);
@@ -58,14 +58,14 @@ class Register extends React.Component {
 
   //Protecting Routes - if logged in, redirect to main page
   componentDidMount() {
-    if (localStorage.getItem("token")) {
-      this.props.history.push("/");
+    if (localStorage.getItem('token')) {
+      this.props.history.push('/');
     }
   }
 
   componentDidUpdate() {
-    if (localStorage.getItem("token")) {
-      this.props.history.push("/");
+    if (localStorage.getItem('token')) {
+      this.props.history.push('/');
     }
   }
 
@@ -75,6 +75,7 @@ class Register extends React.Component {
       <div className="container">
         <form className="authentication-form">
           <h2>Register</h2>
+          <div className="info-text">Don't reuse your bank password, we haven't spent a lot on security for this app.</div>
           <input name="userLoginEmail" type="email" placeholder="Email" value={this.userLoginEmail} onChange={e => this.handleChanges(e)} />
 
           <input name="userLoginPassword" type="password" placeholder="Password" value={this.userLoginPassword} onChange={e => this.handleChanges(e)} />
@@ -82,6 +83,7 @@ class Register extends React.Component {
           <input name="verifyPassword" type="password" placeholder="Verify password" value={this.verifyPassword} onChange={e => this.handleChanges(e)} />
 
           <Button
+            id="main-button"
             onClick={event => {
               event.preventDefault();
               this.registerNewUser();
