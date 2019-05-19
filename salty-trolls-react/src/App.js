@@ -59,13 +59,13 @@ class App extends Component {
     this.startLoader();
     this.setState({ commenterNotFound: false, networkError: false });
     axios
-      .get(`http://kevinbrack.com:1337/user/${name}`)
+      .get(`https://saltyhackers.com/user/${name}`)
       .then(res => {
-        if (res.data[0] === "C") {
+        if (res.data[ 0 ] === "C") {
           this.setState(() => ({ commenterNotFound: true }));
         } else {
           //Add hacker to searchedHacker Array
-          this.setState(pr => ({ searchedHacker: [res.data.user, ...pr.searchedHacker], searchedHackerComments: [res.data.comments, ...pr.searchedHackerComments] }));
+          this.setState(pr => ({ searchedHacker: [ res.data.user, ...pr.searchedHacker ], searchedHackerComments: [ res.data.comments, ...pr.searchedHackerComments ] }));
           //Delete 10th hacker in the state => only 10 hackers on the screen
           this.state.searchedHacker.splice(10, 1);
           this.state.searchedHackerComments.splice(10, 1);
