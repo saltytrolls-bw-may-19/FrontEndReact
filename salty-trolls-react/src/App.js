@@ -59,7 +59,7 @@ class App extends Component {
     this.startLoader();
     this.setState({ commenterNotFound: false, networkError: false });
     axios
-      .get(`https://saltyhackers.com/user/${name}`)
+      .get(`https://saltyhackers.com:1337/user/${name}`)
       .then(res => {
         if (res.data[ 0 ] === 'C') {
           this.setState(() => ({ commenterNotFound: true }));
