@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
-import axios from "axios";
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 
 //Import components
-import Navigation from "./components/Navigation/Navigation";
-import HackerList from "./components/HackerList/HackerList";
-import Login from "./components/authentication/Login";
-import Logout from "./components/authentication/Logout";
-import Register from "./components/authentication/Register";
-import UserPage from "./components/UserPage/UserPage";
-import HackerProfile from "./components/HackerProfile/HackerProfile";
-import Footer from "./components/Footer/Footer";
-import NoMatch from "./components/NoMatch/NoMatch";
+import Navigation from './components/Navigation/Navigation';
+import HackerList from './components/HackerList/HackerList';
+import Login from './components/authentication/Login';
+import Logout from './components/authentication/Logout';
+import Register from './components/authentication/Register';
+import UserPage from './components/UserPage/UserPage';
+import HackerProfile from './components/HackerProfile/HackerProfile';
+import Footer from './components/Footer/Footer';
+import NoMatch from './components/NoMatch/NoMatch';
 
 //Styuling
-import "./App.scss";
+import './App.scss';
 
 //Seeding data
-import listHackers from "./DataCollection/Hackers";
-import listComments from "./DataCollection/Comments";
+import listHackers from './DataCollection/Hackers';
+import listComments from './DataCollection/Comments';
 
 //App Component + state
 class App extends Component {
@@ -38,9 +38,9 @@ class App extends Component {
 
   //Authorization
   authUser = (token, id, email) => {
-    localStorage.setItem("token", token);
-    localStorage.setItem("currentUserId", id);
-    localStorage.setItem("UserEmail", email);
+    localStorage.setItem('token', token);
+    localStorage.setItem('currentUserId', id);
+    localStorage.setItem('UserEmail', email);
   };
   unAuthUser = () => {
     localStorage.clear();
@@ -61,7 +61,7 @@ class App extends Component {
     axios
       .get(`https://saltyhackers.com/user/${name}`)
       .then(res => {
-        if (res.data[ 0 ] === "C") {
+        if (res.data[ 0 ] === 'C') {
           this.setState(() => ({ commenterNotFound: true }));
         } else {
           //Add hacker to searchedHacker Array

@@ -1,14 +1,22 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+// Import components
 
 //Styling
-import "./NoMatch.scss";
+import './NoMatch.scss';
+import img from '../img/404.svg';
 
 export default function NoMatch({ location }) {
   return (
-    <div className="full-screen-div">
-      <h3>
-        No match for <code>{location.pathname}</code>
-      </h3>
+    <div>
+      <div className="full-screen-div">
+        <div className="no-match-text">
+          Unfortunately, there is no match for {location.pathname}. Return to <Link to="/">main site </Link>and use searchbar to find some salt.
+          <br />
+          <img className="img-404" src={img} alt="Page doesn't exist" />
+        </div>
+      </div>
     </div>
   );
 }

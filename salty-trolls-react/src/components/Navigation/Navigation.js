@@ -1,11 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Navigation.scss";
-import logo from "../img/st-logo-w.svg";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Navigation.scss';
+import logo from '../img/st-logo-w.svg';
 
 export default class Navigation extends React.Component {
   render() {
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem('token')) {
       return (
         <div className="navbar">
           <div className="navbar-left">
@@ -22,7 +22,7 @@ export default class Navigation extends React.Component {
       );
     }
 
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem('token')) {
       return (
         <div className="navbar">
           <div className="navbar-left">
@@ -33,7 +33,7 @@ export default class Navigation extends React.Component {
           </div>
           <div className="navbar-middle" />
           <div className="navbar-right">
-            <Link to="/user">My Profile</Link>
+            <Link to="/user">Profile</Link>
             <Link to="/logout">Logout</Link>
           </div>
         </div>

@@ -1,11 +1,11 @@
-import React from "react";
-import axios from "axios";
+import React from 'react';
+import axios from 'axios';
 
 //Styling
-import "./UserPage.scss";
-import { Button } from "semantic-ui-react";
+import './UserPage.scss';
+import { Button } from 'semantic-ui-react';
 
-const url = "https://buildweek-saltytrolls.herokuapp.com";
+const url = 'https://buildweek-saltytrolls.herokuapp.com';
 
 //UserPage Component
 export default class UserPage extends React.Component {
@@ -14,25 +14,25 @@ export default class UserPage extends React.Component {
     this.state = {
       showChangePassword: false,
       showDeleteAccount: false,
-      userLoginPassword: "",
-      verifyPassword: ""
+      userLoginPassword: '',
+      verifyPassword: ''
     };
   }
   // Protecting Routes - if not logged in, redirect to login page
   componentDidMount() {
-    if (!localStorage.getItem("token")) {
-      this.props.history.push("/login");
+    if (!localStorage.getItem('token')) {
+      this.props.history.push('/login');
     }
   }
   componentDidUpdate() {
-    if (!localStorage.getItem("token")) {
-      this.props.history.push("/login");
+    if (!localStorage.getItem('token')) {
+      this.props.history.push('/login');
     }
   }
 
   //Authorisation token for search
   getAuthToken = () => ({
-    headers: { Authorization: localStorage.getItem("token") }
+    headers: { Authorization: localStorage.getItem('token') }
   });
 
   //AXIOS => Update Password functionality
@@ -40,31 +40,31 @@ export default class UserPage extends React.Component {
     if (this.state.userLoginPassword === this.state.verifyPassword) {
       axios
         .patch(
-          `${url}/api/users/${localStorage.getItem("currentUserId")}/password`,
+          `${url}/api/users/${localStorage.getItem('currentUserId')}/password`,
           {
             UserPassword: this.state.userLoginPassword
           },
           this.getAuthToken()
         )
         .then(res => console.log(res))
-        .then(alert("Password updated"))
-        .then(() => this.props.history.push("/"))
+        .then(alert('Password updated'))
+        .then(() => this.props.history.push('/'))
         .catch(err => {
           console.log(err.msg);
         });
     } else {
-      return "Passwords do not match.";
+      return 'Passwords do not match.';
     }
   };
   //AXIOS => Delete Account functionality
   deleteAccount = () => {
     axios
-      .delete(`${url}/api/users/${localStorage.getItem("currentUserId")}`, this.getAuthToken())
+      .delete(`${url}/api/users/${localStorage.getItem('currentUserId')}`, this.getAuthToken())
       .then(() => {
         this.props.unAuthUser();
       })
-      .then(alert("Account deleted"))
-      .then(() => this.props.history.push("/register"))
+      .then(alert('Account deleted'))
+      .then(() => this.props.history.push('/register'))
       .catch(err => {
         console.log(err.message);
       });
@@ -94,7 +94,7 @@ export default class UserPage extends React.Component {
     return (
       <div className="user-page">
         <h1>
-          Hello <span className="emphasize">{localStorage.getItem("UserEmail")}</span>!
+          Hello <span className="emphasize">{localStorage.getItem('UserEmail')}</span>!
         </h1>
         <div>
           {/* Button => when clicked, show update password form  */}
